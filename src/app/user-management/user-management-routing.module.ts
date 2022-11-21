@@ -6,7 +6,6 @@ import { AddUserManagementComponent } from './add-user-management/add-user-manag
 
 
 
-
 const routes: Routes = [
   
   {
@@ -32,7 +31,9 @@ const routes: Routes = [
       title: 'add-user-management'
     },
     
-  }
+  },
+
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

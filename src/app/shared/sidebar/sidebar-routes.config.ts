@@ -6,11 +6,18 @@ export const ROUTES: RouteInfo[] = [
     { path: '/role/createrole', title: 'Role Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/store/createstore', title: 'Store Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/user-management', title: 'User Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-    { path: '/kiosk/createkiosk', title: 'kiosk Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
- //   { path: '/endpoints', title: 'End Points ', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },  
-  //  { path: '/user-management', title: 'Reports ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-        {
-            path: '', title: 'Settings', icon: 'ft-aperture', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
+    { path: '', title: 'kiosk Management ', icon: 'ft-user', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, 
+         submenu: [
+            { path: '/kiosk/createkiosk', title: 'Add Kiosk', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/kiosk/bill-validator', title: 'Add Bill Validator', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/kiosk/printer', title: 'Printer', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/kiosk/sagar', title: 'Locks', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
+
+         ] 
+    },
+  
+    { path: '', title: 'Settings', icon: 'ft-aperture', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
             submenu: [
     
                 { path: '/settings/change-password', title: 'Change Password', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },

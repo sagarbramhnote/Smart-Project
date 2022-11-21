@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { CreatekioskComponent } from './createkiosk/createkiosk.component';
+import { LocksComponent } from './locks/locks.component';
+import { PrinterComponent } from './printer/printer.component';
 
 const routes: Routes = [
   {
@@ -11,6 +14,36 @@ const routes: Routes = [
     },
     
   },
+
+  {
+    path: 'bill-validator',
+     component: BillValidatorComponent,
+    data: {
+      title: 'Bill Validator'
+    },
+    
+  },
+
+  {
+    path: 'printer',
+     component: PrinterComponent,
+    data: {
+      title: 'Printer'
+    },
+    
+  },
+
+  {
+    path: 'sagar',
+     component: LocksComponent,
+    data: {
+      title: 'Locks'
+    },
+    
+  },
+
+ 
+
 ];
 
 @NgModule({

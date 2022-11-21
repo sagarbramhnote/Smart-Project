@@ -37,6 +37,7 @@ import { KnowledgeBaseComponent } from './knowledge-base/knowledge-base.componen
         SearchComponent,
         FaqComponent,
         KnowledgeBaseComponent
+  
     ]
 })
 export class FullPagesModule { }
