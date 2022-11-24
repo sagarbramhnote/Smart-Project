@@ -85,6 +85,67 @@
                     </div>
 
                   </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select Kiosk</label>
+                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
+                            (change)='onStoreSelected(store.storeName)' name="store">
+                            <option [ngValue]="store" *ngFor="let store of stores">
+                              {{store.storeName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select Bill Validator</label>
+                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
+                            (change)='onStoreSelected(store.storeName)' name="store">
+                            <option [ngValue]="store" *ngFor="let store of stores">
+                              {{store.storeName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select Printer</label>
+                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
+                            (change)='onStoreSelected(store.storeName)' name="store">
+                            <option [ngValue]="store" *ngFor="let store of stores">
+                              {{store.storeName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select Locks</label>
+                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
+                            (change)='onStoreSelected(store.storeName)' name="store">
+                            <option [ngValue]="store" *ngFor="let store of stores">
+                              {{store.storeName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
                   <div class="form-actions center">
 
                     <button type="button" class="btn btn-raised btn-primary mr-1"

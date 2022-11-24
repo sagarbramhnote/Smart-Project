@@ -52,6 +52,29 @@ export class CreatestoreComponent implements OnInit {
     console.log(JSON.stringify(this.storeInfoRequest));
     this.getAllStoresList();
   }
+
+  editstoreInfoRequest(storeInfoRequest: StoreInfoRequest) {
+
+    localStorage.setItem('editStore', JSON.stringify(storeInfoRequest));
+    this.router.navigate(["/store/updatestore"]);
+
+  }
+
+  storemaindelete(id:number) {
+    return this.http.delete(environment.smartSafeAPIUrl + '/storeinfo/'+id);
+}
+
+storedelete(id:number) {
+ this.storemaindelete(id).subscribe(
+  data => {
+    console.log('deleted', data);
+    this.service.typeDelete();
+    this.getAllStoresList();
+  }
+)
+}
+
+
   ngOnInit() {
     this.getAllStoresList();
   }

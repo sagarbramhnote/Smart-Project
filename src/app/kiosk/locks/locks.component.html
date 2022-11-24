@@ -1,8 +1,146 @@
-<p>
-  locks works!
+<section id="image">
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row text-left">
+            <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">Kiosk Management</div>
+              <br>
+              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+                    style="font-size: 15px">Home</span></a>
+                <span style="font-size: 15px">/Add Locks</span>
+
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+         
+
+          <div class="card-body">
+            <div class="form-group">
+              <div class="col-md-12">
+
+              
+                <form class="form" #addClassForm="ngForm" novalidate>
+                  <div class="form-body">
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="storeName"><span *ngIf="locksInfoRequest.digitalLockNo == undefined || locksInfoRequest.digitalLockNo =='' "
+                              style="color: red">*</span>Enter Digital Lock No
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!digitalLockNo.valid && (digitalLockNo.dirty || digitalLockNo.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
+                            [(ngModel)]="locksInfoRequest.digitalLockNo" ngModel #digitalLockNo="ngModel" required>
+
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="corpStoreNo"><span *ngIf="locksInfoRequest.digitalLockName == undefined || locksInfoRequest.digitalLockName =='' "
+                              style="color: red">*</span>Enter Digital Lock Name
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="digitalLockName" class="form-control border-primary" name="digitalLockName"
+                            [(ngModel)]="locksInfoRequest.digitalLockName" ngModel #digitalLockName="ngModel" required>
+
+                        </div>
+                      </div>
+                      
+                    </div>
 
 
-  <br>
+                   <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="storeName"><span *ngIf="locksInfoRequest.brandName == undefined || locksInfoRequest.brandName =='' "
+                              style="color: red">*</span>Enter Brand Name
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!brandName.valid && (brandName.dirty || brandName.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="brandName" class="form-control border-primary" name="brandName"
+                            [(ngModel)]="locksInfoRequest.brandName" ngModel #brandName="ngModel" required>
 
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet rem vero provident recusandae vel impedit quibusdam ipsum, natus totam omnis itaque explicabo officia, quisquam ut. Provident illum accusamus ab eveniet quisquam veniam in error voluptatibus laboriosam libero itaque iure excepturi laudantium totam, cupiditate ratione eligendi facere nulla vitae sapiente ut atque dolorum. Quibusdam modi similique dignissimos accusamus minima omnis earum, perspiciatis magni, veritatis corporis non dolore voluptatibus explicabo veniam animi hic cupiditate nemo facere ipsum aut id minus. Libero vitae mollitia numquam itaque eaque delectus ipsam ea cum. Magnam, fugiat optio voluptas dolor quis facilis deleniti. Rerum voluptatem cum distinctio.
-</p>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="corpStoreNo"><span *ngIf="locksInfoRequest.modelName == undefined || locksInfoRequest.modelName =='' "
+                              style="color: red">*</span>Enter Model Name
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!modelName.valid && (modelName.dirty || modelName.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="modelName" class="form-control border-primary" name="modelName"
+                            [(ngModel)]="locksInfoRequest.modelName" ngModel #modelName="ngModel" required>
+
+                        </div>
+                      </div>
+                      
+                    </div>
+
+
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="storeName"><span *ngIf="locksInfoRequest.machineType == undefined || locksInfoRequest.machineType =='' "
+                              style="color: red">*</span>Enter Machine Type
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!machineType.valid && (machineType.dirty || machineType.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="machineType" class="form-control border-primary" name="machineType"
+                            [(ngModel)]="locksInfoRequest.machineType" ngModel #machineType="ngModel" required>
+
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="corpStoreNo"><span *ngIf="locksInfoRequest.connectors == undefined || locksInfoRequest.connectors =='' "
+                              style="color: red">*</span>Enter Connectors
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!connectors.valid && (connectors.dirty || connectors.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="connectors" class="form-control border-primary" name="connectors"
+                            [(ngModel)]="locksInfoRequest.connectors" ngModel #connectors="ngModel" required>
+
+                        </div>
+                      </div>
+                      
+                    </div>
+
+
+                
+                  </div>
+                  <div class="form-actions center">
+
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addLocks()"
+                      [disabled]="!addClassForm.valid">
+                      <i class="fa fa-check-square-o"></i> Create
+                    </button>
+                    <button type="button" class="btn btn-raised btn-warning">
+                      <i class="ft-x"></i> Cancel
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

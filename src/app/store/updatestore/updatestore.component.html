@@ -1,4 +1,3 @@
-<!-- <ngx-spinner></ngx-spinner> -->
 <section id="image">
   <div class=row>
     <div class=" col-md-12 ">
@@ -10,7 +9,7 @@
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Add Store</span>
+                <span style="font-size: 15px">/Update Store</span>
 
               </p>
             </div>
@@ -29,9 +28,7 @@
               
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
-                      Assign Store
-                     </button>
+                  
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -199,141 +196,6 @@
 
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section id="image">
-  <div class=row>
-    <div class=" col-md-12 ">
-      <div class="card">
-
-        <div class="card-body">
-          <div class="form-group">
-            <section id="simple">
-
-              <!-- <div class="col-sm-6">
-                <form storeInfoRequest="search">
-                  <div class="position-relative has-icon-right">
-                    <input type="text" class="form-control round" placeholder="Search" name="search"
-                      [(ngModel)]="searchText" autocomplete="off">
-                    <div class="form-control-position">
-                      <i class="ft-search"></i>
-                    </div>
-                  </div>
-                </form>
-              </div> -->
-              <br>
-              <div class="row text-left">
-
-                <div class="col-sm-12">
-                  <table class="table table-responsive-md text-center">
-                    <thead>
-                      <tr>
-                        <th>S.no</th>
-                        <th>Corp StoreNo</th>
-                        <th>Serial Number</th>
-                        <th>Store Name</th>
-                        <th>Store Location</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <!-- <tbody
-                        *ngFor="let storeInfoRequest of storeInfoRequests| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let storeInfoRequest of storeInfoRequests;index as i">
-                      <tr>
-                        <!-- <td>{{i+1+(page-1) * pageSize}}</td> -->
-                        <td>{{i+1}}</td>
-                        <td>{{storeInfoRequest.corpStoreNo}}</td>
-                        <td>{{storeInfoRequest.serialNumber}}</td>
-                        <td>{{storeInfoRequest.storeName}}</td>
-                        <td>{{storeInfoRequest.address}}</td>
-                        <td>{{storeInfoRequest.startTime}}</td>
-                        <td>{{storeInfoRequest.endTime}}</td>
-                        <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editstoreInfoRequest(storeInfoRequest)"
-                            placement="bottom" ngbTooltip="Edit">
-                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                          </a>
-                           <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="storedelete(storeInfoRequest.id)" placement="bottom" ngbTooltip="Delete">
-                                                    
-                                                      <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a>
-                        </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
-                            {{ storeInfoRequest.configured ? 'Yes' : 'No' }}
-
-                          </button></td>
-
-
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- <div *ngIf="searchText != ''">
-                    <table class="table table-responsive-md text-center">
-                      <thead>
-                        <tr>
-                          <th>S.no</th>
-                          <th>Class Name</th>
-                          <th>Edit</th>
-                          <th>Status</th>
-
-                        </tr>
-                      </thead>
-                      <tbody *ngFor="let class of classes| filter:searchText ; index as i">
-                        <tr>
-                          <td>{{i+1+(page-1) * pageSize}}</td>
-                          <td>{{class.name}}</td>
-                          <td>
-                            <a class="success p-0" data-original-title="" title="" (click)="editClass(class)"
-                              placement="bottom" ngbTooltip="Edit">
-                              <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                            </a>
-                            <a class="danger p-0" data-original-title="" title=""
-                                                        (click)="deleteClass(class.id)">
-                                                      
-                                                        <i class="icon-trash font-medium-3 mr-2"></i>
-                                                    </a>
-                          </td>
-                          <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                              [ngClass]="{' btn-primary' : class.active,'btn-warning' :!class.active }">
-                              {{ class.active ? 'Active' : 'Inactive' }}
-
-                            </button></td>
-
-
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div> -->
-                  <!-- <div class="row">
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="classes.length"
-                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        Items per Page:
-                        <select (change)="handlePageSizeChange($event)">
-                          <option *ngFor="let pageSize of pageSizes" [ngValue]="pageSize">
-                            {{ pageSize }}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div> -->
-                </div>
-              </div>
-            </section>
           </div>
         </div>
       </div>

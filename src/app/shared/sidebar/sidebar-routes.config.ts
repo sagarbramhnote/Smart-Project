@@ -11,7 +11,7 @@ export const ROUTES: RouteInfo[] = [
             { path: '/kiosk/createkiosk', title: 'Add Kiosk', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             { path: '/kiosk/bill-validator', title: 'Add Bill Validator', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             { path: '/kiosk/printer', title: 'Printer', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-            { path: '/kiosk/sagar', title: 'Locks', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/kiosk/locks', title: 'Locks', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
 
 
          ] 
