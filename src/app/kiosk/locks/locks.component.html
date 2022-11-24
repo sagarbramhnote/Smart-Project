@@ -1,8 +1,293 @@
-<p>
-  locks works!
+<!-- <ngx-spinner></ngx-spinner> -->
+<section id="image">
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row text-left">
+            <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">Kiosk Management</div>
+              <br>
+              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+                    style="font-size: 15px">Home</span></a>
+                <span style="font-size: 15px">/Add Digital Locks</span>
+
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
 
 
-  <br>
+          <div class="card-body">
+            <div class="form-group">
+              <div class="col-md-12">
+                <form class="form" #addClassForm="ngForm" novalidate>
+                  <div class="form-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="lockNo"><span *ngIf="lock.lockNo == undefined || lock.lockNo =='' "
+                            style="color: red">*</span>Digital Lock No
+                        </label>
+                        <span class=" text-muted danger" *ngIf="!lockNo.valid && (lockNo.dirty || lockNo.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="lockNo" class="form-control border-primary" name="lockNo"
+                          [(ngModel)]="lock.lockNo" ngModel #lockNo="ngModel" required>
+                       
+                        </div>
+                      </div>
+                        
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="lockName"><span *ngIf="lock.lockName == undefined || lock.lockName =='' "
+                            style="color: red">*</span>Digital Lock Name
+                        </label>
+                        <span class=" text-muted danger" *ngIf="!lockName.valid && (lockName.dirty || lockName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="lockName" class="form-control border-primary" name="lockName"
+                          [(ngModel)]="lock.lockName" ngModel #lockName="ngModel" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="brandName"><span *ngIf="lock.brandName == undefined || lock.brandName =='' "
+                            style="color: red">*</span>Brand Name
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!brandName.valid && (brandName.dirty || brandName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="brandName" class="form-control border-primary" name="brandName"
+                          [(ngModel)]="lock.brandName" ngModel #brandName="ngModel" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="modelName"><span *ngIf="lock.modelName == undefined || lock.modelName =='' "
+                            style="color: red">*</span>Model Name
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!modelName.valid && (modelName.dirty || modelName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="modelName" class="form-control border-primary" name="modelName"
+                          [(ngModel)]="lock.modelName" ngModel #modelName="ngModel" required>
 
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet rem vero provident recusandae vel impedit quibusdam ipsum, natus totam omnis itaque explicabo officia, quisquam ut. Provident illum accusamus ab eveniet quisquam veniam in error voluptatibus laboriosam libero itaque iure excepturi laudantium totam, cupiditate ratione eligendi facere nulla vitae sapiente ut atque dolorum. Quibusdam modi similique dignissimos accusamus minima omnis earum, perspiciatis magni, veritatis corporis non dolore voluptatibus explicabo veniam animi hic cupiditate nemo facere ipsum aut id minus. Libero vitae mollitia numquam itaque eaque delectus ipsam ea cum. Magnam, fugiat optio voluptas dolor quis facilis deleniti. Rerum voluptatem cum distinctio.
-</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="machineType"><span *ngIf="lock.machineType == undefined || lock.machineType =='' "
+                            style="color: red">*</span>Machine Type
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!machineType.valid && (machineType.dirty || machineType.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="machineType" class="form-control border-primary" name="machineType"
+                          [(ngModel)]="lock.machineType" ngModel #machineType="ngModel" required>
+
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="connectors"><span *ngIf="lock.connectors == undefined || lock.connectors =='' "
+                          style="color: red">*</span>Connectors
+                      </label>
+                      <span class=" text-muted danger"
+                        *ngIf="!connectors.valid && (connectors.dirty || connectors.touched)">
+                        is required!
+                      </span>
+                      <input type="text" id="connectors" class="form-control border-primary" name="connectors"
+                        [(ngModel)]="lock.connectors" ngModel #connectors="ngModel" required>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="d-block">Status</label>
+                          <div class="input-group">
+                            <div class="custom-control custom-radio d-inline-block float-left">
+                              <input type="radio" checked id="active" name="active" class="custom-control-input"
+                                [value]=true [(ngModel)]="lock.active">
+                              <label class="custom-control-label" for="active">Active</label>
+                            </div>
+                            <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                              <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                                [value]=false [(ngModel)]="lock.active">
+                              <label class="custom-control-label" for="inactive">In Active</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <!--    <div class="col-md-6">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select Store Id</label>
+                          <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
+                            <option>Select Store Id</option>
+                            <option [ngValue]="role" *ngFor="let role of roles">
+                              {{role.name}} </option>
+                          </select>
+                        </fieldset>
+
+                      </div>-->
+                  
+                  </div> 
+             
+                  <div class="form-actions center">
+
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addLock()"
+                      [disabled]="!addClassForm.valid">
+                      <i class="fa fa-check-square-o"></i> Create
+                    </button>
+                    <button type="button" class="btn btn-raised btn-warning">
+                      <i class="ft-x"></i> Cancel
+                    </button>
+                   </div>
+                 </form>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</section>
+<section id="image">
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="card">
+
+        <div class="card-body">
+          <div class="form-group">
+            <section id="simple">
+
+              <!-- <div class="col-sm-6">
+                <form role="search">
+                  <div class="position-relative has-icon-right">
+                    <input type="text" class="form-control round" placeholder="Search" name="search"
+                      [(ngModel)]="searchText" autocomplete="off">
+                    <div class="form-control-position">
+                      <i class="ft-search"></i>
+                    </div>
+                  </div>
+                </form>
+              </div> -->
+              <br>
+              <div class="row text-left">
+
+                <div class="col-sm-12">
+                  <table class="table table-responsive-md text-center">
+                    <thead>
+                      <tr>
+                        <th>S.no</th>
+                        <th>Digital Lock No</th>
+                        <th>Digital Lock Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <!-- <tbody
+                        *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
+                    <tbody *ngFor="let lock of locks">
+                      <tr>
+                        <td>{{i+1+(page-1) * pageSize}}</td>
+                        <td>{{lock.lockname}}</td>
+                        <td>
+                          <a class="success p-0" data-original-title="" title="" (click)="editLock(lock)"
+                            placement="bottom" ngbTooltip="Edit">
+                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                          </a>
+                          <!-- <a class="danger p-0" data-original-title="" title=""
+                                                      (click)="deleteClass(class.id)">
+                                                    
+                                                      <i class="icon-trash font-medium-3 mr-2"></i>
+                                                  </a> -->
+                        </td>
+                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : lock.active,'btn-warning' :!lock.active }">
+                            {{ lock.active ? 'Active' : 'Inactive' }}
+
+                          </button></td>
+
+
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- <div *ngIf="searchText != ''">
+                    <table class="table table-responsive-md text-center">
+                      <thead>
+                        <tr>
+                          <th>S.no</th>
+                          <th>Class Name</th>
+                          <th>Edit</th>
+                          <th>Status</th>
+
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let class of classes| filter:searchText ; index as i">
+                        <tr>
+                          <td>{{i+1+(page-1) * pageSize}}</td>
+                          <td>{{class.name}}</td>
+                          <td>
+                            <a class="success p-0" data-original-title="" title="" (click)="editClass(class)"
+                              placement="bottom" ngbTooltip="Edit">
+                              <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                            </a>
+                            <a class="danger p-0" data-original-title="" title=""
+                                                        (click)="deleteClass(class.id)">
+                                                      
+                                                        <i class="icon-trash font-medium-3 mr-2"></i>
+                                                    </a>
+                          </td>
+                          <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
+                              [ngClass]="{' btn-primary' : class.active,'btn-warning' :!class.active }">
+                              {{ class.active ? 'Active' : 'Inactive' }}
+
+                            </button></td>
+
+
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div> -->
+                  <!-- <div class="row">
+                    <div class="col-sm-6">
+                      <div class="formgroup">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="classes.length"
+                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="formgroup">
+                        Items per Page:
+                        <select (change)="handlePageSizeChange($event)">
+                          <option *ngFor="let pageSize of pageSizes" [ngValue]="pageSize">
+                            {{ pageSize }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

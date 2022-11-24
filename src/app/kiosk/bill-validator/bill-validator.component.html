@@ -10,7 +10,7 @@
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Create Kiosk</span>
+                <span style="font-size: 15px">/Add Bill Acceptor</span>
 
               </p>
             </div>
@@ -27,34 +27,32 @@
               <div class="col-md-12">
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
-                      Assign Store
-                    </button>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Enter Kiosk Id
+                          <label for="billacceptorno"><span *ngIf="billvalidator.billacceptorno == undefined || billvalidator.billacceptorno =='' "
+                              style="color: red">*</span>Bill Acceptor No
                           </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
+                          <span class=" text-muted danger" *ngIf="!billacceptorno.valid && (billacceptorno.dirty || billacceptorno.touched)">
                             is required!
                           </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
+                          <input type="text" id="billacceptorno" class="form-control border-primary" name="billacceptorno"
+                            [(ngModel)]="billvalidator.billacceptorno" ngModel #billacceptorno="ngModel" required>
 
                         </div>
                       </div>
+                        
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Kiosk Name
+                          <label for="billacceptorname"><span *ngIf="billvalidator.billacceptorname == undefined || billvalidator.billacceptorname =='' "
+                              style="color: red">*</span>Bill Acceptor Name
                           </label>
                           <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
+                            *ngIf="!billacceptorname.valid && (billacceptorname.dirty || billacceptorname.touched)">
                             is required!
                           </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
+                          <input type="text" id="billacceptorname" class="form-control border-primary" name="billacceptorname"
+                            [(ngModel)]="billvalidator.billacceptorname" ngModel #billacceptorname="ngModel" required>
 
                         </div>
                       </div>
@@ -62,28 +60,28 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Bill Validator Id
+                          <label for="brandname"><span *ngIf="billvalidator.brandname == undefined || billvalidator.brandname =='' "
+                              style="color: red">*</span>Brand Name
                           </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
+                          <span class=" text-muted danger" *ngIf="!brandname.valid && (brandname.dirty || brandname.touched)">
                             is required!
                           </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
+                          <input type="text" id="brandname" class="form-control border-primary" name="brandname"
+                            [(ngModel)]="billvalidator.brandname" ngModel #brandname="ngModel" required>
 
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Bill Validator Name
+                          <label for="modelname"><span *ngIf="billvalidator.modelname == undefined || billvalidator.modelname =='' "
+                              style="color: red">*</span>Model Name
                           </label>
                           <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
+                            *ngIf="!modelname.valid && (modelname.dirty || modelname.touched)">
                             is required!
                           </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
+                          <input type="text" id="modelname" class="form-control border-primary" name="modelname"
+                            [(ngModel)]="billvalidator.modelname" ngModel #modelname="ngModel" required>
 
                         </div>
                       </div>
@@ -92,28 +90,28 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Printer Id
+                          <label for="machinetype"><span *ngIf="billvalidator.machinetype == undefined || billvalidator.machinetype =='' "
+                              style="color: red">*</span>Machine Type
                           </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
+                          <span class=" text-muted danger" *ngIf="!machinetype.valid && (machinetype.dirty || machinetype.touched)">
                             is required!
                           </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
+                          <input type="text" id="machinetype" class="form-control border-primary" name="machinetype"
+                            [(ngModel)]="billvalidator.machinetype" ngModel #machinetype="ngModel" required>
 
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Printer Name
+                          <label for="storagecapacity"><span *ngIf="billvalidator.storagecapacity == undefined || billvalidator.storagecapacity =='' "
+                              style="color: red">*</span>Storage Capacity
                           </label>
                           <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
+                            *ngIf="!storagecapacity.valid && (storagecapacity.dirty || storagecapacity.touched)">
                             is required!
                           </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
+                          <input type="text" id="storagecapacity" class="form-control border-primary" name="storagecapacity"
+                            [(ngModel)]="billvalidator.storagecapacity" ngModel #storagecapacity="ngModel" required>
 
                         </div>
                       </div>
@@ -126,18 +124,18 @@
                           <div class="input-group">
                             <div class="custom-control custom-radio d-inline-block float-left">
                               <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="role.active">
+                                [value]=true [(ngModel)]="billvalidator.active">
                               <label class="custom-control-label" for="active">Active</label>
                             </div>
                             <div class="custom-control custom-radio d-inline-block float-left ml-1">
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="role.active">
+                                [value]=false [(ngModel)]="billvalidator.active">
                               <label class="custom-control-label" for="inactive">In Active</label>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                  <!--    <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Store Id</label>
                           <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
@@ -147,13 +145,13 @@
                           </select>
                         </fieldset>
 
-                      </div>
+                      </div>-->
                     </div>
-                  </div>
+                  </div> 
              
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addRole()"
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addBillvalidator()"
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
@@ -198,21 +196,20 @@
                     <thead>
                       <tr>
                         <th>S.no</th>
-                        <th>Store Id</th>
-                        <th>Store Name</th>
-                        <th>Store Location</th>
+                        <th>Bill Acceptor No</th>
+                        <th>Bill Acceptor Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let role of roles">
+                    <tbody *ngFor="let billvalidator of billvalidators">
                       <tr>
                         <td>{{i+1+(page-1) * pageSize}}</td>
-                        <td>{{role.name}}</td>
+                        <td>{{billvalidator.billacceptorname}}</td>
                         <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editRole(role)"
+                          <a class="success p-0" data-original-title="" title="" (click)="editBillvalidator(billvalidator)"
                             placement="bottom" ngbTooltip="Edit">
                             <i class="ft-edit-2 font-medium-3 mr-2"></i>
                           </a>
@@ -223,8 +220,8 @@
                                                   </a> -->
                         </td>
                         <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : role.active,'btn-warning' :!role.active }">
-                            {{ role.active ? 'Active' : 'Inactive' }}
+                            [ngClass]="{' btn-primary' : billvalidator.active,'btn-warning' :!billvalidator.active }">
+                            {{ billvalidator.active ? 'Active' : 'Inactive' }}
 
                           </button></td>
 

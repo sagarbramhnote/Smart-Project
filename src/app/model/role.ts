@@ -3,8 +3,11 @@ export class Role{
 
 	name:string;
 
+	firstname:string;
+
 	description:string;
 
 	features:string[];
+
 
 }
