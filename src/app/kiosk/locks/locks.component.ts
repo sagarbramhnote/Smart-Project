@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { Lock } from 'app/model/lock';
-
+import { LocksInfoRequest } from 'app/model/locksInfoRequest';
 
 @Component({
   selector: 'app-locks',
@@ -15,11 +14,8 @@ import { Lock } from 'app/model/lock';
 })
 export class LocksComponent implements OnInit {
 
-
-
-
-  lock = new Lock();
-  locks:Lock[];
+  lock = new LocksInfoRequest();
+  locks : LocksInfoRequest[];
 
 
   constructor(private http: HttpClient,
@@ -28,7 +24,7 @@ export class LocksComponent implements OnInit {
     private changeDetectorRefs: ChangeDetectorRef) {
   }
   getLockList() {
-    return this.http.get<Lock[]>(environment.smartSafeAPIUrl + '/lockinfo/all');
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/all');
   }
   getAllLocksList() {
     return this.getLockList().
@@ -39,8 +35,7 @@ export class LocksComponent implements OnInit {
       });
   }
   addLock() {
-    this.lock.configured=false; 
-    this.http.post<Lock>(environment.smartSafeAPIUrl + '/lockinfo/', this.lock).subscribe(
+    this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/locks/', this.lock).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -59,6 +54,7 @@ export class LocksComponent implements OnInit {
     this.getAllLocksList();
   }
   ngOnInit() {
+    this.getAllLocksList();
   }
 
 }

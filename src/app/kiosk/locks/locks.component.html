@@ -207,10 +207,12 @@
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let lock of locks">
+                    <tbody *ngFor="let lock of locks ;index as i">
                       <tr>
-                        <td>{{i+1+(page-1) * pageSize}}</td>
-                        <td>{{lock.lockname}}</td>
+                        <td>{{i+1}}</td>
+                        <td>{{lock.digitalLockNo}}</td>
+                        <td>{{lock.digitalLockName}}</td>
+                       
                         <td>
                           <a class="success p-0" data-original-title="" title="" (click)="editLock(lock)"
                             placement="bottom" ngbTooltip="Edit">
