@@ -10,6 +10,7 @@ import { BillValidatorComponent } from './bill-validator/bill-validator.componen
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
 
+
 @NgModule({
   declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent],
   imports: [

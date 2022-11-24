@@ -1,9 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+
 import { Router } from '@angular/router';
-import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
+import { Lock } from 'app/model/lock';
+
 
 @Component({
   selector: 'app-locks',
@@ -13,20 +15,37 @@ import { environment } from 'environments/environment';
 })
 export class LocksComponent implements OnInit {
 
-  locksInfoRequest = new LocksInfoRequest();
-  locksInfoRequests: LocksInfoRequest[];
+
+
+
+  lock = new Lock();
+  locks:Lock[];
+
 
   constructor(private http: HttpClient,
     private router: Router,
     private service: NGXToastrService,
     private changeDetectorRefs: ChangeDetectorRef) {
   }
-  addLocks() {
-    this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/locks/', this.locksInfoRequest).subscribe(
+  getLockList() {
+    return this.http.get<Lock[]>(environment.smartSafeAPIUrl + '/lockinfo/all');
+  }
+  getAllLocksList() {
+    return this.getLockList().
+      subscribe((data) => {
+        console.log(data);
+        this.locks = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+  addLock() {
+    this.lock.configured=false; 
+    this.http.post<Lock>(environment.smartSafeAPIUrl + '/lockinfo/', this.lock).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
+        this.getAllLocksList();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -36,10 +55,9 @@ export class LocksComponent implements OnInit {
         }
         this.service.typeWarning();
       });
-    console.log(JSON.stringify(this.locksInfoRequest));
+    console.log(JSON.stringify(this.lock));
+    this.getAllLocksList();
   }
-
-
   ngOnInit() {
   }
 
