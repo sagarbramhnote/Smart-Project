@@ -10,7 +10,7 @@
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Create Kiosk</span>
+                <span style="font-size: 15px">/Add Kiosk</span>
 
               </p>
             </div>
@@ -20,8 +20,6 @@
       </div>
       <div class="card">
         <div class="card-header">
-
-
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
@@ -63,7 +61,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Bill Validator Id
+                              style="color: red">*</span>Brand Name
                           </label>
                           <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
                             is required!
@@ -76,7 +74,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Bill Validator Name
+                              style="color: red">*</span>Model Name
                           </label>
                           <span class=" text-muted danger"
                             *ngIf="!description.valid && (description.dirty || description.touched)">
@@ -93,7 +91,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Printer Id
+                              style="color: red">*</span>CPU
                           </label>
                           <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
                             is required!
@@ -106,7 +104,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Printer Name
+                              style="color: red">*</span>HDD
                           </label>
                           <span class=" text-muted danger"
                             *ngIf="!description.valid && (description.dirty || description.touched)">
@@ -119,6 +117,37 @@
                       </div>
 
                     </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
+                              style="color: red">*</span>Memory
+                          </label>
+                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
+                            is required!
+                          </span>
+                          <input type="text" id="name" class="form-control border-primary" name="name"
+                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
+
+                        </div>
+                      </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
+                          style="color: red">*</span>Screen Size
+                      </label>
+                      <span class=" text-muted danger"
+                        *ngIf="!description.valid && (description.dirty || description.touched)">
+                        is required!
+                      </span>
+                      <input type="text" id="description" class="form-control border-primary" name="description"
+                        [(ngModel)]="role.description" ngModel #description="ngModel" required>
+
+                    </div>
+                  </div>
+                </div>
+                    
+                   
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -137,7 +166,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                 <!--    <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Store Id</label>
                           <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
@@ -147,7 +176,7 @@
                           </select>
                         </fieldset>
 
-                      </div>
+                      </div> -->
                     </div>
                   </div>
              
@@ -198,9 +227,9 @@
                     <thead>
                       <tr>
                         <th>S.no</th>
-                        <th>Store Id</th>
-                        <th>Store Name</th>
-                        <th>Store Location</th>
+                        <th>Kiosk Name</th>
+                        <th>Model Name</th>
+                        <th>Memory</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>

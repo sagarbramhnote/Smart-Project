@@ -34,7 +34,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'sagar',
+    path: 'locks',
      component: LocksComponent,
     data: {
       title: 'Locks'
