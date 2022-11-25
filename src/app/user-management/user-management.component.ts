@@ -97,7 +97,7 @@ export class UserManagementComponent implements OnInit {
 
       if (result.value) {
         console.log("hello");
-        this.http.delete<UserAccount>(environment.smartSafeAPIUrl + "/deleteUser/" + user.id, this.httpOptions).subscribe(
+        this.http.delete<UserAccount>(environment.smartSafeAPIUrl + "/" + user.id, this.httpOptions).subscribe(
           res => {
             console.log(res);
             //event.confirm.resolve(event.newData);
