@@ -59,6 +59,62 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="firstName">
+                          <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                            style="color: red">*</span>First Name</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="firstName" class="form-control border-primary" name="firstName"
+                          [(ngModel)]="user.firstName" ngModel #firstName="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="lastName">
+                          <span *ngIf="user.lastName == undefined || user.lastName =='' " style="color: red">*</span>
+                          Last Name</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="lastName" class="form-control border-primary" name="lastName"
+                          [(ngModel)]="user.lastName" ngModel #lastName="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
+		<div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="email">
+                          <span *ngIf="user.email == undefined || user.email =='' "
+                            style="color: red">*</span>Email</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!email.valid && (email.dirty || email.touched)">
+                          is required!
+                        </span>
+                        <input type="email" id="email" class="form-control border-primary" name="email"
+                          [(ngModel)]="user.email" ngModel #email="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="mobile">
+                          <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                          Mobile</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="mobile" class="form-control border-primary" name="mobile"
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
 
                  
 
