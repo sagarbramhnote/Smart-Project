@@ -82,6 +82,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   deleteUser(user: UserAccount) {
+    console.log('coming into delete')
 
     swal.fire({
       title: 'Are you sure?',
@@ -97,7 +98,7 @@ export class UserManagementComponent implements OnInit {
 
       if (result.value) {
         console.log("hello");
-        this.http.delete<UserAccount>(environment.smartSafeAPIUrl + "/deleteUser/" + user.id, this.httpOptions).subscribe(
+        this.http.delete<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + user.id, this.httpOptions).subscribe(
           res => {
             console.log(res);
             //event.confirm.resolve(event.newData);
