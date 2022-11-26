@@ -204,26 +204,27 @@
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let billvalidator of billvalidators">
-                      <tr>
-                        <td>{{i+1+(page-1) * pageSize}}</td>
-                        <td>{{billvalidator.billacceptorname}}</td>
-                        <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editBillvalidator(billvalidator)"
-                            placement="bottom" ngbTooltip="Edit">
-                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                          </a>
-                          <!-- <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="deleteClass(class.id)">
-                                                    
-                                                      <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a> -->
+                        <tbody *ngFor="let billvalidator of billvalidators;index as i">
+                          <tr>
+                         <!--   <td>{{i+1+(page-1) * pageSize}}</td> -->
+                            <td>{{i+1}}</td>
+                            <td>{{billvalidator.billacceptorno}}</td>
+                            <td>{{billvalidator.billacceptorname}}</td>
+                            <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
+                              [ngClass]="{' btn-primary' : billvalidator.active,'btn-warning' :!billvalidator.active }">
+                              {{ lock.active ? 'Active' : 'Inactive' }}
+                            </button></td>
+                            <td>
+                              <a class="success p-0" data-original-title="" title="" (click)="editBillvalidator(billvalidator)"
+                                placement="bottom" ngbTooltip="Edit"> 
+                                <i class="ft-edit-2 font-medium-3 mr-2"></i> 
+                              </a>
+                               <a class="danger p-0" data-original-title="" title=""
+                                                          (click)="deleteClass(class.id)">
+                                                        
+                                                          <i class="icon-trash font-medium-3 mr-2"></i>
+                                                      </a> 
                         </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : billvalidator.active,'btn-warning' :!billvalidator.active }">
-                            {{ billvalidator.active ? 'Active' : 'Inactive' }}
-
-                          </button></td>
 
 
                       </tr>

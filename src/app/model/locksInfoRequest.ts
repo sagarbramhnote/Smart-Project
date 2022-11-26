@@ -1,6 +1,7 @@
-export class Lock{
-
-    lockNo:number;
+export class LocksInfoRequest{
+    id:number;
+    
+    lockNo:string;
 
     lockName:string;
 
@@ -14,5 +15,5 @@ export class Lock{
 
     configured:boolean;
     
-    active:boolean;
+    active:string;
 }

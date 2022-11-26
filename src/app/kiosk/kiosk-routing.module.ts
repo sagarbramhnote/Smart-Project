@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { CreatekioskComponent } from './createkiosk/createkiosk.component';
 import { LocksComponent } from './locks/locks.component';
+import { UpdateLockComponent } from './locks/update-lock/update-lock.component';
 import { PrinterComponent } from './printer/printer.component';
 
 const routes: Routes = [
@@ -38,6 +39,14 @@ const routes: Routes = [
      component: LocksComponent,
     data: {
       title: 'Locks'
+    },
+    
+  },
+  {
+    path: 'update-lock',
+     component: UpdateLockComponent,
+    data: {
+      title: 'update-lock'
     },
     
   },

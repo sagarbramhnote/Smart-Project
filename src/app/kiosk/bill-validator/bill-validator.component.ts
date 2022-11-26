@@ -53,6 +53,7 @@ addBillvalidator() {
   this.getAllBillvalidatorsList();
 }
   ngOnInit() {
+    this.getAllBillvalidatorsList();
   }
 
 }

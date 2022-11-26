@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
- smartSafeAPIUrl: 'http://localhost:9002'
+ smartSafeAPIUrl: 'http://localhost:8080/addlock'
 };
