@@ -7,6 +7,7 @@ import { UserAccount } from 'app/model/user';
 import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { data } from 'app/shared/data/smart-data-table';
 
 
 
@@ -30,6 +31,7 @@ export class UserManagementComponent implements OnInit {
   user = new UserAccount();
   users: UserAccount[];
 
+  user1 =  new UserAccount();
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef, private spinner: NgxSpinnerService) {
     this.getAllUsersList();
@@ -75,8 +77,15 @@ export class UserManagementComponent implements OnInit {
 
   }
   editUsermanagement(user: UserAccount) {
-
-    localStorage.setItem('editUser', JSON.stringify(user));
+    
+    
+    
+    
+    //  this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + user.id, this.httpOptions).subscribe((data) =>{
+    //   this.user = data
+    //  })
+     localStorage.setItem('editUser', JSON.stringify(user));
+    
     this.router.navigate(["/user-management/update-user"]);
 
   }
