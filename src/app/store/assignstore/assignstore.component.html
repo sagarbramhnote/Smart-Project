@@ -104,10 +104,10 @@
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Bill Validator</label>
-                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store">
-                            <option [ngValue]="store" *ngFor="let store of stores">
-                              {{store.storeName}} </option>
+                          <select class="form-control border-primary" [(ngModel)]="billValidator" required id="billValidator"
+                            (change)='getAllBillValidatorList(billValidator.billAcceptorName)' name="billValidator">
+                            <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
+                              {{billValidator.billAcceptorName}} </option>
                           </select>
                         </fieldset>
                       </div>
@@ -133,10 +133,10 @@
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Locks</label>
-                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store">
-                            <option [ngValue]="store" *ngFor="let store of stores">
-                              {{store.storeName}} </option>
+                          <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
+                            (change)='getAllLocksList(lock.digitalLockName)' name="lock">
+                            <option [ngValue]="lock" *ngFor="let lock of locks">
+                              {{lock.digitalLockName}} </option>
                           </select>
                         </fieldset>
                       </div>
@@ -149,7 +149,7 @@
                   <div class="form-actions center">
 
                     <button type="button" class="btn btn-raised btn-primary mr-1"
-                      (click)="assignStore(store.id, employee.id)" [disabled]="!addClassForm.valid">
+                      (click)="assignStore(store.id, employee.id, lock.id)" [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Assign Store
                     </button>
                     <button type="button" class="btn btn-raised btn-warning">

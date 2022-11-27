@@ -1,10 +1,11 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createstore',
@@ -13,6 +14,16 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class CreatestoreComponent implements OnInit {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
+    })
+  }
+
   storeInfoRequest = new StoreInfoRequest();
   storeInfoRequests: StoreInfoRequest[];
 
@@ -60,18 +71,45 @@ export class CreatestoreComponent implements OnInit {
 
   }
 
-  storemaindelete(id:number) {
-    return this.http.delete(environment.smartSafeAPIUrl + '/storeinfo/'+id);
-}
+storedelete(storeInfoRequest: StoreInfoRequest) {
+  console.log('coming into delete')
 
-storedelete(id:number) {
- this.storemaindelete(id).subscribe(
-  data => {
-    console.log('deleted', data);
-    this.service.typeDelete();
-    this.getAllStoresList();
-  }
-)
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+
+  }).then((result) => {
+    console.log("hi");
+
+    if (result.value) {
+      console.log("hello");
+      this.http.delete<StoreInfoRequest>(environment.smartSafeAPIUrl + "/storeinfo/" + storeInfoRequest.id, this.httpOptions).subscribe(
+        res => {
+          console.log(res);
+          //event.confirm.resolve(event.newData);
+          this.service.typeDelete();
+          this.getAllStoresList();
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log("Client-side error occured.");
+          } else {
+            console.log("Server-side error occured.");
+          }
+        });
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+
 }
 
 
