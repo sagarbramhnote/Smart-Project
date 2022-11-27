@@ -10,10 +10,11 @@ import { BillValidatorComponent } from './bill-validator/bill-validator.componen
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
 import { UpdateLockComponent } from './locks/update-lock/update-lock.component';
+import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
 
 
 @NgModule({
-  declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent, UpdateLockComponent],
+  declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent, UpdateLockComponent, UpdateBillValidatorComponent],
   imports: [
     CommonModule,
     KioskRoutingModule,

@@ -151,13 +151,13 @@
              
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addBillValidator()"
-                      [disabled]="!addClassForm.valid">
-                      <i class="fa fa-check-square-o"></i> Create
-                    </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/billValidators">
                       <i class="ft-x"></i> Cancel
-                    </button>
+                  </button>
+                  <button type="button" class="btn btn-raised btn-primary" (click)="updateBillValidator()"
+                  routerLink="/billValidators">
+                  <i class="fa fa-check-square-o"></i> Update
+                  </button>
 
                    </div>
                  </form>
@@ -168,128 +168,4 @@
      </div>
    </div>
  </div>
-</section>
-<section id="image">
-  <div class=row>
-    <div class=" col-md-12 ">
-      <div class="card">
-
-        <div class="card-body">
-          <div class="form-group">
-            <section id="simple">
-
-              <!-- <div class="col-sm-6">
-                <form role="search">
-                  <div class="position-relative has-icon-right">
-                    <input type="text" class="form-control round" placeholder="Search" name="search"
-                      [(ngModel)]="searchText" autocomplete="off">
-                    <div class="form-control-position">
-                      <i class="ft-search"></i>
-                    </div>
-                  </div>
-                </form>
-              </div> -->
-              <br>
-              <div class="row text-left">
-
-                <div class="col-sm-12">
-                  <table class="table table-responsive-md text-center">
-                    <thead>
-                      <tr>
-                        <th>S.no</th>
-                        <th>Bill Validator No</th>
-                        <th>Bill Validator Name</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <!-- <tbody
-                        *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let billValidator of billValidators ;index as i">
-                      <tr>
-                        <td>{{i+1}}</td>
-                        <td>{{billValidator.billAcceptorNo}}</td>
-                        <td>{{billValidator.billAcceptorName}}</td>
-                       
-                        <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editBillValidator(billValidator)"
-                            placement="bottom" ngbTooltip="Edit">
-                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                          </a>
-                          <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="billValidatordelete(billValidator)">
-                                                    
-                                                      <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a>
-                        </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : billValidator.active,'btn-warning' :!billValidator.active }">
-                            {{ billValidator.active ? 'Active' : 'Inactive' }}
-
-                          </button></td>
-
-
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- <div *ngIf="searchText != ''">
-                    <table class="table table-responsive-md text-center">
-                      <thead>
-                        <tr>
-                          <th>S.no</th>
-                          <th>Class Name</th>
-                          <th>Edit</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngFor="let class of classes| filter:searchText ; index as i">
-                        <tr>
-                          <td>{{i+1+(page-1) * pageSize}}</td>
-                          <td>{{class.name}}</td>
-                          <td>
-                            <a class="success p-0" data-original-title="" title="" (click)="editClass(class)"
-                              placement="bottom" ngbTooltip="Edit">
-                              <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                            </a>
-                            <a class="danger p-0" data-original-title="" title=""
-                                                        (click)="deleteClass(class.id)">
-                                                      
-                                                        <i class="icon-trash font-medium-3 mr-2"></i>
-                                                    </a>
-                          </td>
-                          <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                              [ngClass]="{' btn-primary' : class.active,'btn-warning' :!class.active }">
-                              {{ class.active ? 'Active' : 'Inactive' }}
-                            </button></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div> -->
-                  <!-- <div class="row">
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="classes.length"
-                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        Items per Page:
-                        <select (change)="handlePageSizeChange($event)">
-                          <option *ngFor="let pageSize of pageSizes" [ngValue]="pageSize">
-                            {{ pageSize }}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div> -->
-                </div>
-              </div>
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </section>

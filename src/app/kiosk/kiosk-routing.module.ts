@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
+import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
 import { CreatekioskComponent } from './createkiosk/createkiosk.component';
 import { LocksComponent } from './locks/locks.component';
 import { UpdateLockComponent } from './locks/update-lock/update-lock.component';
@@ -50,7 +51,14 @@ const routes: Routes = [
     },
     
   },
-
+  {
+    path: 'update-billValidator',
+     component: UpdateBillValidatorComponent,
+    data: {
+      title: 'update-billValidator'
+    },
+    
+  },
  
 
 ];
