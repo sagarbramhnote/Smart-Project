@@ -71,6 +71,7 @@ export class BillValidatorComponent implements OnInit {
   }
 
 
+
   billValidatordelete(billValidator: BillValidatorInfoRequest) {
     console.log('coming into delete')
   

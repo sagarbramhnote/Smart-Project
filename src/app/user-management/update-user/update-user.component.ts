@@ -27,14 +27,28 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit() {
     
+
     // this.user =  JSON.parse(localStorage.getItem('editUser'));
     this.user =  JSON.parse(localStorage.getItem('editUser'))
+    let a= (localStorage.getItem('id'))
+    console.log('this is number ' + a)
+    console.log(this.user.id)
+    return this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + a,this.httpOptions).subscribe(data =>{
+        // console.log(user.firstName + ' ' +user.lastName + ' ' + user.role + ' ' + user.username)
+        console.log(data)
+        // console.log('printed data above ')
+        // this.user.firstName = data['firstName']
+        // this.user.lastName = data['lastName']
+        // this.user.mobile = data['mobile']
+        this.user = data
+        console.log('print the user ' + this.user)
+       })
     
   }
  
   getUserList(){
     
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl+'/getusers', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl+'/userInfo/all', this.httpOptions);
   }
 
     getAllUsersList() {
