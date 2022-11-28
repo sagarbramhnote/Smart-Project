@@ -1,10 +1,13 @@
+
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
 
 import { Router } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -24,8 +27,10 @@ export class LocksComponent implements OnInit {
     })
   }
 
+
   lock = new LocksInfoRequest();
   locks : LocksInfoRequest[];
+
 
 
   constructor(private http: HttpClient,
@@ -33,8 +38,9 @@ export class LocksComponent implements OnInit {
     private service: NGXToastrService,
     private changeDetectorRefs: ChangeDetectorRef) {
   }
-  getLockList() {
+
     return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/all');
+
   }
   getAllLocksList() {
     return this.getLockList().
@@ -45,7 +51,9 @@ export class LocksComponent implements OnInit {
       });
   }
   addLock() {
+
     this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/locks/', this.lock).subscribe(
+
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -63,6 +71,13 @@ export class LocksComponent implements OnInit {
     console.log(JSON.stringify(this.lock));
     this.getAllLocksList();
   }
+
+  editKiskomanagement(lock: LocksInfoRequest) {
+
+    localStorage.setItem('editLock', JSON.stringify(lock));
+    this.router.navigate(["/kiosk/update-lock"]);
+
+
 
 locksdelete(lock: LocksInfoRequest) {
   console.log('coming into delete')
@@ -107,6 +122,10 @@ locksdelete(lock: LocksInfoRequest) {
 
   ngOnInit() {
     this.getAllLocksList();
+
   }
 
+
+
+  
 }
