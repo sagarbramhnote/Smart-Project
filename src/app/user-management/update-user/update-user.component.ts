@@ -3,6 +3,7 @@ import { environment } from 'environments/environment';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserAccount } from 'app/model/user';
 import { NGXToastrService } from 'app/service/toastr.service';
+import { Role } from 'app/model/role';
 
 @Component({
   selector: 'app-update-user',
@@ -23,16 +24,34 @@ export class UpdateUserComponent implements OnInit {
 
   user = new UserAccount();
   users: UserAccount[];
+  role = new Role();
+  roles : Role[];
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
+  getAllRolesList() {
+    return this.getRoleList().
+      subscribe((data) => {
+        console.log(data);
+        this.roles = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+  getRoleList() {
 
+    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
+  }
   ngOnInit() {
     
-
+      
     // this.user =  JSON.parse(localStorage.getItem('editUser'));
     this.user =  JSON.parse(localStorage.getItem('editUser'))
+    console.log('print the current user')
+    console.log(this.user)
+
+
     let a= (localStorage.getItem('id'))
-    console.log('this is number ' + a)
+    console.log('this is Id of current user ' + a)
     console.log(this.user.id)
+    this.getAllRolesList();
     return this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + a,this.httpOptions).subscribe(data =>{
         // console.log(user.firstName + ' ' +user.lastName + ' ' + user.role + ' ' + user.username)
         console.log(data)
@@ -43,6 +62,7 @@ export class UpdateUserComponent implements OnInit {
         this.user = data
         console.log('print the user ' + this.user)
        })
+       
     
   }
  
@@ -57,6 +77,7 @@ export class UpdateUserComponent implements OnInit {
       return this.getUserList().
       subscribe((data) => {
         console.log(data);
+        console.log('printing users list')
         this.users = data;
         this.changeDetectorRefs.markForCheck();
 

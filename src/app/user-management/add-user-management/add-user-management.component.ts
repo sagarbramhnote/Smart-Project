@@ -37,7 +37,7 @@ export class AddUserManagementComponent implements OnInit {
   }
   getUserList() {
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/getusers', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
   }
 
   getAllUsersList() {
