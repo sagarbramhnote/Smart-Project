@@ -266,9 +266,11 @@
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
                                                   </a>
                         </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
-                            {{ storeInfoRequest.configured ? 'Yes' : 'No' }}
+                  
+
+                          <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : storeInfoRequest.active,'btn-warning' :!storeInfoRequest.active }">
+                            {{ storeInfoRequest.active ? 'Active' : 'Inactive' }}
 
                           </button></td>
 
