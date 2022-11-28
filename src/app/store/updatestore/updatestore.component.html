@@ -34,7 +34,7 @@
                                   <div class="form-group">
                                       <label for="storeName">Enter Store Name</label>
                                       <input type="text" id="storeName" class="form-control border-primary"
-                                          name="storeName" [(ngModel)]="storeInfoRequest.storeName">
+                                          name="storeName" [(ngModel)]="storeInfoRequest.storeName" readonly>
                                   </div>
                               </div>
                               <div class="col-md-6">
@@ -102,7 +102,7 @@
                       </div>
                  
                       <div class="form-actions center">
-                          <button type="button" class="btn btn-raised btn-primary" (click)="updateStore()"
+                          <button type="button" class="btn btn-raised btn-primary mr-1" (click)="updateStore(storeInfoRequest.id)"
                               routerLink="/store/createstore">
                               <i class="fa fa-check-square-o"></i> Update
                           </button>

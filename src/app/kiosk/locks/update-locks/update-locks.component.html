@@ -51,7 +51,7 @@
                           is required!
                         </span>
                         <input type="text" id="digitalLockName" class="form-control border-primary" name="digitalLockName"
-                          [(ngModel)]="lock.digitalLockName" ngModel #digitalLockName="ngModel" required>
+                          [(ngModel)]="lock.digitalLockName" ngModel #digitalLockName="ngModel" required readonly>
                         </div>
                       </div>
                     </div>
@@ -149,13 +149,15 @@
              
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/kiosk/locks">
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="updateLock(lock.id)"
+                    routerLink="/kiosk/locks">
+                    <i class="fa fa-check-square-o"></i> Update
+                    </button>
+
+                    <button type="button" class="btn btn-raised btn-warning " routerLink="/kiosk/locks">
                       <i class="ft-x"></i> Cancel
                   </button>
-                  <button type="button" class="btn btn-raised btn-primary" (click)="updateLock(lock)"
-                  routerLink="/kiosk/locks">
-                  <i class="fa fa-check-square-o"></i> Update
-                  </button>
+                
                    </div>
                  </form>
              </div>

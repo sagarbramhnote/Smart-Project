@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
 
-import { KioskComponent } from './kiosk/kiosk.component';
+import { KioskComponent } from './kiosks/kiosk.component';
+import { UpdateKioskComponent } from './kiosks/update-kiosk/update-kiosk.component';
 
 import { LocksComponent } from './locks/locks.component';
 
@@ -11,6 +12,7 @@ import { UpdateLocksComponent } from './locks/update-locks/update-locks.componen
 
 
 import { PrinterComponent } from './printer/printer.component';
+import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
 
 const routes: Routes = [
   {
@@ -50,10 +52,10 @@ const routes: Routes = [
   },
 
   {
-    path: 'update-lock',
-     component: UpdateLocksComponent,
+    path: 'update-kiosk',
+     component: UpdateKioskComponent,
     data: {
-      title: 'update-lock'
+      title: 'update-Kiosk'
     },
     
   },
@@ -63,6 +65,24 @@ const routes: Routes = [
      component: UpdateBillValidatorComponent,
     data: {
       title: 'update-billValidator'
+    },
+    
+  },
+
+  {
+    path: 'update-printer',
+     component: UpdatePrinterComponent,
+    data: {
+      title: 'update-Printer'
+    },
+    
+  },
+
+  {
+    path: 'update-lock',
+     component: UpdateLocksComponent,
+    data: {
+      title: 'update-lock'
     },
     
   },

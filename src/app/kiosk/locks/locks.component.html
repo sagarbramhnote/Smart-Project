@@ -213,6 +213,7 @@
                         <td>{{i+1}}</td>
                         <td>{{lock.digitalLockNo}}</td>
                         <td>{{lock.digitalLockName}}</td>
+                     
                        
 
                         <td>
@@ -228,7 +229,14 @@
                                                   </a>
 
                         </td>
-                        
+                        <td>
+                          <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : lock.active,'btn-warning' :!lock.active }">
+                            {{ lock.active ? 'Active' : 'Inactive' }}
+
+                          </button>
+                        </td>
+                      
 
 
                       </tr>
