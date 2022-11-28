@@ -69,6 +69,7 @@ export class CreatestoreComponent implements OnInit {
     console.log(storeInfoRequest.id)
     localStorage.setItem("id",String(storeInfoRequest.id))
 
+    console.log(storeInfoRequest)
     localStorage.setItem('editStore', JSON.stringify(storeInfoRequest));
     this.router.navigate(["/store/updatestore"]);
 

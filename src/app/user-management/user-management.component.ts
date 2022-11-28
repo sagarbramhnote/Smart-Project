@@ -100,7 +100,7 @@ export class UserManagementComponent implements OnInit {
     // })
     console.log(user.id)
     localStorage.setItem("id",String(user.id))
-     localStorage.setItem('editUser', JSON.stringify(user));
+    localStorage.setItem('editUser', JSON.stringify(user));
     
     this.router.navigate(["/user-management/update-user"]);
 
