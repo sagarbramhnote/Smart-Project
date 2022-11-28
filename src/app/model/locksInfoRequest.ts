@@ -1,3 +1,4 @@
+
 export class LocksInfoRequest {
     id:number;
 
@@ -5,14 +6,17 @@ export class LocksInfoRequest {
 
     digitalLockName:string;
 
+
     brandName:string;
 
     modelName:string;
 
     machineType:string;
+
     
     connectors:string;
 
     active:boolean;
+
 
 }
