@@ -6,6 +6,7 @@ import { NGXToastrService } from 'app/service/toastr.service';
 import { AddPrinter } from 'app/model/addprinter';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-printer',
   templateUrl: './printer.component.html',
@@ -52,6 +53,7 @@ export class PrinterComponent implements OnInit {
     }
 
     addPrinter() {
+      console.log("---shalili----"+JSON.stringify(this.addprinter));
         this.http.post<AddPrinter>(environment.smartSafeAPIUrl + '/addprinter/savePrinter/', this.addprinter, this.httpOptions)
       .subscribe(
         res => {
@@ -81,10 +83,16 @@ export class PrinterComponent implements OnInit {
           this.getAllPrintersList();
         })   
       }
-      updateAddPrinter(printer){
-        console.log(this.addClassForm);
+      editAddPrinter(addprinter: AddPrinter) {
+        console.log("we are in edit method")
+        console.log(addprinter);
 
+        localStorage.setItem('editprinter', JSON.stringify(addprinter));
+        console.log(localStorage.getItem('editprinter'));
+        this.router.navigate(["/kiosk/update-printer"]);
+    
       }
+    
   
 
     

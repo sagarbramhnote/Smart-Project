@@ -56,6 +56,7 @@ export class CreateroleComponent implements OnInit {
     console.log(JSON.stringify(this.role));
     this.getAllRolesList();
   }
+  
   ngOnInit() {
     this.getAllRolesList();
   }

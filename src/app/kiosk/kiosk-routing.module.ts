@@ -4,6 +4,7 @@ import { BillValidatorComponent } from './bill-validator/bill-validator.componen
 import { CreatekioskComponent } from './createkiosk/createkiosk.component';
 import { LocksComponent } from './locks/locks.component';
 import { PrinterComponent } from './printer/printer.component';
+import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
 
 const routes: Routes = [
   {
@@ -39,8 +40,14 @@ const routes: Routes = [
     data: {
       title: 'Locks'
     },
-    
+ },
+ {
+  path: 'update-printer',
+   component: UpdatePrinterComponent,
+  data: {
+    title: 'update-printer'
   },
+},
 
  
 

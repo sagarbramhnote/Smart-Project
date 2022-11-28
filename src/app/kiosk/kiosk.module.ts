@@ -9,10 +9,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
+import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
 
 
 @NgModule({
-  declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent],
+  declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent, UpdatePrinterComponent],
   imports: [
     CommonModule,
     KioskRoutingModule,

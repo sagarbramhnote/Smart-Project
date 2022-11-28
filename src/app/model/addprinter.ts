@@ -1,4 +1,5 @@
 export class AddPrinter{
+    id:number;
     printerNo:string;
     printerName:string;
     brandName:string;

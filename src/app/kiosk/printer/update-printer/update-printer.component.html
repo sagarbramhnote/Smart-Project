@@ -8,11 +8,11 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+             <!-- <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/Add Thermal Printer</span>
 
-              </p>
+              </p> -->
             </div>
 
           </div>
@@ -134,9 +134,9 @@
 
               <div class="form-actions center">
 
-                <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addPrinter()"
+                <button type="button" class="btn btn-raised btn-primary mr-1" (click) = "updatePrinter(addprinter)" 
                   [disabled]="!addClassForm.valid">
-                  <i class="fa fa-check-square-o"></i> Submit
+                  <i class="fa fa-check-square-o"></i> Update
                 </button>
                 <button type="button" class="btn btn-raised btn-warning">
                   <i class="ft-x"></i> Cancel
@@ -177,8 +177,8 @@
             <td> {{ printer.printCapacity }} </td>
             <td> {{ printer.status }} </td>
             <td>
-                <button (click) = "editAddPrinter(printer)" class = "btn btn-primary mr-2" style="color:#fff !important;"> Edit</button>
-                <button (click) = "deleteAddPrinter(printer.id)" class = "btn btn-danger" style="color:#fff !important;"> Delete</button>
+                <button (click) = "updateAddPrinter(printer)" class = "btn btn-primary mr-2" style="color:#fff !important;"> Update</button>
+                <!--<button (click) = "deleteAddPrinter(printer.id)" class = "btn btn-danger" style="color:#fff !important;"> Delete</button>-->
             </td> 
         </tr>
     </tbody>
