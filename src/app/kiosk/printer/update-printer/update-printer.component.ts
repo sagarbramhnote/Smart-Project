@@ -48,9 +48,9 @@ export class UpdatePrinterComponent implements OnInit {
   updatePrinter(id:number) {
     console.log('we are in update method')
     
-    console.log(id);
+    console.log("total json is:-------"+JSON.stringify(this.addprinter));
 
-  this.http.put<AddPrinter>(environment.smartSafeAPIUrl + '/addprinter/updateprinter',+id,  this.httpOptions)
+  this.http.put<AddPrinter>(environment.smartSafeAPIUrl + '/addprinter/updateprinter/'+this.addprinter.id,this.addprinter,  this.httpOptions)
     .subscribe(
       res => {
         console.log(res);
@@ -69,7 +69,7 @@ export class UpdatePrinterComponent implements OnInit {
       });
 
   
-  console.log(JSON.stringify(this.addprinter));
+  
 }
 }
 
