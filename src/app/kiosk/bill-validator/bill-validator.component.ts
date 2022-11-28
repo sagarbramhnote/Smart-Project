@@ -62,6 +62,13 @@ export class BillValidatorComponent implements OnInit {
     console.log(JSON.stringify(this.billValidator));
     this.getAllBillValidatorList();
   }
+  editBillValidator(billValidator: BillValidatorInfoRequest ) {
+
+     localStorage.setItem('editbillValidator', JSON.stringify(billValidator));
+    
+    this.router.navigate(["/kiosk/update-billValidator"]);
+
+  }
 
 
   billValidatordelete(billValidator: BillValidatorInfoRequest) {

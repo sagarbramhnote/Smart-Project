@@ -3,11 +3,12 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-update-locks',
   templateUrl: './update-locks.component.html',
-  styleUrls: ['./update-locks.component.scss']
+  styleUrls: ['./update-locks.component.scss'],
+  providers: [NGXToastrService]
 })
 export class UpdateLocksComponent implements OnInit {
 
@@ -41,7 +42,7 @@ export class UpdateLocksComponent implements OnInit {
   }
   updateLock(id:number) {
     
-    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/"+id, this.lock, this.httpOptions).subscribe(
+    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/updatelocks/"+id, this.lock, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);

@@ -72,6 +72,15 @@ export class LocksComponent implements OnInit {
     this.getAllLocksList();
   }
 
+  editAddLocks(lock: LocksInfoRequest ) {
+
+    localStorage.setItem('editLock', JSON.stringify(lock));
+   
+   this.router.navigate(["/kiosk/update-lock"]);
+
+ }
+
+
 
 locksdelete(lock: LocksInfoRequest) {
   console.log('coming into delete')
