@@ -31,34 +31,8 @@
                     <i class="ft-align-justify"></i> UsersList
                   </button>
                  
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="username">
-                          <span *ngIf="user.username == undefined || user.username =='' "
-                            style="color: red">*</span>User Name</label>
-                        <span class=" text-muted danger"
-                          *ngIf="!username.valid && (username.dirty || username.touched)">
-                          is required!
-                        </span>
-                        <input type="text" id="username" class="form-control border-primary" name="username"
-                          [(ngModel)]="user.username" ngModel #username="ngModel" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="password">
-                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
-                          Password</label>
-                        <span class=" text-muted danger"
-                          *ngIf="!password.valid && (password.dirty || password.touched)">
-                          is required!
-                        </span>
-                        <input type="password" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required>
-                      </div>
-                    </div>
-                  </div>
+                  <h4 class="form-section"><i class="ft-info"></i> Info & Bio
+                  </h4>
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
@@ -87,7 +61,7 @@
                       </div>
                     </div>
                   </div>
-		<div class="row">
+		            <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label" for="email">
@@ -110,16 +84,44 @@
                           *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
                           is required!
                         </span>
-                        <input type="text" id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" required>
+                        <input required type="number" id="mobile" class="form-control border-primary" name="mobile"
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" required >
                       </div>
                     </div>
                   </div>
 
                   
 
-                 
-
+                  <h4 class="form-section"><i class=""></i> Login Credentials
+                  </h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="username">
+                          <span *ngIf="user.username == undefined || user.username =='' "
+                            style="color: red">*</span>User Name</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!username.valid && (username.dirty || username.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="username" class="form-control border-primary" name="username"
+                          [(ngModel)]="user.username" ngModel #username="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="roleSelect">Select Password criteria</label>
+                          <select class="form-control border-primary" [(ngModel)]="user.passLength" required id="passLength" name="passLength">
+                            <option Value="four">
+                              4 DIGITS </option>
+                              <option value= "six" >6 DIGITS</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+                    
+                  </div>
                   <div class="row">
 
                     <div class="col-md-6">
@@ -133,6 +135,24 @@
                         </fieldset>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">
+                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                          Password</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          is required!
+                        </span>
+                        <input type="password" id="password" class="form-control border-primary" name="password"
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required>
+                      </div>
+                    </div>
+                    
+                    </div>
+                    <div class="row">
+
 
                     <div class="col-md-6">
                       <div class="form-check">

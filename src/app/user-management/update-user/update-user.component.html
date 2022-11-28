@@ -11,7 +11,7 @@
 
                     <form class="form">
                         <div class="form-body">
-                            <h4 class="form-section"><i class="ft-info"></i> About User
+                            <h4 class="form-section"><i class="ft-info"></i> Info & Bio
                             </h4>
                             <div class="row">
                                 <div class="col-md-6">
@@ -29,9 +29,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <h4 class="form-section"><i class="ft-mail"></i> Contact
-                                Info & Bio</h4>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -51,6 +48,10 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <h4 class="form-section"><i class="ft-mail"></i> Login Credentials
+                                </h4>
+                            
                             <div class="row">
 
                                 <div class="col-md-6">
@@ -116,6 +117,18 @@
                                 </div>
                               </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                  <fieldset class="form-group">
+                                    <label for="roleSelect">Select Password criteria</label>
+                                    <select class="form-control border-primary" [(ngModel)]="passLenght" required id="passLenght" name="passLenght">
+                                      <option Value="four">
+                                        4 DIGITS </option>
+                                        <option value= "six" >6 DIGITS</option>
+                                    </select>
+                                  </fieldset>
+                                </div>
+                              </div>
                             </div>
                         <div class="form-actions center">
                             <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">

@@ -47,7 +47,7 @@ export class UpdateUserComponent implements OnInit {
     console.log('print the current user')
     console.log(this.user)
 
-
+    this.getAllUsersList();
     let a= (localStorage.getItem('id'))
     console.log('this is Id of current user ' + a)
     console.log(this.user.id)
@@ -105,6 +105,7 @@ export class UpdateUserComponent implements OnInit {
           }
           this.service.typeWarning();
         });
+        this.getAllUsersList();
 
     
     console.log(JSON.stringify(this.user));

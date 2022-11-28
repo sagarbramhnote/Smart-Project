@@ -50,17 +50,22 @@ export class AddUserManagementComponent implements OnInit {
   }
   onSaveConfirm() {
     this.user.role = this.role.name;
+    console.log(this.user.passLength)
+   
+
     this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
+        this.getAllUsersList();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log("Client-side error occured.");
         } else {
           console.log("Server-side error occured.");
+          console.log(err)
         }
         this.service.typeWarning();
       });
@@ -84,7 +89,7 @@ export class AddUserManagementComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllUsersList();
+    
     this.getAllRolesList();
   }
 
