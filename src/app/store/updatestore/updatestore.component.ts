@@ -27,6 +27,8 @@ export class UpdatestoreComponent implements OnInit {
    constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
+    
+
     this.storeInfoRequest = JSON.parse(localStorage.getItem('editStore'));
     // let a= (localStorage.getItem('id'))
     // console.log('this is number ' + a)
