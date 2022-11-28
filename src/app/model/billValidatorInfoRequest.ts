@@ -1,6 +1,7 @@
 export class BillValidatorInfoRequest{
 	id:number;
 
+
     billAcceptorNo:string;
 
     billAcceptorName:string;
@@ -14,5 +15,6 @@ export class BillValidatorInfoRequest{
     storageCapacity:string;
 
     active:boolean;
+
 
 }

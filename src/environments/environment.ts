@@ -5,5 +5,7 @@
 
 export const environment = {
   production: false,
+
  smartSafeAPIUrl: 'http://localhost:9002'
 };
+
