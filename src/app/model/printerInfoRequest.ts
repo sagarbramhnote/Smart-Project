@@ -1,22 +1,18 @@
-
-export class LocksInfoRequest {
+export class PrinterInfoRequest {
     id:number;
 
-    digitalLockNo:string;
+    printerNo:string;
 
-    digitalLockName:string;
-
+    printerName:string;
 
     brandName:string;
 
     modelName:string;
 
     machineType:string;
-
     
-    connectors:string;
+    printCapacity:string;
 
     active:boolean;
-
 
 }

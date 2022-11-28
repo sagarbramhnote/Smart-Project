@@ -1,10 +1,14 @@
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
+
 import { Router } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
-import swal from 'sweetalert2';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-locks',
@@ -24,17 +28,19 @@ export class LocksComponent implements OnInit {
   }
 
 
-
   lock = new LocksInfoRequest();
-  locks:LocksInfoRequest[];
+  locks : LocksInfoRequest[];
+
+
 
   constructor(private http: HttpClient,
     private router: Router,
     private service: NGXToastrService,
     private changeDetectorRefs: ChangeDetectorRef) {
   }
-  getLockList() {
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/lockinfo/all');
+
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/all');
+
   }
   getAllLocksList() {
     return this.getLockList().
@@ -45,8 +51,9 @@ export class LocksComponent implements OnInit {
       });
   }
   addLock() {
-    this.lock.configured=false; 
-    this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/lockinfo/', this.lock).subscribe(
+
+    this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/locks/', this.lock).subscribe(
+
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -64,55 +71,61 @@ export class LocksComponent implements OnInit {
     console.log(JSON.stringify(this.lock));
     this.getAllLocksList();
   }
+
   editKiskomanagement(lock: LocksInfoRequest) {
 
     localStorage.setItem('editLock', JSON.stringify(lock));
     this.router.navigate(["/kiosk/update-lock"]);
 
-  }
 
 
-  deleteLock(lock: LocksInfoRequest) {
+locksdelete(lock: LocksInfoRequest) {
+  console.log('coming into delete')
 
-    swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
 
-    }).then((result) => {
-      console.log("hi");
+  }).then((result) => {
+    console.log("hi");
 
-      if (result.value) {
-        console.log("hello");
-        this.http.delete<LocksInfoRequest>(environment.smartSafeAPIUrl + "/deleteLock/" + lock.id, this.httpOptions).subscribe(
-          res => {
-            console.log(res);
-            //event.confirm.resolve(event.newData);
-            this.service.typeDelete();
-            this.getAllLocksList();
-          },
-          (err: HttpErrorResponse) => {
-            if (err.error instanceof Error) {
-              console.log("Client-side error occured.");
-            } else {
-              console.log("Server-side error occured.");
-            }
-          });
-        swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
+    if (result.value) {
+      console.log("hello");
+      this.http.delete<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/" + lock.id, this.httpOptions).subscribe(
+        res => {
+          console.log(res);
+          //event.confirm.resolve(event.newData);
+          this.service.typeDelete();
+          this.getAllLocksList();
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log("Client-side error occured.");
+          } else {
+            console.log("Server-side error occured.");
+          }
+        });
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
 
-  }
+}
+
   ngOnInit() {
     this.getAllLocksList();
+
   }
+
+
+
   
 }

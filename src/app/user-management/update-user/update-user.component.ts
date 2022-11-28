@@ -26,8 +26,12 @@ export class UpdateUserComponent implements OnInit {
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('editUser'));
+    
+    // this.user =  JSON.parse(localStorage.getItem('editUser'));
+    this.user =  JSON.parse(localStorage.getItem('editUser'))
+    
   }
+ 
   getUserList(){
     
     return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl+'/getusers', this.httpOptions);
@@ -49,12 +53,13 @@ export class UpdateUserComponent implements OnInit {
     
 
 
-      this.http.put<UserAccount>(environment.smartSafeAPIUrl + "/updateUser", this.user, this.httpOptions).subscribe(
+      this.http.put<UserAccount>(environment.smartSafeAPIUrl +"/userInfo/"+this.user.id, this.user, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
           this.service.updateSuccess();
           this.getAllUsersList();
+          
 
         },
         (err: HttpErrorResponse) => {

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
-import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
-import { CreatekioskComponent } from './createkiosk/createkiosk.component';
+
+import { KioskComponent } from './kiosk/kiosk.component';
+
 import { LocksComponent } from './locks/locks.component';
 import { UpdateLockComponent } from './locks/update-lock/update-lock.component';
 import { PrinterComponent } from './printer/printer.component';
 
 const routes: Routes = [
   {
-    path: 'createkiosk',
-     component: CreatekioskComponent,
+    path: 'newkiosk',
+     component: KioskComponent,
     data: {
       title: 'Kiosk Management'
     },

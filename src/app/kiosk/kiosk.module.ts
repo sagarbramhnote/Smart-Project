@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { KioskRoutingModule } from './kiosk-routing.module';
-import { CreatekioskComponent } from './createkiosk/createkiosk.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
-import { UpdateLockComponent } from './locks/update-lock/update-lock.component';
-import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
+
+import { KioskComponent } from './kiosk/kiosk.component';
 
 
 @NgModule({
-  declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent, UpdateLockComponent, UpdateBillValidatorComponent],
+  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent],
+
   imports: [
     CommonModule,
     KioskRoutingModule,

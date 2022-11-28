@@ -1,3 +1,4 @@
+
 <!-- <ngx-spinner></ngx-spinner> -->
 <section id="image">
   <div class=row>
@@ -10,7 +11,8 @@
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Add Kiosk</span>
+
+                <span style="font-size: 15px">/Add Digital Locks</span>
 
               </p>
             </div>
@@ -20,98 +22,67 @@
       </div>
       <div class="card">
         <div class="card-header">
+
+
+
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
-                      Assign Store
-                    </button>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Enter Kiosk Id
-                          </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
-
+                          <label for="lockNo"><span *ngIf="lock.digitalLockNo == undefined || lock.digitalLockNo =='' "
+                            style="color: red">*</span>Digital Lock No
+                        </label>
+                        <span class=" text-muted danger" *ngIf="!digitalLockNo.valid && (digitalLockNo.dirty || digitalLockNo.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
+                          [(ngModel)]="lock.digitalLockNo" ngModel #digitalLockNo="ngModel" required>
+                       
                         </div>
                       </div>
+                        
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Kiosk Name
-                          </label>
-                          <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
-
+                          <label for="lockName"><span *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
+                            style="color: red">*</span>Digital Lock Name
+                        </label>
+                        <span class=" text-muted danger" *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="digitalLockName" class="form-control border-primary" name="digitalLockName"
+                          [(ngModel)]="lock.digitalLockName" ngModel #digitalLockName="ngModel" required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Brand Name
-                          </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
-
+                          <label for="brandName"><span *ngIf="lock.brandName == undefined || lock.brandName =='' "
+                            style="color: red">*</span>Brand Name
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!brandName.valid && (brandName.dirty || brandName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="brandName" class="form-control border-primary" name="brandName"
+                          [(ngModel)]="lock.brandName" ngModel #brandName="ngModel" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>Model Name
-                          </label>
-                          <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
-
-                        </div>
-                      </div>
-
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>CPU
-                          </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
-
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                              style="color: red">*</span>HDD
-                          </label>
-                          <span class=" text-muted danger"
-                            *ngIf="!description.valid && (description.dirty || description.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="description" class="form-control border-primary" name="description"
-                            [(ngModel)]="role.description" ngModel #description="ngModel" required>
+                          <label for="modelName"><span *ngIf="lock.modelName == undefined || lock.modelName =='' "
+                            style="color: red">*</span>Model Name
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!modelName.valid && (modelName.dirty || modelName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="modelName" class="form-control border-primary" name="modelName"
+                          [(ngModel)]="lock.modelName" ngModel #modelName="ngModel" required>
 
                         </div>
                       </div>
@@ -120,34 +91,34 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
-                              style="color: red">*</span>Memory
-                          </label>
-                          <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="name" class="form-control border-primary" name="name"
-                            [(ngModel)]="role.name" ngModel #name="ngModel" required>
+                          <label for="machineType"><span *ngIf="lock.machineType == undefined || lock.machineType =='' "
+                            style="color: red">*</span>Machine Type
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!machineType.valid && (machineType.dirty || machineType.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="machineType" class="form-control border-primary" name="machineType"
+                          [(ngModel)]="lock.machineType" ngModel #machineType="ngModel" required>
 
                         </div>
                       </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="description"><span *ngIf="role.description == undefined || role.description =='' "
-                          style="color: red">*</span>Screen Size
+                      <div class="col-md-6">
+
+                        <label for="connectors"><span *ngIf="lock.connectors == undefined || lock.connectors =='' "
+                          style="color: red">*</span>Connectors
                       </label>
                       <span class=" text-muted danger"
-                        *ngIf="!description.valid && (description.dirty || description.touched)">
+                        *ngIf="!connectors.valid && (connectors.dirty || connectors.touched)">
                         is required!
                       </span>
-                      <input type="text" id="description" class="form-control border-primary" name="description"
-                        [(ngModel)]="role.description" ngModel #description="ngModel" required>
+                      <input type="text" id="connectors" class="form-control border-primary" name="connectors"
+                        [(ngModel)]="lock.connectors" ngModel #connectors="ngModel" required>
+
+                        </div>
+                      </div>
 
                     </div>
-                  </div>
-                </div>
-                    
-                   
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -155,18 +126,18 @@
                           <div class="input-group">
                             <div class="custom-control custom-radio d-inline-block float-left">
                               <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="role.active">
+                                [value]=true [(ngModel)]="lock.active">
                               <label class="custom-control-label" for="active">Active</label>
                             </div>
                             <div class="custom-control custom-radio d-inline-block float-left ml-1">
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="role.active">
+                                [value]=false [(ngModel)]="lock.active">
                               <label class="custom-control-label" for="inactive">In Active</label>
                             </div>
                           </div>
                         </div>
                       </div>
-                 <!--    <div class="col-md-6">
+                  <!--    <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Store Id</label>
                           <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
@@ -176,19 +147,20 @@
                           </select>
                         </fieldset>
 
-                      </div> -->
-                    </div>
-                  </div>
+                      </div>-->
+                  
+                  </div> 
              
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addRole()"
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addLock()"
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
                     <button type="button" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
+
                    </div>
                  </form>
              </div>
@@ -227,21 +199,22 @@
                     <thead>
                       <tr>
                         <th>S.no</th>
-                        <th>Kiosk Name</th>
-                        <th>Model Name</th>
-                        <th>Memory</th>
+                        <th>Digital Lock No</th>
+                        <th>Digital Lock Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let role of roles">
+                    <tbody *ngFor="let lock of locks ;index as i">
                       <tr>
-                        <td>{{i+1+(page-1) * pageSize}}</td>
-                        <td>{{role.name}}</td>
+                        <td>{{i+1}}</td>
+                        <td>{{lock.digitalLockNo}}</td>
+                        <td>{{lock.digitalLockName}}</td>
+                       
                         <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editRole(role)"
+                          <a class="success p-0" data-original-title="" title="" (click)="editLock(lock)"
                             placement="bottom" ngbTooltip="Edit">
                             <i class="ft-edit-2 font-medium-3 mr-2"></i>
                           </a>
@@ -252,8 +225,8 @@
                                                   </a> -->
                         </td>
                         <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : role.active,'btn-warning' :!role.active }">
-                            {{ role.active ? 'Active' : 'Inactive' }}
+                            [ngClass]="{' btn-primary' : lock.active,'btn-warning' :!lock.active }">
+                            {{ lock.active ? 'Active' : 'Inactive' }}
 
                           </button></td>
 
@@ -324,4 +297,5 @@
       </div>
     </div>
   </div>
+
 </section>

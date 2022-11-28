@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AssignstoreComponent } from './assignstore/assignstore.component';
 import { CreatestoreComponent } from './createstore/createstore.component';
+import { UpdatestoreComponent } from './updatestore/updatestore.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,17 @@ const routes: Routes = [
       title: 'Assign Store'
     },
     
+  },
+
+  {
+    path: 'updatestore',
+     component: UpdatestoreComponent,
+    data: {
+      title: 'Update Store'
+    },
+    
   }
+
 ];
 
 @NgModule({

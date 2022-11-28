@@ -1,3 +1,4 @@
+
 <!-- <ngx-spinner></ngx-spinner> -->
 <section id="image">
   <div class=row>
@@ -10,6 +11,7 @@
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
+
                 <span style="font-size: 15px">/Add Digital Locks</span>
 
               </p>
@@ -22,6 +24,7 @@
         <div class="card-header">
 
 
+
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
@@ -30,28 +33,28 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="lockNo"><span *ngIf="lock.lockNo == undefined || lock.lockNo =='' "
+                          <label for="lockNo"><span *ngIf="lock.digitalLockNo == undefined || lock.digitalLockNo =='' "
                             style="color: red">*</span>Digital Lock No
                         </label>
-                        <span class=" text-muted danger" *ngIf="!lockNo.valid && (lockNo.dirty || lockNo.touched)">
+                        <span class=" text-muted danger" *ngIf="!digitalLockNo.valid && (digitalLockNo.dirty || digitalLockNo.touched)">
                           is required!
                         </span>
-                        <input type="text" id="lockNo" class="form-control border-primary" name="lockNo"
-                          [(ngModel)]="lock.lockNo" ngModel #lockNo="ngModel" required>
+                        <input type="text" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
+                          [(ngModel)]="lock.digitalLockNo" ngModel #digitalLockNo="ngModel" required>
                        
                         </div>
                       </div>
                         
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="lockName"><span *ngIf="lock.lockName == undefined || lock.lockName =='' "
+                          <label for="lockName"><span *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
                             style="color: red">*</span>Digital Lock Name
                         </label>
-                        <span class=" text-muted danger" *ngIf="!lockName.valid && (lockName.dirty || lockName.touched)">
+                        <span class=" text-muted danger" *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
                           is required!
                         </span>
-                        <input type="text" id="lockName" class="form-control border-primary" name="lockName"
-                          [(ngModel)]="lock.lockName" ngModel #lockName="ngModel" required>
+                        <input type="text" id="digitalLockName" class="form-control border-primary" name="digitalLockName"
+                          [(ngModel)]="lock.digitalLockName" ngModel #digitalLockName="ngModel" required>
                         </div>
                       </div>
                     </div>
@@ -101,6 +104,7 @@
                         </div>
                       </div>
                       <div class="col-md-6">
+
                         <label for="connectors"><span *ngIf="lock.connectors == undefined || lock.connectors =='' "
                           style="color: red">*</span>Connectors
                       </label>
@@ -156,6 +160,7 @@
                     <button type="button" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
+
                    </div>
                  </form>
              </div>
@@ -202,25 +207,26 @@
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                        <tbody *ngFor="let lock of locks;index as i">
+
+                    <tbody *ngFor="let lock of locks ;index as i">
                       <tr>
                         <td>{{i+1}}</td>
-                        <td>{{lock.lockNo}}</td>
-                        <td>{{lock.lockName}}</td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                          [ngClass]="{' btn-primary' : lock.active,'btn-warning' :!lock.active }">
-                          {{ lock.active ? 'Active' : 'Inactive' }}
-                        </button></td>
+                        <td>{{lock.digitalLockNo}}</td>
+                        <td>{{lock.digitalLockName}}</td>
+                       
+
                         <td>
                           <a class="success p-0" data-original-title="" title="" (click)="editKiskomanagement(lock)"
                             placement="bottom" ngbTooltip="Edit"> 
                             <i class="ft-edit-2 font-medium-3 mr-2"></i> 
                           </a>
                            <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="deleteLock(lock.id)">
+
+                                                      (click)="locksdelete(lock)">
                                                     
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a> 
+                                                  </a>
+
                         </td>
                         
 
@@ -291,4 +297,5 @@
       </div>
     </div>
   </div>
+
 </section>

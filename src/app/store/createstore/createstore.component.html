@@ -25,6 +25,8 @@
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
+
+              
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
                     <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
@@ -258,11 +260,11 @@
                             placement="bottom" ngbTooltip="Edit">
                             <i class="ft-edit-2 font-medium-3 mr-2"></i>
                           </a>
-                          <!-- <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="deleteClass(class.id)">
+                           <a class="danger p-0" data-original-title="" title=""
+                                                      (click)="storedelete(storeInfoRequest)" placement="bottom" ngbTooltip="Delete">
                                                     
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a> -->
+                                                  </a>
                         </td>
                         <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
                             [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">

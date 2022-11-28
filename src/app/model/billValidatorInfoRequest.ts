@@ -1,20 +1,20 @@
 export class BillValidatorInfoRequest{
 	id:number;
+
+
+    billAcceptorNo:string;
+
+    billAcceptorName:string;
+
+    brandName:string;
+
+    modelName:string;
+
+    machineType:string;
     
-    billAcceptorNo:number;
+    storageCapacity:string;
 
-	billAcceptorName:string;
+    active:boolean;
 
-	brandName:string;
 
-	modelName:string;
-
-	machineTpe:string;
-
-	storageCapacity:string;
-
-	active:boolean;
-
-	
-    
 }
