@@ -29,7 +29,7 @@ export class UpdateLocksComponent implements OnInit {
   }
   getLockList(){
     
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl+'/locks/all', this.httpOptions);
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl+'/lockinfo/all', this.httpOptions);
   }
   getAllLocksList() {
     return this.getLockList().
@@ -39,9 +39,9 @@ export class UpdateLocksComponent implements OnInit {
         this.changeDetectorRefs.markForCheck();
       });
   }
-  updateLock(lock:LocksInfoRequest) {
+  updateLock(id:number) {
     
-    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/" + lock.id, this.lock, this.httpOptions).subscribe(
+    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/"+id, this.lock, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -62,3 +62,4 @@ export class UpdateLocksComponent implements OnInit {
   console.log(JSON.stringify(this.lock));
 }
 }
+

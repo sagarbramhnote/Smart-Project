@@ -14,8 +14,7 @@ import { KioskComponent } from './kiosk/kiosk.component';
 
 @NgModule({
 
-  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent],
-
+  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent, ],
 
   imports: [
     CommonModule,

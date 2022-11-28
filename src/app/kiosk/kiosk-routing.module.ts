@@ -57,6 +57,7 @@ const routes: Routes = [
     },
     
   },
+
   {
     path: 'update-billValidator',
      component: UpdateBillValidatorComponent,
@@ -65,8 +66,6 @@ const routes: Routes = [
     },
     
   },
-
- 
 
 ];
 
