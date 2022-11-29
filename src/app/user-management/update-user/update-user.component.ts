@@ -20,7 +20,7 @@ export class UpdateUserComponent implements OnInit {
       'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
     })
   } 
-
+qw
   user = new UserAccount();
   users: UserAccount[];
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }

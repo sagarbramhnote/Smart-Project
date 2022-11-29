@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateroleComponent } from './createrole/createrole.component';
+import { UpdateRoleComponent } from './update-role/update-role.component';
 
 const routes: Routes = [
   {
@@ -10,7 +11,16 @@ const routes: Routes = [
       title: 'Add Role'
     },
     
+  },
+  {
+    path: 'updaterole',
+     component: UpdateRoleComponent,
+    data: {
+      title: 'update Role'
+    },
+    
   }
+
 
 ];
 

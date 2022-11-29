@@ -6,9 +6,11 @@ import { CreateroleComponent } from './createrole/createrole.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+// import { UpdateUserComponent } from './update-user/update-user.component';
+import { UpdateRoleComponent } from './update-role/update-role.component';
 
 @NgModule({
-  declarations: [CreateroleComponent],
+  declarations: [CreateroleComponent,  UpdateRoleComponent],
   imports: [
     CommonModule,
     RoleRoutingModule,
