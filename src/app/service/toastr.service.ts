@@ -33,6 +33,9 @@ export class NGXToastrService {
     typeWarning() {
         this.toastr.warning('Sorry! Failed.');
     }
+    typeCustommessage(message){
+        this.toastr.warning(message)
+    }
 
     // Success Type
     typeError() {

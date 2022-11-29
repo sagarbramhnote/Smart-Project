@@ -65,9 +65,8 @@ export class AddUserManagementComponent implements OnInit {
           console.log("Client-side error occured.");
         } else {
           console.log("Server-side error occured.");
-          console.log(err)
         }
-        this.service.typeWarning();
+        this.service.typeCustommessage(err.error.message);
       });
     console.log(JSON.stringify(this.user));
     this.getAllUsersList();
