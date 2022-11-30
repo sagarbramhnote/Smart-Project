@@ -7,7 +7,8 @@ import { environment } from 'environments/environment';
 @Component({
   selector: 'app-updatestore',
   templateUrl: './updatestore.component.html',
-  styleUrls: ['./updatestore.component.scss']
+  styleUrls: ['./updatestore.component.scss'],
+  providers: [NGXToastrService]
 })
 export class UpdatestoreComponent implements OnInit {
 
@@ -26,17 +27,19 @@ export class UpdatestoreComponent implements OnInit {
    constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.storeInfoRequest = JSON.parse(localStorage.getItem('editStore'));
-    let a= (localStorage.getItem('id'))
-    console.log('this is number ' + a)
-    console.log(this.storeInfoRequest.id)
+    
 
-    return this.http.get<StoreInfoRequest>(environment.smartSafeAPIUrl + "/storeinfo/" + a,this.httpOptions).subscribe(data =>{
-      console.log(data)
+    this.storeInfoRequest = JSON.parse(localStorage.getItem('editStore'));
+    // let a= (localStorage.getItem('id'))
+    // console.log('this is number ' + a)
+    // console.log(this.storeInfoRequest.id)
+
+    // return this.http.get<StoreInfoRequest>(environment.smartSafeAPIUrl + "/storeinfo/" + a,this.httpOptions).subscribe(data =>{
+    //   console.log(data)
   
-      this.storeInfoRequest = data
-      console.log('print the store ' + this.storeInfoRequest)
-     })
+    //   this.storeInfoRequest = data
+    //   console.log('print the store ' + this.storeInfoRequest)
+    //  })
   }
 
   getStoreList() {

@@ -34,7 +34,7 @@
                                   <div class="form-group">
                                       <label for="storeName">Enter Store Name</label>
                                       <input type="text" id="storeName" class="form-control border-primary"
-                                          name="storeName" [(ngModel)]="storeInfoRequest.storeName">
+                                          name="storeName" [(ngModel)]="storeInfoRequest.storeName" readonly>
                                   </div>
                               </div>
                               <div class="col-md-6">
@@ -92,6 +92,25 @@
                                       [(ngModel)]="storeInfoRequest.minimumBalance" name="minimumBalance">
                               </div>
                           </div>
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="d-block">Status</label>
+                              <div class="input-group">
+                                <div class="custom-control custom-radio d-inline-block float-left">
+                                  <input type="radio" checked id="active" name="active" class="custom-control-input"
+                                    [value]=true [(ngModel)]="storeInfoRequest.configured">
+                                  <label class="custom-control-label" for="active">Active</label>
+                                </div>
+                                <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                                  <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                                    [value]=false [(ngModel)]="storeInfoRequest.configured">
+                                  <label class="custom-control-label" for="inactive">In Active</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+
                           </div>
                         
                       
@@ -102,7 +121,7 @@
                       </div>
                  
                       <div class="form-actions center">
-                          <button type="button" class="btn btn-raised btn-primary" (click)="updateStore()"
+                          <button type="button" class="btn btn-raised btn-primary mr-1" (click)="updateStore(storeInfoRequest.id)"
                               routerLink="/store/createstore">
                               <i class="fa fa-check-square-o"></i> Update
                           </button>

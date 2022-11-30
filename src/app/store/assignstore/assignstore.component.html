@@ -90,11 +90,11 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Kiosk</label>
-                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store">
-                            <option [ngValue]="store" *ngFor="let store of stores">
-                              {{store.storeName}} </option>
+                          <label for="kioskSelect">Select Kiosk</label>
+                          <select class="form-control border-primary" [(ngModel)]="kiosk" required id="kiosk"
+                            (change)='onStoreSelected(kiosk.kioskName)' name="kiosk">
+                            <option [ngValue]="store" *ngFor="let kiosk of kiosks">
+                              {{kiosk.kioskName}} </option>
                           </select>
                         </fieldset>
                       </div>
@@ -103,7 +103,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Bill Validator</label>
+                          <label for="billSelect">Select Bill Validator</label>
                           <select class="form-control border-primary" [(ngModel)]="billValidator" required id="billValidator"
                             (change)='getAllBillValidatorList(billValidator.billAcceptorName)' name="billValidator">
                             <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
@@ -119,11 +119,11 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Printer</label>
-                          <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store">
-                            <option [ngValue]="store" *ngFor="let store of stores">
-                              {{store.storeName}} </option>
+                          <label for="printerSelect">Select Printer</label>
+                          <select class="form-control border-primary" [(ngModel)]="printer" required id="printer"
+                            (change)='onStoreSelected(printer.printerName)' name="printer">
+                            <option [ngValue]="printer" *ngFor="let printer of printers">
+                              {{printer.printerName}} </option>
                           </select>
                         </fieldset>
                       </div>
@@ -132,9 +132,9 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Locks</label>
+                          <label for="lockSelect">Select Lock</label>
                           <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
-                            (change)='getAllLocksList(lock.digitalLockName)' name="lock">
+                            (change)='onlockSelected(lock.digitalLockName)' name="lock" >
                             <option [ngValue]="lock" *ngFor="let lock of locks">
                               {{lock.digitalLockName}} </option>
                           </select>
@@ -142,8 +142,23 @@
                       </div>
                     </div>
 
+                    <!-- <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="lockSelect">Select Locks</label>
+                          <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
+                            (change)='getAllLocksList(lock.digitalLockName)' name="lock">
+                            <option [ngValue]="lock" *ngFor="let lock of locks">
+                              {{lock.digitalLockName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div> -->
+
                   </div>
 
+                 
+                  
 
 
                   <div class="form-actions center">

@@ -74,7 +74,18 @@ export class BillValidatorComponent implements OnInit {
 
   billValidatordelete(billValidator: BillValidatorInfoRequest) {
     console.log('coming into delete')
-  
+    if(billValidator.active){
+      console.log('coming inside active true')
+      Swal.fire({
+        title: 'You cannot delete a active bill ',
+        text: "",
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+       
+      })
+    }
+    if(!(billValidator.active)){
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -112,6 +123,7 @@ export class BillValidatorComponent implements OnInit {
     })
   
   }
+}
 
   ngOnInit() {
     this.getAllBillValidatorList();

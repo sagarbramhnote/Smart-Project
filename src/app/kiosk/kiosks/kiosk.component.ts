@@ -1,21 +1,19 @@
-
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-
-import { Router } from '@angular/router';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { LocksInfoRequest } from 'app/model/locksInfoRequest';
-
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-locks',
-  templateUrl: './locks.component.html',
-  styleUrls: ['./locks.component.scss'],
+  selector: 'app-kiosk',
+  templateUrl: './kiosk.component.html',
+  styleUrls: ['./kiosk.component.scss'],
   providers: [NGXToastrService]
 })
-export class LocksComponent implements OnInit {
+export class KioskComponent implements OnInit {
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,69 +24,62 @@ export class LocksComponent implements OnInit {
     })
   }
 
-
-  lock = new LocksInfoRequest();
-  locks : LocksInfoRequest[];
-
-
+  kiosk = new KioskInfoRequest();
+  kiosks : KioskInfoRequest[];
 
   constructor(private http: HttpClient,
     private router: Router,
     private service: NGXToastrService,
     private changeDetectorRefs: ChangeDetectorRef) {
-  }
 
-  getLockList(){
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/all');
+}
 
-  }
-  getAllLocksList() {
-    return this.getLockList().
-      subscribe((data) => {
-        console.log(data);
-        this.locks = data;
-        this.changeDetectorRefs.markForCheck();
-      });
-  }
-  addLock() {
+getKioskList() {
+  return this.http.get<KioskInfoRequest[]>(environment.smartSafeAPIUrl + '/kiosk/all');
+}
+getAllKioskList() {
+  return this.getKioskList().
+    subscribe((data) => {
+      console.log(data);
+      this.kiosks = data;
+      this.changeDetectorRefs.markForCheck();
+    });
+}
+AddKiosk() {
+  this.http.post<KioskInfoRequest>(environment.smartSafeAPIUrl + '/kiosk/', this.kiosk).subscribe(
+    res => {
+      console.log(res);
+      //event.confirm.resolve(event.newData);
+      this.service.addSuccess();
+      this.getAllKioskList();
+    },
+    (err: HttpErrorResponse) => {
+      if (err.error instanceof Error) {
+        console.log("Client-side error occured.");
+      } else {
+        console.log("Server-side error occured.");
+      }
+      this.service.typeWarning();
+    });
+  console.log(JSON.stringify(this.kiosk));
+  this.getAllKioskList();
+}
 
-    this.http.post<LocksInfoRequest>(environment.smartSafeAPIUrl + '/locks/', this.lock).subscribe(
+editAddKiosk(kiosk: KioskInfoRequest ) {
 
-      res => {
-        console.log(res);
-        //event.confirm.resolve(event.newData);
-        this.service.addSuccess();
-        this.getAllLocksList();
-      },
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log("Client-side error occured.");
-        } else {
-          console.log("Server-side error occured.");
-        }
-        this.service.typeWarning();
-      });
-    console.log(JSON.stringify(this.lock));
-    this.getAllLocksList();
-  }
+  localStorage.setItem('editKiosk', JSON.stringify(kiosk));
+ 
+ this.router.navigate(["/kiosk/update-kiosk"]);
 
-  editAddLocks(lock: LocksInfoRequest ) {
+}
 
-    localStorage.setItem('editLock', JSON.stringify(lock));
-   
-   this.router.navigate(["/kiosk/update-lock"]);
-
- }
-
-
-
-locksdelete(lock: LocksInfoRequest) {
+kioskdelete(kiosk: KioskInfoRequest) {
   console.log('coming into delete')
 
-  if(lock.active){
+  if(kiosk.active){
     console.log('coming inside active true')
     Swal.fire({
-      title: 'You cannot delete a active Lock ',
+      title: 'You cannot delete a active kiosk ',
       text: "",
       type: 'warning',
       confirmButtonColor: '#3085d6',
@@ -96,7 +87,7 @@ locksdelete(lock: LocksInfoRequest) {
      
     })
   }
-  if(!(lock.active)){
+  if(!(kiosk.active)){
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -111,12 +102,12 @@ locksdelete(lock: LocksInfoRequest) {
 
     if (result.value) {
       console.log("hello");
-      this.http.delete<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/" + lock.id, this.httpOptions).subscribe(
+      this.http.delete<KioskInfoRequest>(environment.smartSafeAPIUrl + "/kiosk/" + kiosk.id, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
           this.service.typeDelete();
-          this.getAllLocksList();
+          this.getAllKioskList();
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
@@ -137,9 +128,8 @@ locksdelete(lock: LocksInfoRequest) {
 }
 
   ngOnInit() {
-    this.getAllLocksList();
+    this.getAllKioskList();
 
   }
 
- 
 }

@@ -1,16 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-update-locks',
-  templateUrl: './update-locks.component.html',
-  styleUrls: ['./update-locks.component.scss'],
+  selector: 'app-update-kiosk',
+  templateUrl: './update-kiosk.component.html',
+  styleUrls: ['./update-kiosk.component.scss'],
   providers: [NGXToastrService]
 })
-export class UpdateLocksComponent implements OnInit {
+export class UpdateKioskComponent implements OnInit {
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,34 +20,34 @@ export class UpdateLocksComponent implements OnInit {
       'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
     })
   } 
-  lock = new LocksInfoRequest();
-  locks:LocksInfoRequest[];
+  kiosk = new KioskInfoRequest();
+  kiosks:KioskInfoRequest[];
 
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.lock = JSON.parse(localStorage.getItem('editLock'));
+    this.kiosk = JSON.parse(localStorage.getItem('editKiosk'));
   }
-  getLockList(){
-    
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl+'/locks/all', this.httpOptions);
+
+  getKioskList() {
+    return this.http.get<KioskInfoRequest[]>(environment.smartSafeAPIUrl + '/kiosk/all');
   }
-  getAllLocksList() {
-    return this.getLockList().
+  getAllKioskList() {
+    return this.getKioskList().
       subscribe((data) => {
         console.log(data);
-        this.locks = data;
+        this.kiosks = data;
         this.changeDetectorRefs.markForCheck();
       });
   }
-  updateLock(id:number) {
+  updateKiosk(id:number) {
     
-    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/"+id, this.lock, this.httpOptions).subscribe(
+    this.http.put<KioskInfoRequest>(environment.smartSafeAPIUrl + "/kiosk/"+id, this.kiosk, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.updateSuccess();
-        this.getAllLocksList();
+        this.getAllKioskList();
 
       },
       (err: HttpErrorResponse) => {
@@ -60,7 +60,6 @@ export class UpdateLocksComponent implements OnInit {
       });
 
   
-  console.log(JSON.stringify(this.lock));
+  console.log(JSON.stringify(this.kiosk));
 }
 }
-

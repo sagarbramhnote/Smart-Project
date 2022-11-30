@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BillValidatorInfoRequest } from 'app/model/billValidatorInfoRequest';
+import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { PrinterInfoRequest } from 'app/model/printerInfoRequest';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { UserAccount } from 'app/model/user';
@@ -26,11 +28,19 @@ export class AssignstoreComponent implements OnInit {
   employee = new UserAccount();
   employees: UserAccount[];
 
-  lock = new LocksInfoRequest();
-  locks : LocksInfoRequest[];
+  kiosk = new KioskInfoRequest();
+  kiosks : KioskInfoRequest[];
 
   billValidator = new BillValidatorInfoRequest();
   billValidators : BillValidatorInfoRequest[];
+
+  lock = new LocksInfoRequest();
+  locks : LocksInfoRequest[];
+
+  printer = new PrinterInfoRequest();
+   printers : PrinterInfoRequest[];
+
+ 
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -75,7 +85,7 @@ export class AssignstoreComponent implements OnInit {
   }
 
   getUnassignedEmployeesByrole(roleName: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/role/' + roleName+"/unassignedusers");
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/role/' + roleName +"/unassignedusers");
   }
 
   onRoleSelected(roleName: string) {
@@ -86,6 +96,18 @@ export class AssignstoreComponent implements OnInit {
       })
   }
 
+  getKioskList() {
+    return this.http.get<KioskInfoRequest[]>(environment.smartSafeAPIUrl + '/kiosk/all');
+  }
+  getAllKioskList() {
+    return this.getKioskList().
+      subscribe((data) => {
+        console.log(data);
+        this.kiosks = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
   getBillValidatorList() {
     return this.http.get<BillValidatorInfoRequest[]>(environment.smartSafeAPIUrl + '/billValidator/all');
   }
@@ -94,6 +116,18 @@ export class AssignstoreComponent implements OnInit {
       subscribe((data) => {
         console.log(data);
         this.billValidators = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  getPrinterList() {
+    return this.http.get<PrinterInfoRequest[]>(environment.smartSafeAPIUrl + '/printer/all');
+  }
+  getAllPrinterList() {
+    return this.getPrinterList().
+      subscribe((data) => {
+        console.log(data);
+        this.printers = data;
         this.changeDetectorRefs.markForCheck();
       });
   }
@@ -110,11 +144,28 @@ export class AssignstoreComponent implements OnInit {
       });
   }
 
+  getUnassignedlocks(digitalLockName: string) {
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/lockName/' + digitalLockName+"/unassignedlocks");
+  }
+
+  onlockSelected(digitalLockName: string) {
+    this.getUnassignedlocks(digitalLockName).
+      subscribe((data) => {
+        this.locks = data;
+
+      })
+  }
+
   ngOnInit() {
     this.getAllUnassignedStoresList();
+   
     this.getAllRolesList();
-    this.getAllLocksList();
+    this.getAllKioskList();
     this.getAllBillValidatorList();
+    this.getAllPrinterList();
+    this.getAllLocksList();
+    
+   
   }
 
   assignStoretouser(storeId: number, userId: number, lId: number) {

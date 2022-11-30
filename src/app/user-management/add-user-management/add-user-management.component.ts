@@ -37,7 +37,7 @@ export class AddUserManagementComponent implements OnInit {
   }
   getUserList() {
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/getusers', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
   }
 
   getAllUsersList() {
@@ -50,11 +50,15 @@ export class AddUserManagementComponent implements OnInit {
   }
   onSaveConfirm() {
     this.user.role = this.role.name;
+    console.log(this.user.passLength)
+   
+
     this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
+        this.getAllUsersList();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -62,7 +66,7 @@ export class AddUserManagementComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeWarning();
+        this.service.typeCustommessage(err.error.message);
       });
     console.log(JSON.stringify(this.user));
     this.getAllUsersList();
@@ -84,7 +88,7 @@ export class AddUserManagementComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllUsersList();
+    
     this.getAllRolesList();
   }
 

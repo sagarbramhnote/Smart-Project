@@ -18,7 +18,7 @@ import { DragulaService } from "ng2-dragula";
 import { AuthService } from "./shared/auth/auth.service";
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -40,8 +40,9 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     NgbModule,NgxSpinnerModule,
     ToastrModule.forRoot(),
-    NgSelectModule,
+ 
     NgbModule.forRoot(),
+    
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

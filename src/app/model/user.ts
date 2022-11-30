@@ -19,5 +19,7 @@ export class UserAccount{
 	active:boolean;
 
 	feature:string;
+
+	passLength:string;
     
 }

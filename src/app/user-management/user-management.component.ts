@@ -100,15 +100,30 @@ export class UserManagementComponent implements OnInit {
     // })
     console.log(user.id)
     localStorage.setItem("id",String(user.id))
-     localStorage.setItem('editUser', JSON.stringify(user));
+    localStorage.setItem('editUser', JSON.stringify(user));
     
     this.router.navigate(["/user-management/update-user"]);
 
   }
 
   deleteUser(user: UserAccount) {
-    console.log('coming into delete')
+    console.log('coming into delete' + user.active)
 
+    if(user.active){
+      console.log('coming inside active true')
+      swal.fire({
+        title: 'You cannot delete a active User ',
+        text: "",
+        type: 'warning',
+        // showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        // confirmButtonText: 'Yes, delete it!'
+  
+      })
+
+    }
+    if(!(user.active)){
     swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -145,6 +160,7 @@ export class UserManagementComponent implements OnInit {
       }
     })
 
+    }
   }
 
 

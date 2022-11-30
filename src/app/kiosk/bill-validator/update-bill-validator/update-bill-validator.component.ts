@@ -45,9 +45,9 @@ export class UpdateBillValidatorComponent implements OnInit {
       });
   }
 
-  updateBillValidator() {
+  updateBillValidator(id:number) {
     
-    this.http.put<BillValidatorInfoRequest>(environment.smartSafeAPIUrl + "/updatebillValidator", this.billValidator, this.httpOptions).subscribe(
+    this.http.put<BillValidatorInfoRequest>(environment.smartSafeAPIUrl + "/billValidator/"+id, this.billValidator, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);

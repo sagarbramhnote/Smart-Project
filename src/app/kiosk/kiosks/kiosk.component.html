@@ -12,7 +12,7 @@
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
 
-                <span style="font-size: 15px">/Add Digital Locks</span>
+                <span style="font-size: 15px">/Add Kiosk</span>
 
               </p>
             </div>
@@ -33,35 +33,35 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="lockNo"><span *ngIf="lock.digitalLockNo == undefined || lock.digitalLockNo =='' "
-                            style="color: red">*</span>Digital Lock No
+                          <label for="kioskId"><span *ngIf="kiosk.kioskId == undefined || kiosk.kioskId =='' "
+                            style="color: red">*</span>Kiosk Id
                         </label>
-                        <span class=" text-muted danger" *ngIf="!digitalLockNo.valid && (digitalLockNo.dirty || digitalLockNo.touched)">
+                        <span class=" text-muted danger" *ngIf="!kioskId.valid && (kioskId.dirty || kioskId.touched)">
                           is required!
                         </span>
-                        <input type="text" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
-                          [(ngModel)]="lock.digitalLockNo" ngModel #digitalLockNo="ngModel" required>
+                        <input type="text" id="kioskId" class="form-control border-primary" name="kioskId"
+                          [(ngModel)]="kiosk.kioskId" ngModel #kioskId="ngModel" required>
                        
                         </div>
                       </div>
                         
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="lockName"><span *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
-                            style="color: red">*</span>Digital Lock Name
+                          <label for="kioskName"><span *ngIf="kiosk.kioskName == undefined || kiosk.kioskName =='' "
+                            style="color: red">*</span>Kiosk Name
                         </label>
-                        <span class=" text-muted danger" *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
+                        <span class=" text-muted danger" *ngIf="!kioskName.valid && (kioskName.dirty || kioskName.touched)">
                           is required!
                         </span>
-                        <input type="text" id="digitalLockName" class="form-control border-primary" name="digitalLockName"
-                          [(ngModel)]="lock.digitalLockName" ngModel #digitalLockName="ngModel" required>
+                        <input type="text" id="kioskName" class="form-control border-primary" name="kioskName"
+                          [(ngModel)]="kiosk.kioskName" ngModel #kioskName="ngModel" required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="brandName"><span *ngIf="lock.brandName == undefined || lock.brandName =='' "
+                          <label for="brandName"><span *ngIf="kiosk.brandName == undefined || kiosk.brandName =='' "
                             style="color: red">*</span>Brand Name
                         </label>
                         <span class=" text-muted danger"
@@ -69,12 +69,12 @@
                           is required!
                         </span>
                         <input type="text" id="brandName" class="form-control border-primary" name="brandName"
-                          [(ngModel)]="lock.brandName" ngModel #brandName="ngModel" required>
+                          [(ngModel)]="kiosk.brandName" ngModel #brandName="ngModel" required>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="modelName"><span *ngIf="lock.modelName == undefined || lock.modelName =='' "
+                          <label for="modelName"><span *ngIf="kiosk.modelName == undefined || kiosk.modelName =='' "
                             style="color: red">*</span>Model Name
                         </label>
                         <span class=" text-muted danger"
@@ -82,7 +82,7 @@
                           is required!
                         </span>
                         <input type="text" id="modelName" class="form-control border-primary" name="modelName"
-                          [(ngModel)]="lock.modelName" ngModel #modelName="ngModel" required>
+                          [(ngModel)]="kiosk.modelName" ngModel #modelName="ngModel" required>
 
                         </div>
                       </div>
@@ -91,34 +91,67 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="machineType"><span *ngIf="lock.machineType == undefined || lock.machineType =='' "
-                            style="color: red">*</span>Machine Type
+                          <label for="cpu"><span *ngIf="kiosk.cpu == undefined || kiosk.cpu =='' "
+                            style="color: red">*</span>CPU
                         </label>
                         <span class=" text-muted danger"
-                          *ngIf="!machineType.valid && (machineType.dirty || machineType.touched)">
+                          *ngIf="!cpu.valid && (cpu.dirty || cpu.touched)">
                           is required!
                         </span>
-                        <input type="text" id="machineType" class="form-control border-primary" name="machineType"
-                          [(ngModel)]="lock.machineType" ngModel #machineType="ngModel" required>
+                        <input type="text" id="cpu" class="form-control border-primary" name="cpu"
+                          [(ngModel)]="kiosk.cpu" ngModel #cpu="ngModel" required>
 
                         </div>
                       </div>
                       <div class="col-md-6">
 
-                        <label for="connectors"><span *ngIf="lock.connectors == undefined || lock.connectors =='' "
-                          style="color: red">*</span>Connectors
+                        <label for="hdd"><span *ngIf="kiosk.hdd == undefined || kiosk.hdd =='' "
+                          style="color: red">*</span>HDD
                       </label>
                       <span class=" text-muted danger"
-                        *ngIf="!connectors.valid && (connectors.dirty || connectors.touched)">
+                        *ngIf="!hdd.valid && (hdd.dirty || hdd.touched)">
                         is required!
                       </span>
-                      <input type="text" id="connectors" class="form-control border-primary" name="connectors"
-                        [(ngModel)]="lock.connectors" ngModel #connectors="ngModel" required>
+                      <input type="text" id="hdd" class="form-control border-primary" name="hdd"
+                        [(ngModel)]="kiosk.hdd" ngModel #hdd="ngModel" required>
 
                         </div>
                       </div>
 
                     </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="memory"><span *ngIf="kiosk.memory == undefined || kiosk.memory =='' "
+                            style="color: red">*</span>Memory
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!memory.valid && (memory.dirty || memory.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="memory" class="form-control border-primary" name="memory"
+                          [(ngModel)]="kiosk.memory" ngModel #memory="ngModel" required>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="screenSize"><span *ngIf="kiosk.screenSize == undefined || kiosk.screenSize =='' "
+                            style="color: red">*</span>Screen Size
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!screenSize.valid && (screenSize.dirty || screenSize.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="screenSize" class="form-control border-primary" name="screenSize"
+                          [(ngModel)]="kiosk.screenSize" ngModel #screenSize="ngModel" required>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -126,12 +159,12 @@
                           <div class="input-group">
                             <div class="custom-control custom-radio d-inline-block float-left">
                               <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="lock.active">
+                                [value]=true [(ngModel)]="kiosk.active">
                               <label class="custom-control-label" for="active">Active</label>
                             </div>
                             <div class="custom-control custom-radio d-inline-block float-left ml-1">
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="lock.active">
+                                [value]=false [(ngModel)]="kiosk.active">
                               <label class="custom-control-label" for="inactive">In Active</label>
                             </div>
                           </div>
@@ -153,7 +186,7 @@
              
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addLock()"
+                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="AddKiosk(kiosk)"
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
@@ -199,36 +232,38 @@
                     <thead>
                       <tr>
                         <th>S.no</th>
-                        <th>Digital Lock No</th>
-                        <th>Digital Lock Name</th>
+                        <th>Kiosk Id</th>
+                        <th>Kiosk Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <!-- <tbody
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
-                    <tbody *ngFor="let lock of locks ;index as i">
+                    <tbody *ngFor="let kiosk of kiosks ;index as i">
                       <tr>
                         <td>{{i+1}}</td>
-                        <td>{{lock.digitalLockNo}}</td>
-                        <td>{{lock.digitalLockName}}</td>
-                       
+                        <td>{{kiosk.kioskId}}</td>
+                        <td>{{kiosk.kioskName}}</td>
                         <td>
-                          <a class="success p-0" data-original-title="" title="" (click)="editLock(lock)"
+                          <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : kiosk.active,'btn-warning' :!kiosk.active }">
+                            {{ kiosk.active ? 'Active' : 'Inactive' }}
+
+                          </button>
+                        </td>
+                        <td>
+                          <a class="success p-0" data-original-title="" title="" (click)="editAddKiosk(kiosk)"
                             placement="bottom" ngbTooltip="Edit">
                             <i class="ft-edit-2 font-medium-3 mr-2"></i>
                           </a>
-                          <!-- <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="deleteClass(class.id)">
+                          <a class="danger p-0" data-original-title="" title=""
+                                                      (click)="kioskdelete(kiosk)">
                                                     
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a> -->
+                                                  </a>
                         </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : lock.active,'btn-warning' :!lock.active }">
-                            {{ lock.active ? 'Active' : 'Inactive' }}
-
-                          </button></td>
+                       
 
 
                       </tr>

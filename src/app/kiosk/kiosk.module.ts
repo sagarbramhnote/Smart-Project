@@ -8,14 +8,16 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
-import { KioskComponent } from './kiosk/kiosk.component';
+import { KioskComponent } from './kiosks/kiosk.component';
 import { UpdateLocksComponent } from './locks/update-locks/update-locks.component';
 import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
+import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
+import { UpdateKioskComponent } from './kiosks/update-kiosk/update-kiosk.component';
 
 
 @NgModule({
 
-  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent,UpdateLocksComponent,UpdateBillValidatorComponent ],
+  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent,UpdateLocksComponent,UpdateBillValidatorComponent, UpdatePrinterComponent, UpdateKioskComponent ],
 
   imports: [
     CommonModule,

@@ -1,16 +1,16 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { PrinterInfoRequest } from 'app/model/printerInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-update-locks',
-  templateUrl: './update-locks.component.html',
-  styleUrls: ['./update-locks.component.scss'],
+  selector: 'app-update-printer',
+  templateUrl: './update-printer.component.html',
+  styleUrls: ['./update-printer.component.scss'],
   providers: [NGXToastrService]
 })
-export class UpdateLocksComponent implements OnInit {
+export class UpdatePrinterComponent implements OnInit {
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -20,34 +20,33 @@ export class UpdateLocksComponent implements OnInit {
       'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
     })
   } 
-  lock = new LocksInfoRequest();
-  locks:LocksInfoRequest[];
+  printer = new PrinterInfoRequest();
+  printers:PrinterInfoRequest[];
 
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.lock = JSON.parse(localStorage.getItem('editLock'));
+    this.printer = JSON.parse(localStorage.getItem('editPrinter'));
   }
-  getLockList(){
-    
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl+'/locks/all', this.httpOptions);
+  getPrinterList() {
+    return this.http.get<PrinterInfoRequest[]>(environment.smartSafeAPIUrl + '/printer/all');
   }
-  getAllLocksList() {
-    return this.getLockList().
+  getAllPrinterList() {
+    return this.getPrinterList().
       subscribe((data) => {
         console.log(data);
-        this.locks = data;
+        this.printers = data;
         this.changeDetectorRefs.markForCheck();
       });
   }
-  updateLock(id:number) {
+  updatePrinter(id:number) {
     
-    this.http.put<LocksInfoRequest>(environment.smartSafeAPIUrl + "/locks/"+id, this.lock, this.httpOptions).subscribe(
+    this.http.put<PrinterInfoRequest>(environment.smartSafeAPIUrl + "/printer/"+id, this.printer, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.updateSuccess();
-        this.getAllLocksList();
+        this.getAllPrinterList();
 
       },
       (err: HttpErrorResponse) => {
@@ -60,7 +59,6 @@ export class UpdateLocksComponent implements OnInit {
       });
 
   
-  console.log(JSON.stringify(this.lock));
+  console.log(JSON.stringify(this.printer));
 }
 }
-
