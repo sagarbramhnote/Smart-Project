@@ -45,6 +45,7 @@ export class CreateroleComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
       },
+      
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log("Client-side error occured.");
@@ -56,8 +57,19 @@ export class CreateroleComponent implements OnInit {
     console.log(JSON.stringify(this.role));
     this.getAllRolesList();
   }
+  //here edit for role
+  editUsermanagement(role: Role) {
+    
+    
+     localStorage.setItem('editUser', JSON.stringify(role));
+    
+    this.router.navigate(["/role/updaterole"]);
+
+  }
+
   ngOnInit() {
     this.getAllRolesList();
   }
+
 
 }
