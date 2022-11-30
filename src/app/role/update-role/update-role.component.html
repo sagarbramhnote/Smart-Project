@@ -79,7 +79,7 @@
                       </fieldset>
                   </div>
                     <div class="form-actions center">
-                            <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/createrole">
+                            <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/createrole" [disabled]="!registerForm.valid">
                                 <i class="ft-x"></i> Cancel
                             </button>
                             <button type="button" class="btn btn-raised btn-primary" (click)="updateRole()"
