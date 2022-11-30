@@ -12,6 +12,9 @@ const routes: Routes = [
     },
     
   },
+
+
+
   {
     path: 'updaterole',
      component: UpdateRoleComponent,

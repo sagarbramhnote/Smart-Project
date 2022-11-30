@@ -61,8 +61,6 @@ export class CreateroleComponent implements OnInit {
   editUsermanagement(role: Role) {
     
     
-    
-    
      localStorage.setItem('editUser', JSON.stringify(role));
     
     this.router.navigate(["/role/updaterole"]);
@@ -72,5 +70,6 @@ export class CreateroleComponent implements OnInit {
   ngOnInit() {
     this.getAllRolesList();
   }
+
 
 }

@@ -102,9 +102,12 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                   <!--  <button type="button" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
-                    </button>
+                    </button> -->
+                     <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/role">
+                    <i class="ft-x"></i> Cancel
+                  </button>
                   </div>
                 </form>
 
@@ -182,7 +185,7 @@
                           <td>{{role.features}}</td>
                           <td>
                                                     <a class="success p-0" data-original-title="" title=""
-                                                        (click)="editUsermanagement(role)">
+                                                        (click)="editRolesmanagement(role)">
                                                         <i class="ft-edit-2 font-medium-3 mr-2"></i>
                                                     </a>
                                                     <a class="danger p-0" data-original-title="" title=""
