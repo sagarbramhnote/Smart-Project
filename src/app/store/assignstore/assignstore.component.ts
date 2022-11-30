@@ -85,7 +85,7 @@ export class AssignstoreComponent implements OnInit {
   }
 
   getUnassignedEmployeesByrole(roleName: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/role/' + roleName+"/unassignedusers");
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/role/' + roleName +"/unassignedusers");
   }
 
   onRoleSelected(roleName: string) {
@@ -144,13 +144,27 @@ export class AssignstoreComponent implements OnInit {
       });
   }
 
+  getUnassignedlocks(digitalLockName: string) {
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/lockName/' + digitalLockName+"/unassignedlocks");
+  }
+
+  onlockSelected(digitalLockName: string) {
+    this.getUnassignedlocks(digitalLockName).
+      subscribe((data) => {
+        this.locks = data;
+
+      })
+  }
+
   ngOnInit() {
     this.getAllUnassignedStoresList();
+   
     this.getAllRolesList();
     this.getAllKioskList();
     this.getAllBillValidatorList();
     this.getAllPrinterList();
     this.getAllLocksList();
+    
    
   }
 

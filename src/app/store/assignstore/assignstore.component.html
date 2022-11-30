@@ -103,7 +103,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Bill Validator</label>
+                          <label for="billSelect">Select Bill Validator</label>
                           <select class="form-control border-primary" [(ngModel)]="billValidator" required id="billValidator"
                             (change)='getAllBillValidatorList(billValidator.billAcceptorName)' name="billValidator">
                             <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
@@ -132,9 +132,9 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="storeSelect">Select Locks</label>
+                          <label for="lockSelect">Select Lock</label>
                           <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
-                            (change)='getAllLocksList(lock.digitalLockName)' name="lock">
+                            (change)='onlockSelected(lock.digitalLockName)' name="lock" >
                             <option [ngValue]="lock" *ngFor="let lock of locks">
                               {{lock.digitalLockName}} </option>
                           </select>
@@ -142,8 +142,23 @@
                       </div>
                     </div>
 
+                    <!-- <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="lockSelect">Select Locks</label>
+                          <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
+                            (change)='getAllLocksList(lock.digitalLockName)' name="lock">
+                            <option [ngValue]="lock" *ngFor="let lock of locks">
+                              {{lock.digitalLockName}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div> -->
+
                   </div>
 
+                 
+                  
 
 
                   <div class="form-actions center">

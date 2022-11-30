@@ -92,6 +92,25 @@
                                       [(ngModel)]="storeInfoRequest.minimumBalance" name="minimumBalance">
                               </div>
                           </div>
+
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="d-block">Status</label>
+                              <div class="input-group">
+                                <div class="custom-control custom-radio d-inline-block float-left">
+                                  <input type="radio" checked id="active" name="active" class="custom-control-input"
+                                    [value]=true [(ngModel)]="storeInfoRequest.configured">
+                                  <label class="custom-control-label" for="active">Active</label>
+                                </div>
+                                <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                                  <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                                    [value]=false [(ngModel)]="storeInfoRequest.configured">
+                                  <label class="custom-control-label" for="inactive">In Active</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div> 
+
                           </div>
                         
                       

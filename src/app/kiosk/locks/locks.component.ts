@@ -85,6 +85,18 @@ export class LocksComponent implements OnInit {
 locksdelete(lock: LocksInfoRequest) {
   console.log('coming into delete')
 
+  if(lock.active){
+    console.log('coming inside active true')
+    Swal.fire({
+      title: 'You cannot delete a active Lock ',
+      text: "",
+      type: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+     
+    })
+  }
+  if(!(lock.active)){
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -121,6 +133,7 @@ locksdelete(lock: LocksInfoRequest) {
     }
   })
 
+}
 }
 
   ngOnInit() {

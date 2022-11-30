@@ -76,6 +76,18 @@ editAddKiosk(kiosk: KioskInfoRequest ) {
 kioskdelete(kiosk: KioskInfoRequest) {
   console.log('coming into delete')
 
+  if(kiosk.active){
+    console.log('coming inside active true')
+    Swal.fire({
+      title: 'You cannot delete a active kiosk ',
+      text: "",
+      type: 'warning',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+     
+    })
+  }
+  if(!(kiosk.active)){
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -112,6 +124,7 @@ kioskdelete(kiosk: KioskInfoRequest) {
     }
   })
 
+}
 }
 
   ngOnInit() {

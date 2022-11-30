@@ -74,6 +74,18 @@ export class PrinterComponent implements OnInit {
   printerdelete(printer: PrinterInfoRequest) {
     console.log('coming into delete')
   
+    if(printer.active){
+      console.log('coming inside active true')
+      Swal.fire({
+        title: 'You cannot delete a active printer ',
+        text: "",
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+       
+      })
+    }
+    if(!(printer.active)){
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -111,6 +123,7 @@ export class PrinterComponent implements OnInit {
     })
   
   }
+}
 
   ngOnInit() {
     this.getAllPrinterList();

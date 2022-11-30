@@ -232,8 +232,8 @@
                     <thead>
                       <tr>
                         <th>S.no</th>
-                        <th>Digital Lock No</th>
-                        <th>Digital Lock Name</th>
+                        <th>Kiosk Id</th>
+                        <th>Kiosk Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -245,7 +245,13 @@
                         <td>{{i+1}}</td>
                         <td>{{kiosk.kioskId}}</td>
                         <td>{{kiosk.kioskName}}</td>
-                       
+                        <td>
+                          <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : kiosk.active,'btn-warning' :!kiosk.active }">
+                            {{ kiosk.active ? 'Active' : 'Inactive' }}
+
+                          </button>
+                        </td>
                         <td>
                           <a class="success p-0" data-original-title="" title="" (click)="editAddKiosk(kiosk)"
                             placement="bottom" ngbTooltip="Edit">
@@ -257,11 +263,7 @@
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
                                                   </a>
                         </td>
-                        <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : kiosk.active,'btn-warning' :!kiosk.active }">
-                            {{ kiosk.active ? 'Active' : 'Inactive' }}
-
-                          </button></td>
+                       
 
 
                       </tr>

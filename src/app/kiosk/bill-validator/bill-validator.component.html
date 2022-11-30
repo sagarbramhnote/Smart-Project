@@ -211,7 +211,13 @@
                         <td>{{i+1}}</td>
                         <td>{{billValidator.billAcceptorNo}}</td>
                         <td>{{billValidator.billAcceptorName}}</td>
-                       
+                        <td>
+                          <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                            [ngClass]="{' btn-primary' : billValidator.active,'btn-warning' :!billValidator.active }">
+                            {{ billValidator.active ? 'Active' : 'Inactive' }}
+
+                          </button>
+                        </td>
                         <td>
 
                           <a class="success p-0" data-original-title="" title="" (click)="editBillValidator(billValidator)"
@@ -225,13 +231,7 @@
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
                                                   </a>
                         </td>
-                        <td>
-                          <button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : billValidator.active,'btn-warning' :!billValidator.active }">
-                            {{ billValidator.active ? 'Active' : 'Inactive' }}
-
-                          </button>
-                        </td>
+                     
 
 
                       </tr>

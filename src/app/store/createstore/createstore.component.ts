@@ -44,7 +44,7 @@ export class CreatestoreComponent implements OnInit {
       });
   }
   addStore() {
-    this.storeInfoRequest.configured=false; 
+   
     this.http.post<StoreInfoRequest>(environment.smartSafeAPIUrl + '/storeinfo/', this.storeInfoRequest).subscribe(
       res => {
         console.log(res);
@@ -77,6 +77,19 @@ export class CreatestoreComponent implements OnInit {
 
 storedelete(storeInfoRequest: StoreInfoRequest) {
   console.log('coming into delete')
+
+    if(storeInfoRequest.configured){
+      console.log('coming inside active true')
+      Swal.fire({
+        title: 'You cannot delete a active store ',
+        text: "",
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+       
+      })
+    }
+    if(!(storeInfoRequest.configured)){
 
   Swal.fire({
     title: 'Are you sure?',
@@ -114,6 +127,7 @@ storedelete(storeInfoRequest: StoreInfoRequest) {
     }
   })
 
+}
 }
 
 
