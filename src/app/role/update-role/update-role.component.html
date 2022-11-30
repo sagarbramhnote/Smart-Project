@@ -78,46 +78,15 @@
 
                       </fieldset>
                   </div>
-
-                  <!-- role active inactive -->
-                  <!-- <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="d-block">Status</label>
-                        <div class="input-group">
-                          <div class="custom-control custom-radio d-inline-block float-left">
-                            <input type="radio" checked id="active" name="active" class="custom-control-input"
-                              [value]=true [(ngModel)]="role.active">
-                            <label class="custom-control-label" for="active">Active</label>
-                          </div>
-                          <div class="custom-control custom-radio d-inline-block float-left ml-1">
-                            <input type="radio" id="inactive" name="inactive" class="custom-control-input" [value]=false
-                              [(ngModel)]="role.active">
-                            <label class="custom-control-label" for="inactive">In Active</label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>  
-                   -->  <!-- role avtive in active -->
-                  </div>
-                <!--   <div class="form-actions center">
-
-                    <button type="button" class="btn btn-raised btn-primary mr-1" (click)="addRole()"
-                      [disabled]="!addClassForm.valid">
-                      <i class="fa fa-check-square-o"></i> Create
-                    </button>
-                    <button type="button" class="btn btn-raised btn-warning">
-                      <i class="ft-x"></i> Cancel
-                    </button>
-                  </div> -->
-
                     <div class="form-actions center">
-                            <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/lo">
+                            <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/createrole">
                                 <i class="ft-x"></i> Cancel
                             </button>
                             <button type="button" class="btn btn-raised btn-primary" (click)="updateRole()"
-                                routerLink="/role">
+                                routerLink="/createrole">
                                 <i class="fa fa-check-square-o"></i> Update
                             </button>
+                        </div>
                         </div>
                 </form>
 

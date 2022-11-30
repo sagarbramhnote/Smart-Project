@@ -58,10 +58,10 @@ export class CreateroleComponent implements OnInit {
     this.getAllRolesList();
   }
   //here edit for role
-  editUsermanagement(role: Role) {
+  editRole(role) {
     
     
-     localStorage.setItem('editUser', JSON.stringify(role));
+     localStorage.setItem('editRole', JSON.stringify(role));
     
     this.router.navigate(["/role/updaterole"]);
 

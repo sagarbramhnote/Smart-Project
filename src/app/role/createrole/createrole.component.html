@@ -148,16 +148,8 @@
                       <tr>
                         <th>S.no</th>
                         <th>Role Name</th>
- 
-                         
                         <th>Features</th>
-                         <th>Action</th> 
-                       
-                                            </tr>
- 
-                        <th>Features</th>
-                        <th>Edit</th> 
-                        <th>Status</th>
+                        <th>Action</th> 
                       </tr>
  
                     </thead>
@@ -169,30 +161,11 @@
                         <td>{{i+1}}</td>
                         <td>{{role.name}}</td>
                       
-                       <!--
-                        <td> <a class="success p-0" data-original-title="" title="" (click)="editRole(role)"
-                            placement="bottom" ngbTooltip="Edit">
-                            <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                          </a>
-                          <a class="danger p-0" data-original-title="" title=""
-                                                      (click)="deleteClass(class.id)">
-                                                    
-                                                      <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a>
-                        
-                                                </td>  
-                        
- 
-
-                     <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                            [ngClass]="{' btn-primary' : role.active,'btn-warning' :!role.active }">
-                            {{ role.active ? 'Active' : 'Inactive' }}
-
-                          </button></td> -->
+                    
                           <td>{{role.features}}</td>
                           <td>
                                                     <a class="success p-0" data-original-title="" title=""
-                                                        (click)="editRolesmanagement(role)">
+                                                        (click)="editRole(role)">
                                                         <i class="ft-edit-2 font-medium-3 mr-2"></i>
                                                     </a>
                                                     <a class="danger p-0" data-original-title="" title=""
@@ -204,61 +177,6 @@
                       </tr>
                     </tbody>
                   </table>
-                  <!-- <div *ngIf="searchText != ''">
-                    <table class="table table-responsive-md text-center">
-                      <thead>
-                        <tr>
-                          <th>S.no</th>
-                          <th>Class Name</th>
-                          <th>Edit</th>
-                          <th>Status</th>
-
-                        </tr>
-                      </thead>
-                      <tbody *ngFor="let class of classes| filter:searchText ; index as i">
-                        <tr>
-                          <td>{{i+1+(page-1) * pageSize}}</td>
-                          <td>{{class.name}}</td>
-                          <td>
-                            <a class="success p-0" data-original-title="" title="" (click)="editClass(class)"
-                              placement="bottom" ngbTooltip="Edit">
-                              <i class="ft-edit-2 font-medium-3 mr-2"></i>
-                            </a>
-                            <a class="danger p-0" data-original-title="" title=""
-                                                        (click)="deleteClass(class.id)">
-                                                      
-                                                        <i class="icon-trash font-medium-3 mr-2"></i>
-                                                    </a>
-                          </td>
-                          <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
-                              [ngClass]="{' btn-primary' : class.active,'btn-warning' :!class.active }">
-                              {{ class.active ? 'Active' : 'Inactive' }}
-
-                            </button></td>
-
-
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div> -->
-                  <!-- <div class="row">
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="classes.length"
-                          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="formgroup">
-                        Items per Page:
-                        <select (change)="handlePageSizeChange($event)">
-                          <option *ngFor="let pageSize of pageSizes" [ngValue]="pageSize">
-                            {{ pageSize }}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </section>
