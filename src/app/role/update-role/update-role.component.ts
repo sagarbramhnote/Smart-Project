@@ -23,9 +23,12 @@ export class UpdateRoleComponent implements OnInit {
 
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
   role = new Role();
+  roleFeatures: string[] = ['All', 'InsertBills', 'Doors', 'Admin', 'ChangeRequestDoors', 'StandBank', 'OTPScreen', 'Valut'
+  ];
   ngOnInit() {
     this.role =  JSON.parse(localStorage.getItem('editRole'))
-
+    console.log(this.role)
+    console.log('role feture' + this.role.features)
 
   }
   updateRole(){
@@ -43,6 +46,7 @@ export class UpdateRoleComponent implements OnInit {
           console.log("Client-side error occured.");
         } else {
           console.log("Server-side error occured.");
+          console.log(err.error.message)
         }
         this.service.typeWarning();
       });
