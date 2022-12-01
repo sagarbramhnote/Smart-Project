@@ -137,17 +137,17 @@
                           </div>
                         </div>
                       </div>
-                  <!--    <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="storeSelect">Select Store Id</label>
-                          <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
-                            <option>Select Store Id</option>
-                            <option [ngValue]="role" *ngFor="let role of roles">
-                              {{role.name}} </option>
-                          </select>
-                        </fieldset>
-
-                      </div>-->
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="form-group">
+                            <label for="roleSelect">Select Store</label>
+                            <select class="form-control border-primary" [(ngModel)]="StoreInfoRequest" required id="storeName" name="storeName">
+                              <option [ngValue]="" *ngFor="let storeInfoRequest of storeInfoRequests">
+                                {{storeInfoRequest.storeName}} </option>
+                            </select>
+                          </fieldset>
+                        </div>
+                      </div>
                   
                   </div> 
              
