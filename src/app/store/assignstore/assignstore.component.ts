@@ -173,6 +173,7 @@ export class AssignstoreComponent implements OnInit {
     return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/user/" + userId + "/locks/" + lId, {});
   }
   assignStore(storeId: number, userId: number, lId: number) {
+    
     return this.assignStoretouser(storeId, userId,lId).
       subscribe((data) => {
         console.log(data);
