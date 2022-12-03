@@ -6,6 +6,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { StoreInfoRequest } from 'app/model/storeInfoRequest';
+
 
 import Swal from 'sweetalert2';
 
@@ -16,6 +18,19 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class LocksComponent implements OnInit {
+  storeInfoRequest = new StoreInfoRequest();
+  storeInfoRequests: StoreInfoRequest[];
+  getStoreList() {
+    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
+  }
+  getAllStoresList() {
+    return this.getStoreList().
+      subscribe((data) => {
+        console.log(data);
+        this.storeInfoRequests = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -138,6 +153,8 @@ locksdelete(lock: LocksInfoRequest) {
 
   ngOnInit() {
     this.getAllLocksList();
+    this.getAllStoresList();
+    console.log(this.getAllStoresList())
 
   }
 

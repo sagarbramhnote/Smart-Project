@@ -13,6 +13,7 @@ export class LocksInfoRequest {
 
     machineType:string;
 
+    store:String;
     
     connectors:string;
 
