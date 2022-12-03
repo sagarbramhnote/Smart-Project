@@ -42,7 +42,7 @@ export class CreateroleComponent implements OnInit {
     this.http.post<Role>(environment.smartSafeAPIUrl + '/role/', this.role).subscribe(
       res => {
         console.log(res);
-        //event.confirm.resolve(event.newData);
+              //event.confirm.resolve(event.newData);
         this.service.addSuccess();
       },
       
