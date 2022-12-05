@@ -17,7 +17,8 @@ export const ROUTES: RouteInfo[] = [
 
          ] 
     },
-  
+    { path: '/report/createreport', title: 'Reports ', icon: 'ft-align-left', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    
     { path: '', title: 'Settings', icon: 'ft-aperture', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
             submenu: [
     
