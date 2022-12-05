@@ -3,6 +3,7 @@
  import { environment } from 'environments/environment';
  import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
  import { NGXToastrService } from 'app/service/toastr.service';
+ import Swal from 'sweetalert2';
  
 
 @Component({
@@ -31,6 +32,8 @@ export class UpdateRoleComponent implements OnInit {
     console.log('role feture' + this.role.features)
 
   }
+
+//here
   updateRole(){
     this.http.put<Role>(environment.smartSafeAPIUrl +"/role/"+this.role.id, this.role, this.httpOptions).subscribe(
       res => {
@@ -55,6 +58,9 @@ export class UpdateRoleComponent implements OnInit {
   
   console.log(JSON.stringify(this.role));
 }
+
+
+
 
   }
 

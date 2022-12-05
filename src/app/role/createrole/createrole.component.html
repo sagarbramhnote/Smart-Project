@@ -28,7 +28,7 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="name"><span *ngIf="role.name == undefined || role.name =='' "
+                          <label for="name" class="form-control-label"><span *ngIf="role.name == undefined || role.name =='' "
                               style="color: red">*</span>Enter Role Name
                           </label>
                           <span class=" text-muted danger" *ngIf="!name.valid && (name.dirty || name.touched)">
