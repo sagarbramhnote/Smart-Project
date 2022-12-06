@@ -22,6 +22,7 @@ export class CreatereportComponent implements OnInit {
   dataStoreResponce:any[];
   empId:number;
   stores: StoreInfoRequest[];
+  employee = new UserAccount();
   role = new Role();
   roles: Role[];
   employees: UserAccount[];

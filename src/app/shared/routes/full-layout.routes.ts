@@ -14,6 +14,10 @@ export const Full_ROUTES: Routes = [
     path: 'settings',
     loadChildren: () => import('../../settings/settings.module').then(m => m.SettingsModule)
   },
+  {
+    path: 'report',
+    loadChildren: () => import('../../report/report.module').then(m => m.ReportModule)
+  },
   
   
   {
