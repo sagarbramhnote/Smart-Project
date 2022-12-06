@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { MychartComponent } from './mychart/mychart.component';
 import { ViewStatusComponent } from './view-status/view-status.component';
 
 const routes: Routes = [
@@ -18,6 +19,14 @@ const routes: Routes = [
      component: ViewStatusComponent,
     data: {
       title: 'view-status'
+    },
+    
+  },
+  {
+    path: 'charts',
+     component: MychartComponent,
+    data: {
+      title: 'mychart'
     },
     
   },
