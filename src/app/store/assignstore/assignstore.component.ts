@@ -162,11 +162,11 @@ export class AssignstoreComponent implements OnInit {
   }
 
   assignStoretouser(storeId: number, userId: number, kId:number, bId:number, pId: number, lId: number) {
-
     return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/user/" + userId + "/kiosk/" + kId + "/billValidator/" + bId + "/printer/" + pId + "/locks/" + lId, {});
   }
   assignStore(storeId: number, userId: number, kId:number, bId:number, pId: number, lId: number) {
     return this.assignStoretouser(storeId, userId, kId, bId, pId, lId).
+
       subscribe((data) => {
         console.log(data);
         this.router.navigateByUrl("dashboard");
