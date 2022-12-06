@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Role, User } from 'app/model/role';
+import { Role } from 'app/model/role';
+import { UserAccount } from 'app/model/user';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
+
 
 @Component({
   selector: 'app-createreport',
@@ -22,9 +24,9 @@ export class CreatereportComponent implements OnInit {
   stores: StoreInfoRequest[];
   role = new Role();
   roles: Role[];
-  employees: User[];
+  employees: UserAccount[];
   selectedStore = new StoreInfoRequest();
-  selectedUser:User;
+  selectedUser:UserAccount;
   startDate:string;
   endDate:string;
 
@@ -38,7 +40,7 @@ export class CreatereportComponent implements OnInit {
     this.getAllRolesList();
     
   }
-
+ 
   getStoreList() {
     return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
 
@@ -50,7 +52,7 @@ export class CreatereportComponent implements OnInit {
   findUserByRole(role: string) {
     console.log(this.role)
     
-    return this.http.get<User[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + this.role.name);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + this.role.name);
   }
   getAllRolesList() {
     return this.getRoleList().
