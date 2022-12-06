@@ -77,7 +77,7 @@ export class BillValidatorComponent implements OnInit {
     if(billValidator.active){
       console.log('coming inside active true')
       Swal.fire({
-        title: 'You cannot delete a active bill ',
+        title: 'You cannot delete a active bill validator ',
         text: "",
         type: 'warning',
         confirmButtonColor: '#3085d6',

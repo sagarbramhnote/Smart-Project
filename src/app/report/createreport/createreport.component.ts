@@ -175,4 +175,3 @@ export class CreatereportComponent implements OnInit {
 function saveAs(file: File) {
   throw new Error('Function not implemented.');
 }
-

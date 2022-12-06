@@ -3,8 +3,8 @@ import { RouteInfo } from './sidebar.metadata';
 //Sidebar menu Routes and data
 export const ROUTES: RouteInfo[] = [
      { path: '/dashboard', title: 'Dashboard ', icon: 'ft-home', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },  
-    { path: '/role/createrole', title: 'Role Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-    { path: '/store/createstore', title: 'Store Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/role/createrole', title: 'Role Management ', icon: 'ft-star', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/store/createstore', title: 'Store Management ', icon: 'ft-shopping-cart', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/user-management', title: 'User Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '', title: 'kiosk Management ', icon: 'ft-user', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, 
          submenu: [
@@ -18,7 +18,7 @@ export const ROUTES: RouteInfo[] = [
          ] 
     },
     { path: '/report/createreport', title: 'Reports ', icon: 'ft-align-left', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-    
+  
     { path: '', title: 'Settings', icon: 'ft-aperture', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,
             submenu: [
     
