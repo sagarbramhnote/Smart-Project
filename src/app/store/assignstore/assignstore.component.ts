@@ -96,84 +96,77 @@ export class AssignstoreComponent implements OnInit {
       })
   }
 
-  getKioskList() {
-    return this.http.get<KioskInfoRequest[]>(environment.smartSafeAPIUrl + '/kiosk/all');
-  }
-  getAllKioskList() {
-    return this.getKioskList().
-      subscribe((data) => {
-        console.log(data);
-        this.kiosks = data;
-        this.changeDetectorRefs.markForCheck();
-      });
+  getUnassignedkiosk() {
+    return this.http.get<KioskInfoRequest[]>(environment.smartSafeAPIUrl + '/kiosk/unassignedKiosks');
   }
 
-  getBillValidatorList() {
-    return this.http.get<BillValidatorInfoRequest[]>(environment.smartSafeAPIUrl + '/billValidator/all');
-  }
-  getAllBillValidatorList() {
-    return this.getBillValidatorList().
-      subscribe((data) => {
-        console.log(data);
-        this.billValidators = data;
-        this.changeDetectorRefs.markForCheck();
-      });
+  getkioskSelected() {
+    return this.getUnassignedkiosk().
+    subscribe((data) => {
+      console.log(data);
+      this.kiosks = data;
+      this.changeDetectorRefs.markForCheck();
+    });
   }
 
-  getPrinterList() {
-    return this.http.get<PrinterInfoRequest[]>(environment.smartSafeAPIUrl + '/printer/all');
-  }
-  getAllPrinterList() {
-    return this.getPrinterList().
-      subscribe((data) => {
-        console.log(data);
-        this.printers = data;
-        this.changeDetectorRefs.markForCheck();
-      });
+  getUnassignedBill() {
+    return this.http.get<BillValidatorInfoRequest[]>(environment.smartSafeAPIUrl + '/billValidator/unassignedBillValidators');
   }
 
-  getLockList() {
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/all');
+  getbillValidatorSelected() {
+    return this.getUnassignedBill().
+    subscribe((data) => {
+      console.log(data);
+      this.billValidators = data;
+      this.changeDetectorRefs.markForCheck();
+    });
   }
-  getAllLocksList() {
-    return this.getLockList().
-      subscribe((data) => {
-        console.log(data);
-        this.locks = data;
-        this.changeDetectorRefs.markForCheck();
-      });
-  }
-
-  getUnassignedlocks(digitalLockName: string) {
-    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/lockName/' + digitalLockName+"/unassignedlocks");
+  
+  getUnassignedprinter() {
+    return this.http.get<PrinterInfoRequest[]>(environment.smartSafeAPIUrl + '/printer/unassignedPrinters');
   }
 
-  onlockSelected(digitalLockName: string) {
-    this.getUnassignedlocks(digitalLockName).
-      subscribe((data) => {
-        this.locks = data;
+  getprinterSelected() {
+    return this.getUnassignedprinter().
+    subscribe((data) => {
+      console.log(data);
+      this.printers = data;
+      this.changeDetectorRefs.markForCheck();
+    });
+  }
 
-      })
+
+  getUnassignedlocks() {
+    return this.http.get<LocksInfoRequest[]>(environment.smartSafeAPIUrl + '/locks/unassignedlocks');
+  }
+
+  getlockSelected() {
+    return this.getUnassignedlocks().
+    subscribe((data) => {
+      console.log(data);
+      this.locks = data;
+      this.changeDetectorRefs.markForCheck();
+    });
   }
 
   ngOnInit() {
     this.getAllUnassignedStoresList();
-   
+  
     this.getAllRolesList();
-    this.getAllKioskList();
-    this.getAllBillValidatorList();
-    this.getAllPrinterList();
-    this.getAllLocksList();
+    this.getkioskSelected();
+    this.getbillValidatorSelected();
+    this.getprinterSelected();
+   this.getlockSelected();
     
    
   }
 
-  assignStoretouser(storeId: number, userId: number, lId: number) {
+  assignStoretouser(storeId: number, userId: number, kId:number, bId:number, pId: number, lId: number) {
 
-    return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/user/" + userId + "/locks/" + lId, {});
+    return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/user/" + userId + "/kiosk/" + kId + "/billValidator/" + bId + "/printer/" + pId + "/locks/" + lId, {});
   }
-  assignStore(storeId: number, userId: number, lId: number) {
-    return this.assignStoretouser(storeId, userId,lId).
+  assignStore(storeId: number, userId: number, kId:number, bId:number, pId: number, lId: number) {
+    return this.assignStoretouser(storeId, userId, kId, bId, pId, lId).
       subscribe((data) => {
         console.log(data);
         this.router.navigateByUrl("dashboard");
