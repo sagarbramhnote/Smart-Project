@@ -1,10 +1,18 @@
 export class UserInfoRequest {
 
-	 id:number;
+	id:number;
 
 	username:string;
 
-    password:string;
+	password:string;
+
+	firstName:string;
+
+	lastName:string;
+
+	email:string;
+
+	mobile:string;
 
 	role:string;
 

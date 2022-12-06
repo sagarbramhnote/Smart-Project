@@ -5,9 +5,11 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ViewStatusComponent } from './view-status/view-status.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MychartComponent } from './mychart/mychart.component';
+
 
 @NgModule({
-  declarations: [DashboardComponent, ViewStatusComponent],
+  declarations: [DashboardComponent, ViewStatusComponent, MychartComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -15,3 +17,4 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ]
 })
 export class DashboardModule { }
+

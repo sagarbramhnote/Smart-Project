@@ -1,10 +1,12 @@
-
 import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EndPoints } from '../config/EndPoints';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class NGXToastrService {
-    constructor(public toastr: ToastrService) { }
+    constructor(public toastr: ToastrService,private httpClient: HttpClient) { }
 
     // Success Type
     addSuccess() {
@@ -32,6 +34,9 @@ export class NGXToastrService {
     // Success Type
     typeWarning() {
         this.toastr.warning('Sorry! Failed.');
+    }
+    typeCustommessage(message){
+        this.toastr.warning(message)
     }
 
     // Success Type
@@ -84,5 +89,13 @@ export class NGXToastrService {
     messageClass() {
         this.toastr.info('Have fun storming the castle!', 'Miracle Max Says', { messageClass: 'text-uppercase' });
     }
+    gotoEmployeeReport(userId:string,data:any){
+        return this.httpClient.post<any>(EndPoints.PRINT_EMPLOYEE_REPORT(userId),data);
+      }
+    gotoEmployeeReportToExcel(path:string) :Observable<Blob>{
+        console.log('printing this')
+        return this.httpClient.get(EndPoints.DOWNLOAD_EMPLOYEE_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
+      }
+    
 
 }

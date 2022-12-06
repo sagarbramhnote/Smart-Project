@@ -5,5 +5,12 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
  smartSafeAPIUrl: 'http://localhost:8080'
 };
+=======
+
+ smartSafeAPIUrl: 'http://localhost:9002'
+};
+
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b

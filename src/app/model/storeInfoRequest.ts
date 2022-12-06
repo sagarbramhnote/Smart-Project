@@ -20,4 +20,8 @@ export class StoreInfoRequest {
 	  startTime: string;
 
 	  endTime: string;
+
+	  Locks:String[];
+
+
 }

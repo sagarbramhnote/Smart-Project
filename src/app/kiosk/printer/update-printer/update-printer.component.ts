@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { environment } from 'environments/environment';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -6,6 +7,13 @@ import { NGXToastrService } from 'app/service/toastr.service';
 import { identity } from 'rxjs';
 import { AddPrinter } from 'app/model/addprinter';
 
+=======
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { PrinterInfoRequest } from 'app/model/printerInfoRequest';
+import { NGXToastrService } from 'app/service/toastr.service';
+import { environment } from 'environments/environment';
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
 
 @Component({
   selector: 'app-update-printer',
@@ -14,6 +22,10 @@ import { AddPrinter } from 'app/model/addprinter';
   providers: [NGXToastrService]
 })
 export class UpdatePrinterComponent implements OnInit {
+<<<<<<< HEAD
+=======
+
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*' ,
@@ -22,12 +34,18 @@ export class UpdatePrinterComponent implements OnInit {
       'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
     })
   } 
+<<<<<<< HEAD
   addprinter = new AddPrinter();
   addprinters:AddPrinter[];
+=======
+  printer = new PrinterInfoRequest();
+  printers:PrinterInfoRequest[];
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
 
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
+<<<<<<< HEAD
     this.addprinter = JSON.parse(localStorage.getItem('editprinter'));
     console.log(this.addprinter);
     }
@@ -52,11 +70,33 @@ export class UpdatePrinterComponent implements OnInit {
 
   this.http.put<AddPrinter>(environment.smartSafeAPIUrl + '/addprinter/updateprinter/'+this.addprinter.id,this.addprinter,  this.httpOptions)
     .subscribe(
+=======
+    this.printer = JSON.parse(localStorage.getItem('editPrinter'));
+  }
+  getPrinterList() {
+    return this.http.get<PrinterInfoRequest[]>(environment.smartSafeAPIUrl + '/printer/all');
+  }
+  getAllPrinterList() {
+    return this.getPrinterList().
+      subscribe((data) => {
+        console.log(data);
+        this.printers = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+  updatePrinter(id:number) {
+    
+    this.http.put<PrinterInfoRequest>(environment.smartSafeAPIUrl + "/printer/"+id, this.printer, this.httpOptions).subscribe(
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.updateSuccess();
+<<<<<<< HEAD
         this.getAllPrintersList();
+=======
+        this.getAllPrinterList();
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
 
       },
       (err: HttpErrorResponse) => {
@@ -69,8 +109,14 @@ export class UpdatePrinterComponent implements OnInit {
       });
 
   
+<<<<<<< HEAD
   
 }
 }
 
 
+=======
+  console.log(JSON.stringify(this.printer));
+}
+}
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b

@@ -35,7 +35,8 @@
               "node_modules/@swimlane/ngx-datatable/release/assets/icons.css",
               "src/assets/css/demo.css",
               "src/assets/sass/app.scss",
-              "src/styles.css"
+              "src/styles.css",
+             
             ],
             "scripts": [
               "src/assets/vendor/pace/pace.min.js"
@@ -160,5 +161,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "1d25cb0d-7bbd-405e-8498-054e2cc9958b"
   }
 }

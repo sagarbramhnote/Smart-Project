@@ -1,10 +1,11 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-createstore',
@@ -13,6 +14,16 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class CreatestoreComponent implements OnInit {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
+    })
+  }
+
   storeInfoRequest = new StoreInfoRequest();
   storeInfoRequests: StoreInfoRequest[];
 
@@ -33,7 +44,7 @@ export class CreatestoreComponent implements OnInit {
       });
   }
   addStore() {
-    this.storeInfoRequest.configured=false; 
+   
     this.http.post<StoreInfoRequest>(environment.smartSafeAPIUrl + '/storeinfo/', this.storeInfoRequest).subscribe(
       res => {
         console.log(res);
@@ -52,6 +63,74 @@ export class CreatestoreComponent implements OnInit {
     console.log(JSON.stringify(this.storeInfoRequest));
     this.getAllStoresList();
   }
+
+  editstoreInfoRequest(storeInfoRequest: StoreInfoRequest) {
+
+    console.log(storeInfoRequest.id)
+    localStorage.setItem("id",String(storeInfoRequest.id))
+
+    console.log(storeInfoRequest)
+    localStorage.setItem('editStore', JSON.stringify(storeInfoRequest));
+    this.router.navigate(["/store/updatestore"]);
+
+  }
+
+storedelete(storeInfoRequest: StoreInfoRequest) {
+  console.log('coming into delete')
+
+    if(storeInfoRequest.configured){
+      console.log('coming inside active true')
+      Swal.fire({
+        title: 'You cannot delete a active store ',
+        text: "",
+        type: 'warning',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+       
+      })
+    }
+    if(!(storeInfoRequest.configured)){
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+
+  }).then((result) => {
+    console.log("hi");
+
+    if (result.value) {
+      console.log("hello");
+      this.http.delete<StoreInfoRequest>(environment.smartSafeAPIUrl + "/storeinfo/" + storeInfoRequest.id, this.httpOptions).subscribe(
+        res => {
+          console.log(res);
+          //event.confirm.resolve(event.newData);
+          this.service.typeDelete();
+          this.getAllStoresList();
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log("Client-side error occured.");
+          } else {
+            console.log("Server-side error occured.");
+          }
+        });
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+
+}
+}
+
+
   ngOnInit() {
     this.getAllStoresList();
   }

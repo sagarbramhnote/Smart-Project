@@ -2,18 +2,31 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { KioskRoutingModule } from './kiosk-routing.module';
-import { CreatekioskComponent } from './createkiosk/createkiosk.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BillValidatorComponent } from './bill-validator/bill-validator.component';
 import { PrinterComponent } from './printer/printer.component';
 import { LocksComponent } from './locks/locks.component';
+<<<<<<< HEAD
 import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
 
 
 @NgModule({
   declarations: [CreatekioskComponent, BillValidatorComponent, PrinterComponent, LocksComponent, UpdatePrinterComponent],
+=======
+import { KioskComponent } from './kiosks/kiosk.component';
+import { UpdateLocksComponent } from './locks/update-locks/update-locks.component';
+import { UpdateBillValidatorComponent } from './bill-validator/update-bill-validator/update-bill-validator.component';
+import { UpdatePrinterComponent } from './printer/update-printer/update-printer.component';
+import { UpdateKioskComponent } from './kiosks/update-kiosk/update-kiosk.component';
+
+
+@NgModule({
+
+  declarations: [BillValidatorComponent, PrinterComponent, LocksComponent, KioskComponent,UpdateLocksComponent,UpdateBillValidatorComponent, UpdatePrinterComponent, UpdateKioskComponent ],
+
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
   imports: [
     CommonModule,
     KioskRoutingModule,

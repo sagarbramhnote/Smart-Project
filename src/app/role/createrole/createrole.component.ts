@@ -1,9 +1,14 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+//import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
+
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
+ import swal from 'sweetalert2';
+
+
 
 @Component({
   selector: 'app-createrole',
@@ -12,6 +17,16 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class CreateroleComponent implements OnInit {
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*' ,
+      'Access-Control-Allow-Methods':'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
+    })
+  }
+
   role = new Role();
   roles: Role[];
   roleFeatures: string[] = ['All', 'InsertBills', 'Doors', 'Admin', 'ChangeRequestDoors', 'StandBank', 'OTPScreen', 'Valut'
@@ -45,6 +60,7 @@ export class CreateroleComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
       },
+      
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log("Client-side error occured.");
@@ -56,9 +72,80 @@ export class CreateroleComponent implements OnInit {
     console.log(JSON.stringify(this.role));
     this.getAllRolesList();
   }
+<<<<<<< HEAD
   
+=======
+  //here edit for role
+  editRole(role) {
+    
+    
+     localStorage.setItem('editRole', JSON.stringify(role));
+    
+    this.router.navigate(["/role/updaterole"]);
+
+  }
+
+deleteRole(role: Role) {
+  console.log('coming into delete' + role.active)
+
+  if(role.active){
+    console.log('coming inside active true')
+    swal.fire({
+      title: 'You cannot delete a active User ',
+      text: "",
+      type: 'warning',
+      // showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      // confirmButtonText: 'Yes, delete it!'
+
+    })
+
+  }
+  if(!(role.active)){
+  swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+
+  }).then((result) => {
+    console.log("hi");
+
+    if (result.value) {
+      console.log("hello");
+      this.http.delete<Role>(environment.smartSafeAPIUrl + "/role/" + role.id, this.httpOptions).subscribe(
+        res => {
+          console.log(res);
+          //event.confirm.resolve(event.newData);
+          this.service.typeDelete();
+          this.getAllRolesList();
+        },
+        (err: HttpErrorResponse) => {
+          if (err.error instanceof Error) {
+            console.log("Client-side error occured.");
+          } else {
+            console.log("Server-side error occured.");
+          }
+        });
+      swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
+    }
+  })
+
+  }
+}
+
+>>>>>>> f44bdfcffaf084fb0d992b961a7307cf51693d3b
   ngOnInit() {
     this.getAllRolesList();
   }
+
 
 }

@@ -8,6 +8,7 @@ export class Role{
 	description:string;
 
 	features:string[];
+	active:boolean;
 
 
 }
