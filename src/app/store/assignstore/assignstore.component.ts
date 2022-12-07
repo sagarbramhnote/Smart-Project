@@ -71,6 +71,7 @@ export class AssignstoreComponent implements OnInit {
       })
   }
 
+
   getRoleList() {
 
     return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
@@ -102,7 +103,7 @@ export class AssignstoreComponent implements OnInit {
 
   getkioskSelected() {
     return this.getUnassignedkiosk().
-    subscribe((data) => {
+    subscribe((data) =>{
       console.log(data);
       this.kiosks = data;
       this.changeDetectorRefs.markForCheck();

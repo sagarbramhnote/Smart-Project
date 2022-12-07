@@ -96,6 +96,10 @@ export class NGXToastrService {
         console.log('printing this')
         return this.httpClient.get(EndPoints.DOWNLOAD_EMPLOYEE_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
       }
+      gotoEODReportToExcel(path:string) :Observable<Blob>{
+        console.log('printing this')
+        return this.httpClient.get(EndPoints.DOWNLOAD_EOD_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
+      }
     
 
 }

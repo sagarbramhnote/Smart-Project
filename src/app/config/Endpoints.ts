@@ -9,4 +9,8 @@ export class EndPoints {
         // return this.BASE_URL+"/reports/employeeReport/"+userId;
         return this.BASE_URL+"/reports/employeeReportExport/"+userId;
     }
+    static DOWNLOAD_EOD_REPORT_TO_EXCEL(userId:string):string{
+        // return this.BASE_URL+"/reports/employeeReport/"+userId;
+        return this.BASE_URL+"/reports/EODReportExport/"+userId;
+    }
 }

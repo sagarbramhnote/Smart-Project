@@ -14,6 +14,7 @@ import { environment } from 'environments/environment';
   styleUrls: ['./createreport.component.scss'],
   providers: [NGXToastrService]
 })
+
 export class CreatereportComponent implements OnInit {
 
   store = new StoreInfoRequest();
@@ -30,6 +31,8 @@ export class CreatereportComponent implements OnInit {
   selectedUser:UserAccount;
   startDate:string;
   endDate:string;
+  toDay:boolean;
+  toDayValue:number
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -146,6 +149,7 @@ export class CreatereportComponent implements OnInit {
    
 
   }
+  
 
   generateclass(){
     let request={
