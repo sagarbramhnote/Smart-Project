@@ -21,15 +21,15 @@
                   <form #loginForm="ngForm" class="form" novalidate>
 
                     <div>
-                      <label class="form-control-label" for="username">
-                        <span *ngIf="username == undefined ||username =='' " style="color: red">*</span>User Name
+                      <label class="form-control-label" for="email">
+                        <span *ngIf="email == undefined ||email =='' " style="color: red">*</span>User Name
                       </label>
                       <span class=" text-muted danger"
-                        *ngIf="!username.valid && (username.dirty || username.touched)">
+                        *ngIf="!email.valid && (email.dirty ||email.touched)">
                         is required!
                       </span>
-                      <input type="username" id="username" name="username" [(ngModel)]="username"
-                        class="form-control mb-3" placeholder="Username" ngModel #username="ngModel" required />
+                      <input type="email" id="email" name="email" [(ngModel)]="email"
+                        class="form-control mb-3" placeholder=" Enter emailid" ngModel #email="ngModel" required />
 
 
                     </div>
