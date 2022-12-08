@@ -40,7 +40,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="corpStoreNo">Enter Corp StoreNo</label>
-                                      <input type="text" id="corpStoreNo" class="form-control border-primary"
+                                      <input type="number" id="corpStoreNo" class="form-control border-primary"
                                           name="corpStoreNo" [(ngModel)]="storeInfoRequest.corpStoreNo">
                                   </div>
                               </div>
@@ -51,7 +51,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="serialNumber">Store Serial Number</label>
-                                      <input class="form-control border-primary" type="text" id="serialNumber"
+                                      <input class="form-control border-primary" type="number" id="serialNumber"
                                           [(ngModel)]="storeInfoRequest.serialNumber" name="serialNumber">
                                   </div>
                               </div>
@@ -77,7 +77,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Account Number</label>
-                                    <input matInput class="form-control border-primary" id="accountNumber" type="text"
+                                    <input matInput class="form-control border-primary" id="accountNumber" type="number"
                                         name="accountNumber" [(ngModel)]="storeInfoRequest.accountNumber" numberOnly>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                   <label for="minimumBalance">Minimum Balance</label>
-                                  <input class="form-control border-primary" type="text" id="minimumBalance"
+                                  <input class="form-control border-primary" type="number" id="minimumBalance"
                                       [(ngModel)]="storeInfoRequest.minimumBalance" name="minimumBalance">
                               </div>
                           </div>

@@ -39,7 +39,7 @@
                         <span class=" text-muted danger" *ngIf="!billAcceptorNo.valid && (billAcceptorNo.dirty || billAcceptorNo.touched)">
                           is required!
                         </span>
-                        <input type="text" id="billAcceptorNo" class="form-control border-primary" name="billAcceptorNo"
+                        <input type="number" id="billAcceptorNo" class="form-control border-primary" name="billAcceptorNo"
                           [(ngModel)]="billValidator.billAcceptorNo" ngModel #billAcceptorNo="ngModel" required>
                        
                         </div>

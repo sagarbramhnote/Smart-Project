@@ -54,7 +54,7 @@
                           <span class=" text-muted danger" *ngIf="!corpStoreNo.valid && (corpStoreNo.dirty || corpStoreNo.touched)">
                             is required!
                           </span>
-                          <input type="text" id="corpStoreNo" class="form-control border-primary" name="corpStoreNo"
+                          <input type="number" id="corpStoreNo" class="form-control border-primary" name="corpStoreNo"
                             [(ngModel)]="storeInfoRequest.corpStoreNo" ngModel #corpStoreNo="ngModel" required>
 
                         </div>
@@ -68,7 +68,7 @@
                             *ngIf="!serialNumber.valid && (serialNumber.dirty || serialNumber.touched)">
                             is required!
                           </span>
-                          <input type="text" id="serialNumber" class="form-control border-primary" name="serialNumber"
+                          <input type="number" id="serialNumber" class="form-control border-primary" name="serialNumber"
                             [(ngModel)]="storeInfoRequest.serialNumber" ngModel #serialNumber="ngModel" required>
 
                         </div>
@@ -113,7 +113,7 @@
                             *ngIf="!accountNumber.valid && (accountNumber.dirty || accountNumber.touched)">
                             is required!
                           </span>
-                          <input type="text" id="accountNumber" class="form-control border-primary" name="accountNumber"
+                          <input type="number" id="accountNumber" class="form-control border-primary" name="accountNumber"
                             [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required>
 
                         </div>
@@ -129,7 +129,7 @@
                               *ngIf="!minimumBalance.valid && (minimumBalance.dirty || minimumBalance.touched)">
                               is required!
                             </span>
-                            <input type="text" id="minimumBalance" class="form-control border-primary" name="minimumBalance"
+                            <input type="number" id="minimumBalance" class="form-control border-primary" name="minimumBalance"
                               [(ngModel)]="storeInfoRequest.minimumBalance" ngModel #minimumBalance="ngModel" required>
   
                           </div>
