@@ -17,6 +17,14 @@ export const ROUTES: RouteInfo[] = [
 
          ] 
     },
+    { path: '', title: 'Assign To Store ', icon: 'ft-shopping-cart', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false, 
+    submenu: [
+       { path: '/assign/assignstore', title: 'Assign Store', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+       { path: '/assign/assign-user-to-store', title: 'Assign User To Store', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
+    ] 
+    },
+
     { path: '/report/createreport', title: 'Reports ', icon: 'ft-align-left', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
   
     { path: '', title: 'Settings', icon: 'ft-aperture', class: 'has-sub', badge: '', badgeClass: '', isExternalLink: false,

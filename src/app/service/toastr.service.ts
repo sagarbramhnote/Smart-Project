@@ -12,6 +12,9 @@ export class NGXToastrService {
     addSuccess() {
         this.toastr.success('Sucessfully added!');
     }
+    addAssignSuccess() {
+        this.toastr.success('Sucessfully Assign!');
+    }
     updateSuccess() {
         this.toastr.success('Sucessfully updated!');
     }

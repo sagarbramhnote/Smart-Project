@@ -42,6 +42,11 @@ export const Full_ROUTES: Routes = [
     path: 'kiosk',
     loadChildren: () => import('../../kiosk/kiosk.module').then(m => m.KioskModule)
   },
+
+  {
+    path: 'assign',
+    loadChildren: () => import('../../assign/assign.module').then(m => m.AssignModule)
+  },
   
   
   
