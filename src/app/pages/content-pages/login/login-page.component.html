@@ -20,6 +20,24 @@
                   </p>
                   <form #loginForm="ngForm" class="form" novalidate>
 
+
+                    <div>
+                      <label class="form-control-label" for="emaill">
+                        <span *ngIf="email == undefined ||email =='' " style="color: red">*</span>User Name
+                      </label>
+                      <span class=" text-muted danger"
+                        *ngIf="!email.valid && (email.dirty ||email.touched)">
+                        is required!
+                      </span>
+                      <input type="email" id="email" name="email" [(ngModel)]="email"
+                        class="form-control mb-3" placeholder=" email" ngModel #emaill="ngModel" required />
+
+
+                    
+                      </div>
+
+                   
+
                     
                     <div>
                       <label class="form-control-label" for="passwordd">
