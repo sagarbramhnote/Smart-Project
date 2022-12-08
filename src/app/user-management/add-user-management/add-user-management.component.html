@@ -71,7 +71,7 @@
                           *ngIf="!email.valid && (email.dirty || email.touched)">
                           is required!
                         </span>
-                        <input type="email" id="email" class="form-control border-primary" name="email"
+                        <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control border-primary" name="email"
                           [(ngModel)]="user.email" ngModel #email="ngModel" required>
                       </div>
                     </div>
@@ -84,8 +84,8 @@
                           *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
                           is required!
                         </span>
-                        <input required type="number" id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" required >
+                        <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="^\d{10}$" required >
                       </div>
                     </div>
                   </div>
