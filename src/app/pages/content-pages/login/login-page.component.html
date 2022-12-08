@@ -19,6 +19,21 @@
                     Welcome back, please login to your account.
                   </p>
                   <form #loginForm="ngForm" class="form" novalidate>
+
+                    <div>
+                      <label class="form-control-label" for="username">
+                        <span *ngIf="username == undefined ||username =='' " style="color: red">*</span>User Name
+                      </label>
+                      <span class=" text-muted danger"
+                        *ngIf="!passwordd.valid && (passwordd.dirty || passwordd.touched)">
+                        is required!
+                      </span>
+                      <input type="username" id="username" name="username" [(ngModel)]="username"
+                        class="form-control mb-3" placeholder="Username" ngModel #passwordd="ngModel" required />
+
+
+                    </div>
+
                    
                     <div>
                       <label class="form-control-label" for="passwordd">
