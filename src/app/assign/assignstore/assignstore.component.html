@@ -96,18 +96,42 @@
                       </div>
                     </div>
 
-                    <div class="col-md-6">
-                      <div class="form-group">
+                      <!-- <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
-                          <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
-                            (change)='getLockSelected(lock.digitalLockName)' name="lock" >
+                           <select class="form-control border-primary" [(ngModel)]="lock"  required id="lock"
+                            (change)='getLockSelected(lock.digitalLockName)' name="lock">
                             <option [ngValue]="lock" *ngFor="let lock of locks">
-                              {{lock.digitalLockName}} </option>
-                          </select>
+                              {{lock.digitalLockName}} </option>   
+                          </select>                 
                         </fieldset>
-                      </div>
-                    </div>
+                    </div>  -->
+
+                      <div class="col-md-6" >
+                      <fieldset class="form-group">
+                          <label for="features"> <span
+                                  *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
+                                  style="color: red">*</span>Features
+                          </label>
+                          <span class=" text-muted danger"
+                              *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
+                              is required!
+                          </span>
+                          <ng-select [items]="locks" name="digitalLockName" 
+                              bindLabel="digitalLockName" placeholder="Select digitalLockName" appendTo="body"
+                              multiple="true" [(ngModel)]="lock.digitalLockName"
+                              (change)='getlockSelected(lock.digitalLockName)'
+                              [ngModelOptions]="{standalone: true}"  ngModel
+                              #digitalLockName="ngModel"   required>
+                             
+                              <ng-option *ngFor="let lock of locks"></ng-option>
+  
+                          </ng-select>
+
+                      </fieldset>
+                  </div>  
+
+
 
                   </div>  
                  
@@ -116,7 +140,7 @@
 
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1"
+                    <button type="button" class="btn btn-raised btn-primary mr-1" 
                       (click)="assignStore(store.id, kiosk.id, billValidator.id, printer.id, lock.id)" [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Assign Store
                     </button>

@@ -21,6 +21,7 @@ export const ROUTES: RouteInfo[] = [
     submenu: [
        { path: '/assign/assignstore', title: 'Assign Store', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
        { path: '/assign/assign-user-to-store', title: 'Assign User To Store', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+       { path: '/assign/assign-permission', title: 'Assign Permissions', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
 
     ] 
     },
