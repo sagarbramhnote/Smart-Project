@@ -85,7 +85,7 @@
                           is required!
                         </span>
                         <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="^\d{10}$" required >
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="[-+()0-9]{10,13}" required >
                       </div>
                     </div>
                   </div>
