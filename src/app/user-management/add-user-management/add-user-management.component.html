@@ -82,10 +82,10 @@
                           Mobile</label>
                         <span class=" text-muted danger"
                           *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
-                          is required!
+                          plz enter valid mobile number!
                         </span>
                         <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="[-+()0-9]{10,13}" required >
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="[-+()0-9]{10,13}"  maxlength="10" required >
                       </div>
                     </div>
                   </div>
@@ -98,8 +98,10 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="roleSelect">Select Role</label>
-                          <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
+                          <label for="roleSelect">
+                          <span *ngIf="user.role == undefined || user.role =='' "
+                            style="color: red">*</span>Select Role</label>
+                            <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
                             <option [ngValue]="role" *ngFor="let role of roles">
                               {{role.name}} </option>
                           </select>
