@@ -82,10 +82,12 @@
                           Mobile</label>
                         <span class=" text-muted danger"
                           *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
-                          plz enter valid mobile number!
+                          
+                          <span *ngIf="mobile.errors.required">is required!</span>
+                          <span *ngIf="mobile.errors.pattern"> mobile number must be 10 digits</span>
                         </span>
                         <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="[-+()0-9]{10,13}"  maxlength="10" required >
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="^\d{10}$"  maxlength="10" required >
                       </div>
                     </div>
                   </div>
@@ -101,6 +103,11 @@
                           <label for="roleSelect">
                           <span *ngIf="user.role == undefined || user.role =='' "
                             style="color: red">*</span>Select Role</label>
+                            <span class=" text-muted danger"
+                          *ngIf="!role.valid && (role.dirty || role.touched)">
+                          is required!
+                        </span>
+
                             <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
                             <option [ngValue]="role" *ngFor="let role of roles">
                               {{role.name}} </option>
@@ -114,9 +121,9 @@
                         <fieldset class="form-group">
                           <label for="roleSelect">Select Password criteria</label>
                           <select class="form-control border-primary" [(ngModel)]="user.passLength" required id="passLength" name="passLength">
-                            <option Value="four">
+                            <option value="4">
                               4 DIGITS </option>
-                              <option value= "six" >6 DIGITS</option>
+                              <option value= "6" >6 DIGITS</option>
                           </select>
                         </fieldset>
                       </div>
@@ -148,10 +155,13 @@
                           
                         <span class=" text-muted danger"
                           *ngIf="!password.valid && (password.dirty || password.touched)" >
-                          is required!
+                          
+                          <span  *ngIf="password.errors.pattern">password must be {{user.passLength}} digits</span>
+                          
                         </span>
+                        
                         <input type="password" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required>
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required   pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
                       </div>
                     </div>
                     
@@ -179,7 +189,7 @@
                   routerLink="/user-management" [disabled]="!registerForm.valid">
                   <i class="fa fa-check-square-o"></i> Save
                 </button>
-                  <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
+                  <button type="reset" class="btn btn-raised btn-warning mr-1" >
                     <i class="ft-x"></i> Cancel
                   </button>
                  
