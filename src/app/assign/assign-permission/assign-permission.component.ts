@@ -1,15 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Role } from 'app/model/role';
+import { NGXToastrService } from 'app/service/toastr.service';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-assign-permission',
   templateUrl: './assign-permission.component.html',
-  styleUrls: ['./assign-permission.component.scss']
+  styleUrls: ['./assign-permission.component.scss'],
+  providers: [NGXToastrService]
 })
 export class AssignPermissionComponent implements OnInit {
 
-  constructor() { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Access-Control-Allow-Origin': '*' ,
+      'Access-Control-Allow-Methods':'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+      'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
+    })
+  }
+
+  role = new Role();
+  roles: Role[];
+
+  constructor(private http: HttpClient,
+    private router: Router,
+    private service: NGXToastrService,
+    private changeDetectorRefs: ChangeDetectorRef) {
+  }
+
+  getRoleList() {
+
+    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
+  }
+  getAllRolesList() {
+    return this.getRoleList().
+      subscribe((data) => {
+        console.log(data);
+        this.roles = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  addWebModule() {
+
+    this.http.post<Role>(environment.smartSafeAPIUrl + '/role/addwebmodule', this.role).subscribe(
+
+      res => {
+        console.log(res);
+        //event.confirm.resolve(event.newData);
+        this.service.addSuccess();
+        this.getAllRolesList();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log("Client-side error occured.");
+        } else {
+          console.log("Server-side error occured.");
+        }
+        this.service.typeWarning();
+      });
+    console.log(JSON.stringify(this.role));
+    this.getAllRolesList();
+  }
 
   ngOnInit() {
+    this.getAllRolesList();
   }
 
 }
