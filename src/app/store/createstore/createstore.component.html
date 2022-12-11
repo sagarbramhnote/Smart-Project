@@ -111,10 +111,11 @@
                           </label>
                           <span class=" text-muted danger"
                             *ngIf="!accountNumber.valid && (accountNumber.dirty || accountNumber.touched)">
-                            is required!
-                          </span>
-                          <input type="number" id="accountNumber" class="form-control border-primary" name="accountNumber"
-                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required>
+                            <span *ngIf="accountNumber.errors.required"> is required!</span>
+                            <span *ngIf="accountNumber.errors.maxlength"> plz enter valid Account number!</span>
+                             </span>
+                          <input type="text" id="accountNumber" class="form-control border-primary" name="accountNumber"
+                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required   maxlength="15">
 
                         </div>
                       </div>
