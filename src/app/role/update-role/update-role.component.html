@@ -58,26 +58,7 @@
                       </div>
 
                     </div>
-                    <div class="col-md-6">
-                      <fieldset class="form-group">
-                          <label for="features"> <span
-                                  *ngIf="role.features == undefined || role.features =='' "
-                                  style="color: red">*</span>Features
-                          </label>
-                          <span class=" text-muted danger"
-                              *ngIf="!features.valid && (features.dirty || features.touched)">
-                              is required!
-                          </span>
-                          <ng-select [items]="roleFeatures" name="features"
-                              bindLabel="name" placeholder="Select features" appendTo="body"
-                              multiple="true" [(ngModel)]="role.features"
-                              [ngModelOptions]="{standalone: true}"  ngModel
-                              #features="ngModel" required>
-                              
-                          </ng-select>
-
-                      </fieldset>
-                  </div>
+     
                     <div class="form-actions center">
                             <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/role/createrole" >
                                 <i class="ft-x"></i> Cancel

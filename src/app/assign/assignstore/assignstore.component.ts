@@ -31,9 +31,6 @@ export class AssignstoreComponent implements OnInit {
   lock = new LocksInfoRequest();
   locks : LocksInfoRequest[];
 
-  
-
-
   printer = new PrinterInfoRequest();
    printers : PrinterInfoRequest[];
 
@@ -125,7 +122,7 @@ export class AssignstoreComponent implements OnInit {
     }
     assignStore(storeId: number, kId:number, bId:number, pId: number, lId: number) {
      
-    
+  
      
       return this.assignStoreKBPL(storeId, kId, bId, pId, lId).
         subscribe((data) => {

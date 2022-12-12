@@ -24,6 +24,16 @@ export class AssignPermissionComponent implements OnInit {
 
   role = new Role();
   roles: Role[];
+  roleWebModule: string[] = ['All', 'Dashboard', 'Role Management', 'User Management', 'Kiosk Management', 'Assign User', 'Assign Store', 'Reports', 'Change Pin'
+];
+
+SelectedWebModuleNames: string[];
+searchText: string = '';
+
+roleFeatures: string[] = ['All', 'InsertBills', 'Doors', 'Admin', 'ChangeRequestDoors', 'StandBank', 'OTPScreen', 'Valut'
+];
+
+SelectedFeatureNames: string[];
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -45,13 +55,17 @@ export class AssignPermissionComponent implements OnInit {
   }
 
   addWebModule() {
+    var role = new Role();
+    role.webModule = this.SelectedWebModuleNames;
+
+    role.features = this.SelectedFeatureNames;
 
     this.http.post<Role>(environment.smartSafeAPIUrl + '/role/addwebmodule', this.role).subscribe(
 
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
-        this.service.addSuccess();
+        this.service.addAssignSuccess();
         this.getAllRolesList();
       },
       (err: HttpErrorResponse) => {
@@ -64,6 +78,7 @@ export class AssignPermissionComponent implements OnInit {
       });
     console.log(JSON.stringify(this.role));
     this.getAllRolesList();
+      
   }
 
   ngOnInit() {

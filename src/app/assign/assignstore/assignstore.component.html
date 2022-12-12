@@ -22,7 +22,7 @@
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
-               {{lock| json}}
+              
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
                     <div class="row">
@@ -122,7 +122,7 @@
                           <ng-select [items]="locks" name="digitalLockName" 
                               bindLabel="digitalLockName" placeholder="Select digitalLockName" appendTo="body"
                               multiple="true" [(ngModel)]="lock.digitalLockName"
-                              (change)='getlockSelected(lock.digitalLockName)'
+                             
                               [ngModelOptions]="{standalone: true}"  ngModel
                               #digitalLockName="ngModel"  required>
                              

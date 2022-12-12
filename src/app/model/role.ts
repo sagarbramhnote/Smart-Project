@@ -10,6 +10,7 @@ export class Role{
 	webModule:string[];
 
 	features:string[];
+	
 	active:boolean;
 
 
