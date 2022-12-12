@@ -21,24 +21,20 @@
                   <form #loginForm="ngForm" class="form" novalidate>
 
 
-                    <div>
-                      <label class="form-control-label" for="emaill">
-                        <span *ngIf="email == undefined ||email =='' " style="color: red">*</span>User Name
+                     <div>
+                      <label class="form-control-label" for="usernamee">
+                        <span *ngIf="username == undefined ||username =='' " style="color: red">*</span>User Name
                       </label>
                       <span class=" text-muted danger"
-                        *ngIf="!email.valid && (email.dirty ||email.touched)">
+                        *ngIf="!usernamee.valid && (usernamee.dirty ||usernamee.touched)">
                         is required!
                       </span>
-                      <input type="email" id="email" name="email" [(ngModel)]="email"
-                        class="form-control mb-3" placeholder=" email" ngModel #emaill="ngModel" required />
+                      <input type="username" id="username" name="username" [(ngModel)]="username"
+                        class="form-control mb-3" placeholder=" username" ngModel #usernamee="ngModel" required />
+
+                      </div> 
 
 
-                    
-                      </div>
-
-                   
-
-                    
                     <div>
                       <label class="form-control-label" for="passwordd">
                         <span *ngIf="password == undefined || password =='' " style="color: red">*</span>Pass
@@ -47,9 +43,8 @@
                         *ngIf="!passwordd.valid && (passwordd.dirty || passwordd.touched)">
                         is required!
                       </span>
-                      <input type="password" id="password" name="password" [(ngModel)]="password"
+                      <input type="password" id="password" name="password" [(ngModel)]="password" (click)="showPassword()"
                         class="form-control mb-3" placeholder="Password" ngModel #passwordd="ngModel" required />
-
 
                     </div>
 
