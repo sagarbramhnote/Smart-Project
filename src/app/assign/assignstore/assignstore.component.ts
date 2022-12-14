@@ -30,6 +30,7 @@ export class AssignstoreComponent implements OnInit {
 
   lock = new LocksInfoRequest();
   locks : LocksInfoRequest[];
+  
 
   printer = new PrinterInfoRequest();
    printers : PrinterInfoRequest[];

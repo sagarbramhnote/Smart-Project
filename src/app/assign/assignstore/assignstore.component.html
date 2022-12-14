@@ -97,17 +97,16 @@
                       </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
                           <ng-select [multiple]="true" [(ngModel)]="lock" (change)='getlockSelected(lock.digitalLockName)' id="lock" name="lock">
-                            <ng-option *ngFor="let lock of locks" [value]="lock.id">{{lock.id}}</ng-option>
-                            <ng-option [value]="'custom'">Custom</ng-option>
+                            <ng-option *ngFor="let lock of locks" [value]="lock.digitalLockName">{{lock.digitalLockName}}</ng-option>
                         </ng-select>
                         </fieldset>
                       </div>
-                    </div>
+                    </div> -->
 <!-- 
                       <div class="col-md-6">
                         <fieldset class="form-group">
@@ -121,7 +120,7 @@
                     </div>  -->
                      
                    
-                     <!-- <div class="col-md-6" >
+                     <div class="col-md-6" >
                       <fieldset class="form-group">
                           <label for="digitalLockName"> <span
                                   *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
@@ -139,10 +138,8 @@
                                
                           </ng-select>
 
-                       
-
                       </fieldset>
-                  </div>   -->
+                  </div>  
 
               
 
