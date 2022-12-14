@@ -28,3 +28,18 @@
     width: 100%;
     bottom:100px;
 }
+label.form-check-label{
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 0px;
+}
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 6.25rem;
+}
+.form-check.col-4.col-md-2.col-lg-4{
+    flex: 13 11 38.333333%;
+    max-width: 50.333333%;
+}
+

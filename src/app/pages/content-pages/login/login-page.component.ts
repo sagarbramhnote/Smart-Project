@@ -67,7 +67,10 @@ export class LoginPageComponent {
         //event.confirm.resolve(event.newData);
         if (res) {
           localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigate(['/dashboard']);
+
+     
+     
+         this.router.navigate(['/dashboard']);
           this.service.loginSuccess();
           this.spinner.hide();
           

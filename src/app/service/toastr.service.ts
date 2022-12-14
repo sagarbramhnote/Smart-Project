@@ -103,6 +103,19 @@ export class NGXToastrService {
         console.log('printing this')
         return this.httpClient.get(EndPoints.DOWNLOAD_EOD_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
       }
+
+
+      //new
+  
+    getInsertBillsReport(transactionNumber:string){
+        return this.httpClient.get<object>(EndPoints.GETINSERTBILLSREPORT(transactionNumber));
+    }
+    getEODReport(storeName:string,toDay:boolean){
+        return this.httpClient.get<object>(EndPoints.GETEODREPORT(storeName,toDay));
+    }
+    getStandBankReport(storeName:string,sDay:string,endDay:string,safeType:string){
+        return this.httpClient.get<object>(EndPoints.GETSTANDBANKREPORT(storeName,sDay,endDay,safeType));
+    }
     
 
 }
