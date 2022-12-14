@@ -89,7 +89,7 @@ export class AssignUserToStoreComponent implements OnInit {
         subscribe((data) => {
           console.log(data);
           this.service.addAssignSuccess();
-          this.router.navigateByUrl("dashboard");
+          this.router.navigateByUrl("assign/assign-user-to-store");
         });
     }
 

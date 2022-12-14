@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssignstoreComponent } from './assignstore.component';
+import { AssignPermissionComponent } from './assign-permission.component';
 
-describe('AssignstoreComponent', () => {
-  let component: AssignstoreComponent;
-  let fixture: ComponentFixture<AssignstoreComponent>;
+describe('AssignPermissionComponent', () => {
+  let component: AssignPermissionComponent;
+  let fixture: ComponentFixture<AssignPermissionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssignstoreComponent ]
+      declarations: [ AssignPermissionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssignstoreComponent);
+    fixture = TestBed.createComponent(AssignPermissionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -29,9 +29,6 @@
               
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <!-- <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
-                      Assign Store
-                     </button> -->
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -111,10 +108,11 @@
                           </label>
                           <span class=" text-muted danger"
                             *ngIf="!accountNumber.valid && (accountNumber.dirty || accountNumber.touched)">
-                            is required!
-                          </span>
-                          <input type="number" id="accountNumber" class="form-control border-primary" name="accountNumber"
-                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required>
+                            <span *ngIf="accountNumber.errors.required"> is required!</span>
+                            <span *ngIf="accountNumber.errors.maxlength"> plz enter valid Account number!</span>
+                             </span>
+                          <input type="text" id="accountNumber" class="form-control border-primary" name="accountNumber"
+                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required   maxlength="15">
 
                         </div>
                       </div>

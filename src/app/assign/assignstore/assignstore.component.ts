@@ -107,6 +107,8 @@ export class AssignstoreComponent implements OnInit {
     }
   
     getlockSelected() {
+
+      
       return this.getUnassignedlocks().
       subscribe((data) => {
         console.log(data);
@@ -119,12 +121,14 @@ export class AssignstoreComponent implements OnInit {
       return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/kiosk/" + kId + "/billValidator/" + bId + "/printer/" + pId + "/locks/" + lId, {});
     }
     assignStore(storeId: number, kId:number, bId:number, pId: number, lId: number) {
-      return this.assignStoreKBPL(storeId, kId, bId, pId, lId).
+     
   
+     
+      return this.assignStoreKBPL(storeId, kId, bId, pId, lId).
         subscribe((data) => {
           console.log(data);
           this.service.addAssignSuccess();
-          this.router.navigateByUrl("dashboard");
+          this.router.navigateByUrl("assign/assignstore");
         });
     }
   

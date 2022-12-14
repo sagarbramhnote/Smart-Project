@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { AssignstoreComponent } from './assignstore/assignstore.component';
 import { AssignRoutingModule } from './assign-routing.module';
 import { AssignUserToStoreComponent } from './assign-user-to-store/assign-user-to-store.component';
+import { AssignPermissionComponent } from './assign-permission/assign-permission.component';
 
 
 @NgModule({
-  declarations: [AssignstoreComponent, AssignUserToStoreComponent],
+  declarations: [AssignstoreComponent, AssignUserToStoreComponent, AssignPermissionComponent],
   imports: [
     CommonModule,
     AssignRoutingModule,

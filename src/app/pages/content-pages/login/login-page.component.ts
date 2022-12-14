@@ -30,6 +30,8 @@ export class LoginPageComponent {
   user = new UserAccount();
   @ViewChild('f', { static: false }) loginForm: NgForm;
   password: string;
+  username: string;
+  
   
 
   constructor(private router: Router,
@@ -48,12 +50,14 @@ export class LoginPageComponent {
     this.router.navigate(['register'], { relativeTo: this.route.parent });
   }
 
-  onLogin(email: string, password: string) {
+  onLogin(username: string, password: string) {
    // alert("Login Successfull" + email + password);
   // this.router.navigate(['/dashboard']);
    this.spinner.show();
     var user = new UserAccount();
     user.password = this.password;
+    user.username = this.username;
+
     user.feature = "Admin";
   //  localStorage.setItem("email",email);
     //this.getIP();
