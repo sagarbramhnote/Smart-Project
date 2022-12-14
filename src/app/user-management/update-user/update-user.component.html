@@ -18,7 +18,7 @@
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
                                         <input type="text" id="firstName" class="form-control border-primary"
-                                            name="firstName" [(ngModel)]="user.firstName" >
+                                            name="firstName" [(ngModel)]="user.firstName">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -34,7 +34,7 @@
                                     <div class="form-group">
                                         <label for="email">Email</label>
                                         <input class="form-control border-primary" type="email" id="email"
-                                            [(ngModel)]=user.email name="email">
+                                            [(ngModel)]=user.email name="email" readonly>
                                     </div>
                                 </div>
 
@@ -42,7 +42,7 @@
                                     <div class="form-group">
                                         <label for ="mobile">Mobile</label>
                                         <input matInput class="form-control" id="mobile" type="number"
-                                            name="mobile" [(ngModel)]="user.mobile" maxlength="10" numberOnly>
+                                            name="mobile" [(ngModel)]="user.mobile" maxlength="10" numberOnly readonly>
 
 
                                     </div>
@@ -71,7 +71,7 @@
                                     <div class="form-group">
                                         <label for ="username">username</label>
                                         <input matInput class="form-control" id="username" type="text"
-                                            name="username" [(ngModel)]="user.username" maxlength="10" numberOnly>
+                                            name="username" [(ngModel)]="user.username" maxlength="10" numberOnly readonly>
 
 
                                     </div>
@@ -117,7 +117,7 @@
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-6">
+                            <!-- <div class="col-md-6">
                                 <div class="form-group">
                                   <fieldset class="form-group">
                                     <label for="roleSelect">Select Password criteria</label>
@@ -128,7 +128,7 @@
                                     </select>
                                   </fieldset>
                                 </div>
-                              </div>
+                              </div> -->
                             </div>
                         <div class="form-actions center">
                             <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">

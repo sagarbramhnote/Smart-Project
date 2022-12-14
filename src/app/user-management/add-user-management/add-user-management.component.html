@@ -86,7 +86,7 @@
                           <span *ngIf="mobile.errors.required">is required!</span>
                           <span *ngIf="mobile.errors.pattern"> mobile number must be 10 digits</span>
                         </span>
-                        <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
+                        <input type="tel"  id="mobile" class="form-control border-primary" name="mobile" 
                           [(ngModel)]="user.mobile" ngModel #mobile="ngModel" pattern="^\d{10}$"  maxlength="10" required >
                       </div>
                     </div>
@@ -186,7 +186,7 @@
 
                 <div class="form-actions center">
                   <button type="button" class="btn btn-raised btn-primary mr-1" (click)=" onSaveConfirm()"
-                  routerLink="/user-management" [disabled]="!registerForm.valid">
+                  routerLink="/user-management/add-user-management" [disabled]="!registerForm.valid">
                   <i class="fa fa-check-square-o"></i> Save
                 </button>
                   <button type="reset" class="btn btn-raised btn-warning mr-1" >

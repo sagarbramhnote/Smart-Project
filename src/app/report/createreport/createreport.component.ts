@@ -192,4 +192,35 @@ export class CreatereportComponent implements OnInit {
       //this.ipcService.send('message',data);
     });
   }
+
+  generatReport(){
+    let request={
+      'startDate':this.startDate,
+      'endDate':this.endDate
+    };
+    
+    console.log("into the excel report")
+    this.service.gotoEmployeeReportToExcel(this.empId+"/"+request.startDate+"/"+request.endDate).subscribe(x =>{
+    console.log(x)
+    console.log('coming here')
+    
+     const blob = new Blob([x], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml'});
+        
+
+    
+     const data = window.URL.createObjectURL(blob);
+     const link = document.createElement('a');
+     link.href = data;
+     link.download =  'EmployeeBillEntryReport.xlsx'; 
+   
+
+    link.dispatchEvent(new MouseEvent ('click', {bubbles: true, cancelable: true, view: window}));
+     setTimeout (function() {
+      window.URL.revokeObjectURL(data);
+       link. remove();
+     }, 100);
+    }
+   )
+
+  }
 }
