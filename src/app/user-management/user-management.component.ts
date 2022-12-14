@@ -9,6 +9,7 @@ import { NGXToastrService } from 'app/service/toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { data } from 'app/shared/data/smart-data-table';
 import { Role } from 'app/model/role';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -33,6 +34,8 @@ export class UserManagementComponent implements OnInit {
   users: UserAccount[];
 
   user1 =  new UserAccount();
+  
+  
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef, private spinner: NgxSpinnerService) {
     this.getAllUsersList();
@@ -59,7 +62,10 @@ export class UserManagementComponent implements OnInit {
       //event.confirm.reject();
     }
     console.log(JSON.stringify(this.user));
+    
+   
   }
+
   getUserList() {
 
     return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
