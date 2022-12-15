@@ -1,10 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { UserAccount } from 'app/model/user';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user-management',
@@ -14,6 +15,7 @@ import { Role } from 'app/model/role';
 })
 export class AddUserManagementComponent implements OnInit {
   show: boolean;
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -29,6 +31,7 @@ export class AddUserManagementComponent implements OnInit {
 
   role = new Role();
   roles: Role[];
+  registerForm: any;
 
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef) {
@@ -49,16 +52,24 @@ export class AddUserManagementComponent implements OnInit {
       });
   }
   onSaveConfirm() {
+    console.log("this method is add usermethod component");
     this.user.role = this.role.name;
     console.log(this.user.passLength)
+
+
    
 
     this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
+        
         this.service.addSuccess();
+      
         this.getAllUsersList();
+        this.addClassForm.reset();
+        this.router.navigate(["/user-management"]);
+
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -90,6 +101,7 @@ export class AddUserManagementComponent implements OnInit {
   ngOnInit() {
     
     this.getAllRolesList();
+    
   }
 
 }

@@ -25,6 +25,10 @@ export class CreatereportComponent implements OnInit {
   ishideStoreLocation:boolean
   ishideStoreName:boolean
   isStandBankRadio:boolean;
+  ishideToBillReport:boolean;
+  ishideToEODReport:boolean;
+  ishideToStandReport:boolean;
+  ishideToChangeReport:boolean;
 
   storeNameDy:string;
   dataResponce:any[];
@@ -37,6 +41,8 @@ export class CreatereportComponent implements OnInit {
   selectedUser:UserAccount;
   startDate:string;
   endDate:string;
+  storeName:string;
+  toDay:boolean;
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -59,6 +65,10 @@ export class CreatereportComponent implements OnInit {
       this.ishideStoreLocation=false;
       this.ishideStoreName=false;
       this.isStandBankRadio=true;
+      this.ishideToBillReport=false;
+      this.ishideToEODReport=true;
+      this.ishideToStandReport=true;
+      this.ishideToChangeReport=true;
 
       this.service.getInsertBillsReport("12").subscribe(data=>{
 
@@ -74,6 +84,13 @@ export class CreatereportComponent implements OnInit {
       this.ishideUserName=true;
       this.ishideUserType=true;
       this.isStandBankRadio=true;
+      this.ishideToBillReport=true;
+      this.ishideToEODReport=false;
+      this.ishideToStandReport=true;
+      this.ishideToChangeReport=true;
+
+
+
 
       this.service.getEODReport("XYZ",true).subscribe(data=>{
         
@@ -88,6 +105,14 @@ export class CreatereportComponent implements OnInit {
       this.ishideUserName=true;
       this.ishideUserType=true;
       this.isStandBankRadio=false;
+      this.ishideToBillReport=true;
+      this.ishideToEODReport=true;
+      this.ishideToStandReport=false;
+      this.ishideToChangeReport=true;
+
+
+
+
 
       this.service.getStandBankReport("XYZ",this.startDate,this.endDate,'MAINSAFE').subscribe(data=>{
         
@@ -102,6 +127,14 @@ export class CreatereportComponent implements OnInit {
       this.ishideUserName=true;
       this.ishideUserType=true;
       this.isStandBankRadio=true;
+      this.ishideToBillReport=true;
+      this.ishideToEODReport=true;
+      this.ishideToStandReport=true;
+      this.ishideToChangeReport=false;
+
+
+
+
     }
   }
 
@@ -193,6 +226,7 @@ export class CreatereportComponent implements OnInit {
     });
   }
 
+  //Insert Bill Excel Report
   generatReport(){
     let request={
       'startDate':this.startDate,
@@ -205,6 +239,42 @@ export class CreatereportComponent implements OnInit {
     console.log('coming here')
     
      const blob = new Blob([x], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml'});
+        
+
+    
+     const data = window.URL.createObjectURL(blob);
+     const link = document.createElement('a');
+     link.href = data;
+     link.download =  'EmployeeBillEntryReport.xlsx'; 
+   
+
+    link.dispatchEvent(new MouseEvent ('click', {bubbles: true, cancelable: true, view: window}));
+     setTimeout (function() {
+      window.URL.revokeObjectURL(data);
+       link. remove();
+     }, 100);
+    }
+   )
+
+  }
+
+  //EOD Excel Report
+  generatEODReport(){
+
+   this.toDay=true;
+
+    let request={
+      'startDate':this.startDate,
+      'endDate':this.endDate
+    };
+    
+    console.log("into the excel report")
+    this.service.getEODReport(this.storeName,this.toDay).subscribe(x =>{
+  
+    console.log(x)
+    console.log('coming here')
+    
+     const blob = new Blob([], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml'});
         
 
     

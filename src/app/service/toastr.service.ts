@@ -38,6 +38,12 @@ export class NGXToastrService {
     typeWarning() {
         this.toastr.warning('Sorry! Failed.');
     }
+
+     // Warning Type
+     typeforstore() {
+        this.toastr.warning('Store is already Exits.');
+    }
+
     typeCustommessage(message){
         this.toastr.warning(message)
     }

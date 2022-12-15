@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
@@ -13,6 +14,8 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class KioskComponent implements OnInit {
+
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
 
   httpOptions = {
@@ -52,6 +55,8 @@ AddKiosk() {
       //event.confirm.resolve(event.newData);
       this.service.addSuccess();
       this.getAllKioskList();
+      this.addClassForm.reset();
+
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {

@@ -170,10 +170,27 @@
                       (click)="generateclass()" [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Generate Report
                     </button>
-                    <button type="button" class="btn btn-raised btn-primary mr-1"
+
+                    <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToBillReport"
                     (click)="generatReport()" [disabled]="!addClassForm.valid">
                     <i class="fa fa-check-square-o"></i> Export to Excel
                   </button>
+                  
+                  <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToEODReport"
+                  (click)="generatEODReport()" [disabled]="!addClassForm.valid">
+                  <i class="fa fa-check-square-o"></i> Export to Excel
+                </button>
+
+                <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToStandReport"
+                (click)="generatStandReport()" [disabled]="!addClassForm.valid">
+                <i class="fa fa-check-square-o"></i> Export to Excel
+              </button>
+
+              <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToChangeReport"
+              (click)="generatChangeReport()" [disabled]="!addClassForm.valid">
+              <i class="fa fa-check-square-o"></i> Export to Excel
+            </button>
+                
                     <button type="button" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>

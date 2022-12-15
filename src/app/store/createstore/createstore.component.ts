@@ -51,6 +51,7 @@ export class CreatestoreComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllStoresList();
+        
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -58,7 +59,7 @@ export class CreatestoreComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeWarning();
+        this.service.typeforstore();
       });
     console.log(JSON.stringify(this.storeInfoRequest));
     this.getAllStoresList();
