@@ -21,6 +21,7 @@ export class StoreInfoRequest {
 
 	  endTime: string;
 
+	  Locks:String[];
 
 
 }

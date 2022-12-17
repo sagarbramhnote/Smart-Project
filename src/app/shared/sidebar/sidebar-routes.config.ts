@@ -10,8 +10,10 @@ export const ROUTES: RouteInfo[] = [
          submenu: [
             { path: '/kiosk/newkiosk', title: 'Add Kiosk', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             { path: '/kiosk/bill-validator', title: 'Add Bill Validator', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
             { path: '/kiosk/printer', title: 'Add Printer', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             { path: '/kiosk/locks', title: 'Add Locks', icon: ''  , class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+
 
          ] 
     },

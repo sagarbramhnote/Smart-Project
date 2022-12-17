@@ -13,15 +13,4 @@ export class EndPoints {
         // return this.BASE_URL+"/reports/employeeReport/"+userId;
         return this.BASE_URL+"/reports/EODReportExport/"+userId;
     }
-
-   
-    static GETINSERTBILLSREPORT(transactionNumber:string){
-        return this.BASE_URL+"reports/insertBillsReport/"+transactionNumber;
-    }
-    static GETEODREPORT(storeName:string,toDay:boolean){
-        return this.BASE_URL+"reports/EODReportExport/"+storeName+"/"+toDay;
-    }
-    static GETSTANDBANKREPORT(storeName:string,sDay:string,endDay:string,safeType:string){
-        return this.BASE_URL+"reports/standBankReportExport/"+storeName+"/"+safeType+"/"+sDay+"/"+endDay;
-    }
 }

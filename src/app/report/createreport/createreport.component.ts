@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Role} from 'app/model/role';
-import { StoreInfoRequest } from 'app/model/storeInfoRequest';
+import { Role } from 'app/model/role';
 import { UserAccount } from 'app/model/user';
+import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { isBuffer } from 'util';
+
 
 @Component({
   selector: 'app-createreport',
@@ -14,35 +14,25 @@ import { isBuffer } from 'util';
   styleUrls: ['./createreport.component.scss'],
   providers: [NGXToastrService]
 })
+
 export class CreatereportComponent implements OnInit {
 
   store = new StoreInfoRequest();
-  
-  ishideToDate:boolean
-  ishideFromDate:boolean
-  ishideUserName:boolean
-  ishideUserType:boolean
-  ishideStoreLocation:boolean
-  ishideStoreName:boolean
-  isStandBankRadio:boolean;
-  ishideToBillReport:boolean;
-  ishideToEODReport:boolean;
-  ishideToStandReport:boolean;
-  ishideToChangeReport:boolean;
-
   storeNameDy:string;
   dataResponce:any[];
-  dataStoreResponce: Array<StoreInfoRequest> = [];
+  dataStoreResponce:any[];
   empId:number;
   stores: StoreInfoRequest[];
-  roles: Array<Role>=[];
+  employee = new UserAccount();
+  role = new Role();
+  roles: Role[];
   employees: UserAccount[];
   selectedStore = new StoreInfoRequest();
   selectedUser:UserAccount;
   startDate:string;
   endDate:string;
-  storeName:string;
   toDay:boolean;
+  toDayValue:number
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -52,92 +42,9 @@ export class CreatereportComponent implements OnInit {
   ngOnInit() {
     this.getAllStoresList();
     this.getAllRolesList();
-    this.changeDivSection("Bills");
-    this.isStandBankRadio=true;
+    
   }
-
-  changeDivSection(type:string){
-    if(type=="Bills"){
-      this.ishideToDate=false;
-      this.ishideFromDate=false;
-      this.ishideUserName=false;
-      this.ishideUserType=false;
-      this.ishideStoreLocation=false;
-      this.ishideStoreName=false;
-      this.isStandBankRadio=true;
-      this.ishideToBillReport=false;
-      this.ishideToEODReport=true;
-      this.ishideToStandReport=true;
-      this.ishideToChangeReport=true;
-
-      this.service.getInsertBillsReport("12").subscribe(data=>{
-
-
-      })
-
-    }
-    else if(type=="EOD"){
-      this.ishideStoreLocation=false;
-      this.ishideStoreName=false;
-      this.ishideToDate=true;
-      this.ishideFromDate=true;
-      this.ishideUserName=true;
-      this.ishideUserType=true;
-      this.isStandBankRadio=true;
-      this.ishideToBillReport=true;
-      this.ishideToEODReport=false;
-      this.ishideToStandReport=true;
-      this.ishideToChangeReport=true;
-
-
-
-
-      this.service.getEODReport("XYZ",true).subscribe(data=>{
-        
-
-      })
-    }
-    else if(type=="StandBank"){
-      this.ishideStoreLocation=false;
-      this.ishideStoreName=false;
-      this.ishideToDate=false;
-      this.ishideFromDate=false;
-      this.ishideUserName=true;
-      this.ishideUserType=true;
-      this.isStandBankRadio=false;
-      this.ishideToBillReport=true;
-      this.ishideToEODReport=true;
-      this.ishideToStandReport=false;
-      this.ishideToChangeReport=true;
-
-
-
-
-
-      this.service.getStandBankReport("XYZ",this.startDate,this.endDate,'MAINSAFE').subscribe(data=>{
-        
-
-      })
-    }
-    else if(type=="ChangeRequest"){
-      this.ishideStoreLocation=false;
-      this.ishideStoreName=false;
-      this.ishideToDate=false;
-      this.ishideFromDate=false;
-      this.ishideUserName=true;
-      this.ishideUserType=true;
-      this.isStandBankRadio=true;
-      this.ishideToBillReport=true;
-      this.ishideToEODReport=true;
-      this.ishideToStandReport=true;
-      this.ishideToChangeReport=false;
-
-
-
-
-    }
-  }
-
+ 
   getStoreList() {
     return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
 
@@ -147,22 +54,22 @@ export class CreatereportComponent implements OnInit {
     return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
   }
   findUserByRole(role: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + role);
+    console.log(this.role)
+    
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + this.role.name);
   }
   getAllRolesList() {
     return this.getRoleList().
       subscribe((data) => {
         console.log(data);
-        // let rolesData=new Role();
         // for (let index = 0; index < data.length; index++) {
         //   if(data[index].name=="EMPLOYEE" || data[index].name=="MANAGER"){
-            
-        //     this.roles.push(reles)
+        //     this.roles.push('{name:data[index].name,value:data[index].id}')
         //   }
 
         // }
         // this.roles=data;
-        
+        this.roles = data;
         this.changeDetectorRefs.markForCheck();
       });
   }
@@ -189,6 +96,8 @@ export class CreatereportComponent implements OnInit {
   }
 
   onRoleChange(role: any) {
+    //alert(role);
+
     return this.findUserByRole(role).
       subscribe((data) => {
         console.log(data);
@@ -206,27 +115,7 @@ export class CreatereportComponent implements OnInit {
   endDateC(endDate){
     this.endDate=endDate.target.value;
   }
-  generateclass(){
-    let request={
-      'startDate':this.startDate,
-      'endDate':this.endDate
-    };
-    this.service.gotoEmployeeReport(this.empId+"",request).subscribe(data=>{
-      //data.name=this.selectedUser.username;
-      data.reportName="Manager Report";
-      this.dataResponce=data.data[0].data;
-      
-      let storeResponse=new StoreInfoRequest();
-      storeResponse.corpStoreNo=data.storeInfoResponse.corpStoreNo;
-      storeResponse.storeName=data.storeInfoResponse.storeName;
-      storeResponse.serialNumber=data.storeInfoResponse.serialNumber;
-      this.dataStoreResponce.push(storeResponse); //({values:data.storeInfoResponse})
-      console.log(this.dataStoreResponce);
-      //this.ipcService.send('message',data);
-    });
-  }
-
-  //Insert Bill Excel Report
+ 
   generatReport(){
     let request={
       'startDate':this.startDate,
@@ -234,7 +123,7 @@ export class CreatereportComponent implements OnInit {
     };
     
     console.log("into the excel report")
-    this.service.gotoEmployeeReportToExcel(this.empId+"/"+request.startDate+"/"+request.endDate).subscribe(x =>{
+  this.service.gotoEmployeeReportToExcel(this.empId+"/"+request.startDate+"/"+request.endDate).subscribe(x =>{
     console.log(x)
     console.log('coming here')
     
@@ -256,41 +145,37 @@ export class CreatereportComponent implements OnInit {
     }
    )
 
+     
+   
+
   }
+  
 
-  //EOD Excel Report
-  generatEODReport(){
-
-   this.toDay=true;
-
+  generateclass(){
     let request={
       'startDate':this.startDate,
       'endDate':this.endDate
     };
-    
-    console.log("into the excel report")
-    this.service.getEODReport(this.storeName,this.toDay).subscribe(x =>{
-  
-    console.log(x)
-    console.log('coming here')
-    
-     const blob = new Blob([], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml'});
-        
 
+    this.service.gotoEmployeeReport(this.empId+"",request).subscribe(data=>{
+      //data.name=this.selectedUser.username;
+      data.reportName="Manager Report";
+      console.log(data)
+      console.log(data.data.name)
+     
+      // this.dataResponce=data.data[0].data;
+      this.dataResponce=data.data[1].data;
+      
+      
+
+      this.dataStoreResponce= data.storeInfoResponse;//({values:data.storeInfoResponse})
+      console.log(this.dataStoreResponce);
+      //this.ipcService.send('message',data);
+    });
     
-     const data = window.URL.createObjectURL(blob);
-     const link = document.createElement('a');
-     link.href = data;
-     link.download =  'EmployeeBillEntryReport.xlsx'; 
-   
-
-    link.dispatchEvent(new MouseEvent ('click', {bubbles: true, cancelable: true, view: window}));
-     setTimeout (function() {
-      window.URL.revokeObjectURL(data);
-       link. remove();
-     }, 100);
-    }
-   )
-
+    
   }
+}
+function saveAs(file: File) {
+  throw new Error('Function not implemented.');
 }

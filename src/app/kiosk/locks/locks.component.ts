@@ -2,7 +2,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
@@ -10,7 +10,6 @@ import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 
 
 import Swal from 'sweetalert2';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-locks',
@@ -19,10 +18,6 @@ import { NgForm } from '@angular/forms';
   providers: [NGXToastrService]
 })
 export class LocksComponent implements OnInit {
-
-  @ViewChild("addClassForm", null) addClassForm: NgForm;
-
-
   storeInfoRequest = new StoreInfoRequest();
   storeInfoRequests: StoreInfoRequest[];
   getStoreList() {
@@ -79,8 +74,6 @@ export class LocksComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllLocksList();
-        this.addClassForm.reset();
-
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -139,7 +132,6 @@ locksdelete(lock: LocksInfoRequest) {
           //event.confirm.resolve(event.newData);
           this.service.typeDelete();
           this.getAllLocksList();
-
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {

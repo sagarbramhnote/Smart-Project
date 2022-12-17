@@ -19,6 +19,4 @@ export class UserInfoRequest {
 	active:boolean;
 
 	feature:string;
-
-	passLength:string;
 }

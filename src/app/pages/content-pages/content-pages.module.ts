@@ -12,6 +12,7 @@ import { MaintenancePageComponent } from "./maintenance/maintenance-page.compone
 import { RegisterPageComponent } from "./register/register-page.component";
 import { OtpComponent } from '../otp/otp.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PComponent } from './p/p.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
         MaintenancePageComponent,
         RegisterPageComponent,
         OtpComponent,
-        
+        PComponent
     ]
 })
 export class ContentPagesModule { }

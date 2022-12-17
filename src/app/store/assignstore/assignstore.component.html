@@ -6,6 +6,7 @@
         <div class="container-fluid">
           <div class="row text-left">
             <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">Store Management</div>
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
@@ -24,11 +25,14 @@
               <div class="col-md-12">
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
+                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/createstore">
+                      Create Store
+                    </button>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <fieldset class="form-group">
-                            <label for="storeSelect">Store Name</label>
+                            <label for="storeSelect">Select Store</label>
                             <select class="form-control border-primary" [(ngModel)]="store" required id="store"
                               (change)='onStoreSelected(store.storeName)' name="store">
                               <option [ngValue]="store" *ngFor="let store of stores">
@@ -50,6 +54,35 @@
                       </div>
 
                     </div>
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="form-group">
+                            <label for="roleSelect">Select Role</label>
+                            <select class="form-control border-primary" [(ngModel)]="role"
+                              (change)='onRoleSelected(role.name)' required id="role" name="role">
+                              <option [ngValue]="role" *ngFor="let role of roles">
+                                {{role.name}} </option>
+                            </select>
+                          </fieldset>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select User </label>
+                          <select required [(ngModel)]="employee" id="employee" name="employee"
+                            class="form-control border-primary">
+                            <option>Select User Name</option>
+                            <option [ngValue]="employee" *ngFor="let employee of employees">
+                              {{employee.username}} </option>
+                          </select>
+                        </fieldset>
+
+                      </div>
+
+
+                    </div>
 
                   </div>
 
@@ -57,7 +90,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="kioskSelect">Kiosk Name</label>
+                          <label for="kioskSelect">Select Kiosk</label>
                           <select class="form-control border-primary" [(ngModel)]="kiosk" required id="kiosk"
                             (change)='getKioskSelected(kiosk.kioskName)' name="kiosk">
                             <option [ngValue]="kiosk" *ngFor="let kiosk of kiosks">
@@ -70,7 +103,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="billSelect">Bill Acceptor Name</label>
+                          <label for="billSelect">Select Bill Validator</label>
                           <select class="form-control border-primary" [(ngModel)]="billValidator" required id="billValidator"
                             (change)='getBillValidatorSelected(billValidator.billAcceptorName)' name="billValidator">
                             <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
@@ -86,7 +119,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="printerSelect">Printer Name</label>
+                          <label for="printerSelect">Select Printer</label>
                           <select class="form-control border-primary" [(ngModel)]="printer" required id="printer"
                             (change)='getPrinterSelected(printer.printerName)' name="printer">
                             <option [ngValue]="printer" *ngFor="let printer of printers">
@@ -96,52 +129,29 @@
                       </div>
                     </div>
 
-                      <!-- <div class="col-md-6">
+                    <div class="col-md-6">
+                      <div class="form-group">
                         <fieldset class="form-group">
-                          <label for="lockSelect">Digital Lock</label>
-                           <select class="form-control border-primary" [(ngModel)]="lock"  required id="lock"
-                            (change)='getLockSelected(lock.digitalLockName)' name="lock">
+                          <label for="lockSelect">Select Lock</label>
+                          <select class="form-control border-primary" [(ngModel)]="lock" required id="lock"
+                            (change)='getLockSelected(lock.digitalLockName)' name="lock" >
                             <option [ngValue]="lock" *ngFor="let lock of locks">
-                              {{lock.digitalLockName}} </option>   
-                          </select>                 
+                              {{lock.digitalLockName}} </option>
+                          </select>
                         </fieldset>
-                    </div>  -->
-
-                      <div class="col-md-6" >
-                      <fieldset class="form-group">
-                          <label for="features"> <span
-                                  *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
-                                  style="color: red">*</span>Features
-                          </label>
-                          <span class=" text-muted danger"
-                              *ngIf="!digitalLockName.valid && (digitalLockName.dirty || digitalLockName.touched)">
-                              is required!
-                          </span>
-                          <ng-select [items]="locks" name="digitalLockName" 
-                              bindLabel="digitalLockName" placeholder="Select digitalLockName" appendTo="body"
-                              multiple="true" [(ngModel)]="lock.digitalLockName"
-                              (change)='getlockSelected(lock.digitalLockName)'
-                              [ngModelOptions]="{standalone: true}"  ngModel
-                              #digitalLockName="ngModel"   required>
-                             
-                              <ng-option *ngFor="let lock of locks"></ng-option>
-  
-                          </ng-select>
-
-                      </fieldset>
-                  </div>  
-
-
+                      </div>
+                    </div>
 
                   </div>  
+
                  
                   
 
 
                   <div class="form-actions center">
 
-                    <button type="button" class="btn btn-raised btn-primary mr-1" 
-                      (click)="assignStore(store.id, kiosk.id, billValidator.id, printer.id, lock.id)" [disabled]="!addClassForm.valid">
+                    <button type="button" class="btn btn-raised btn-primary mr-1"
+                      (click)="assignStore(store.id, employee.id, kiosk.id, billValidator.id, printer.id, lock.id)" [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Assign Store
                     </button>
                     <button type="button" class="btn btn-raised btn-warning">

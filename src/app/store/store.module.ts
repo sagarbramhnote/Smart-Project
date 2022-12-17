@@ -5,10 +5,11 @@ import { StoreRoutingModule } from './store-routing.module';
 import { CreatestoreComponent } from './createstore/createstore.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { AssignstoreComponent } from './assignstore/assignstore.component';
 import { UpdatestoreComponent } from './updatestore/updatestore.component';
 
 @NgModule({
-  declarations: [CreatestoreComponent, UpdatestoreComponent],
+  declarations: [CreatestoreComponent, AssignstoreComponent, UpdatestoreComponent],
   imports: [
     CommonModule,
     StoreRoutingModule,

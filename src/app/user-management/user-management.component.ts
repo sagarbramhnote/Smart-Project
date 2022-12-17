@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
 import swal from 'sweetalert2';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
@@ -9,7 +9,6 @@ import { NGXToastrService } from 'app/service/toastr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { data } from 'app/shared/data/smart-data-table';
 import { Role } from 'app/model/role';
-import { NgForm } from '@angular/forms';
 
 
 
@@ -20,7 +19,7 @@ import { NgForm } from '@angular/forms';
 
 })
 export class UserManagementComponent implements OnInit {
-  @ViewChild("aregisterForm", null) addClassForm: NgForm;
+
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -34,12 +33,9 @@ export class UserManagementComponent implements OnInit {
   users: UserAccount[];
 
   user1 =  new UserAccount();
-  
-  
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef, private spinner: NgxSpinnerService) {
     this.getAllUsersList();
-    
 
   }
   onSaveConfirm() {
@@ -48,7 +44,6 @@ export class UserManagementComponent implements OnInit {
       this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/saveuser', this.user, this.httpOptions).subscribe(
         res => {
           console.log(res);
-          
 
           //event.confirm.resolve(event.newData);
         },
@@ -64,10 +59,7 @@ export class UserManagementComponent implements OnInit {
       //event.confirm.reject();
     }
     console.log(JSON.stringify(this.user));
-    
-   
   }
-
   getUserList() {
 
     return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);

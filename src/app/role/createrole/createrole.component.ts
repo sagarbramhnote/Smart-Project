@@ -1,7 +1,6 @@
 //import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 
@@ -18,9 +17,6 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class CreateroleComponent implements OnInit {
-
-  @ViewChild("addClassForm", null) addClassForm: NgForm;
-
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -63,8 +59,6 @@ export class CreateroleComponent implements OnInit {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
-        this.addClassForm.reset();
-
       },
       
       (err: HttpErrorResponse) => {

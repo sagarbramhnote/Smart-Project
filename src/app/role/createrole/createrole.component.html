@@ -55,6 +55,26 @@
                       </div>
 
                     </div>
+                    <div class="col-md-6">
+                      <fieldset class="form-group">
+                          <label for="features"> <span
+                                  *ngIf="role.features == undefined || role.features =='' "
+                                  style="color: red">*</span>Features
+                          </label>
+                          <span class=" text-muted danger"
+                              *ngIf="!features.valid && (features.dirty || features.touched)">
+                              is required!
+                          </span>
+                          <ng-select [items]="roleFeatures" name="features"
+                              bindLabel="name" placeholder="Select features" appendTo="body"
+                              multiple="true" [(ngModel)]="role.features"
+                              [ngModelOptions]="{standalone: true}"  ngModel
+                              #features="ngModel" required>
+                              
+                          </ng-select>
+
+                      </fieldset>
+                  </div>
 
                   <!-- role active inactive -->
                   <!-- <div class="col-md-4">
@@ -128,7 +148,7 @@
                       <tr>
                         <th>S.no</th>
                         <th>Role Name</th>
-                        <th>Description</th>
+                        <th>Features</th>
                         <th>Action</th> 
                       </tr>
  
@@ -142,7 +162,7 @@
                         <td>{{role.name}}</td>
                       
                     
-                          <td>{{role.description}}</td>
+                          <td>{{role.features}}</td>
                           <td>
                                                     <a class="success p-0" data-original-title="" title=""
                                                         (click)="editRole(role)">

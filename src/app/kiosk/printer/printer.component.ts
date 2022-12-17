@@ -1,6 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrinterInfoRequest } from 'app/model/printerInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
@@ -14,8 +13,6 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class PrinterComponent implements OnInit {
-
-  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,9 +49,7 @@ export class PrinterComponent implements OnInit {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
-
         this.getAllPrinterList();
-        this.addClassForm.reset();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -66,7 +61,6 @@ export class PrinterComponent implements OnInit {
       });
     console.log(JSON.stringify(this.printer));
     this.getAllPrinterList();
-    
   }
 
   editAddPrinter(printer: PrinterInfoRequest ) {
