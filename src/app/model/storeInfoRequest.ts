@@ -1,3 +1,5 @@
+import { LongDateFormatKey } from "moment";
+
 export class StoreInfoRequest {
 	  id:number;
 
@@ -20,8 +22,8 @@ export class StoreInfoRequest {
 	  startTime: string;
 
 	  endTime: string;
+	  userIds:number;
 
-	  Locks:String[];
 
 
 }
