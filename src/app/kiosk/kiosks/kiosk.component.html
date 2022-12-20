@@ -143,7 +143,7 @@
                           *ngIf="!screenSize.valid && (screenSize.dirty || screenSize.touched)">
                           is required!
                         </span>
-                        <input type="text" id="screenSize" class="form-control border-primary" name="screenSize"
+                        <input type="number" id="screenSize" class="form-control border-primary" name="screenSize"
                           [(ngModel)]="kiosk.screenSize" ngModel #screenSize="ngModel" required>
 
                         </div>
@@ -166,6 +166,7 @@
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
                                 [value]=false [(ngModel)]="kiosk.active">
                               <label class="custom-control-label" for="inactive">In Active</label>
+                              
                             </div>
                           </div>
                         </div>
@@ -190,7 +191,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 
