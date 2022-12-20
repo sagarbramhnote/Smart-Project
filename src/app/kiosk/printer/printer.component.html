@@ -112,7 +112,7 @@
                         *ngIf="!printCapacity.valid && (printCapacity.dirty || printCapacity.touched)">
                         is required!
                       </span>
-                      <input type="text" id="printCapacity" class="form-control border-primary" name="printCapacity"
+                      <input type="number" id="printCapacity" class="form-control border-primary" name="printCapacity"
                         [(ngModel)]="printer.printCapacity" ngModel #printCapacity="ngModel" required>
 
                         </div>
