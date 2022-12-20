@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'app/shared/auth/auth-guard.service';
 import { CreatestoreComponent } from './createstore/createstore.component';
 import { UpdatestoreComponent } from './updatestore/updatestore.component';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
     data: {
       title: 'Store Management'
     },
+    canActivate:[AuthGuard],
     
   },
 

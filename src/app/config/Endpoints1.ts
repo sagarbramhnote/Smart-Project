@@ -11,23 +11,17 @@ export class EndPoints {
     }
     static DOWNLOAD_EOD_REPORT_TO_EXCEL(userId:string):string{
         // return this.BASE_URL+"/reports/employeeReport/"+userId;
-        return this.BASE_URL+"/reports/endofdayReport/"+userId;
+        return this.BASE_URL+"/reports/EODReportExport/"+userId;
     }
 
    
     static GETINSERTBILLSREPORT(transactionNumber:string){
-        return this.BASE_URL+"reports/employeeReportExport/"+transactionNumber;
+        return this.BASE_URL+"reports/insertBillsReport/"+transactionNumber;
     }
     static GETEODREPORT(storeName:string,toDay:boolean){
-        return this.BASE_URL+"/reports/EODReportExport/"+storeName+"/"+toDay;
+        return this.BASE_URL+"reports/EODReportExport/"+storeName+"/"+toDay;
     }
-    static GETSTANDBANKREPORT(path:string):string{
-        return this.BASE_URL+"/reports/standBankReportExport/"+path
-    }
-    static GETCHANGEREQUESTREPORT(path:string):string{
-        return this.BASE_URL+"/reports/changeRequestReportExport/"+path
-    }
-    public static LIST_USERS(): string {
-        return this.BASE_URL + "/userInfo/all";
+    static GETSTANDBANKREPORT(storeName:string,sDay:string,endDay:string,safeType:string){
+        return this.BASE_URL+"reports/standBankReportExport/"+storeName+"/"+safeType+"/"+sDay+"/"+endDay;
     }
 }
