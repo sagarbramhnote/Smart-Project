@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
@@ -14,6 +15,8 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class CreatestoreComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -51,6 +54,7 @@ export class CreatestoreComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllStoresList();
+        this.addClassForm.reset();
         
       },
       (err: HttpErrorResponse) => {
