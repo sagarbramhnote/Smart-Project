@@ -63,7 +63,7 @@ export class CreatestoreComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeCustommessage(err.error.message);
+        this.service.typeCustommessage(err.error.message)
       });
     console.log(JSON.stringify(this.storeInfoRequest));
     this.getAllStoresList();
