@@ -112,7 +112,7 @@
                         *ngIf="!printCapacity.valid && (printCapacity.dirty || printCapacity.touched)">
                         is required!
                       </span>
-                      <input type="text" id="printCapacity" class="form-control border-primary" name="printCapacity"
+                      <input type="number" id="printCapacity" class="form-control border-primary" name="printCapacity"
                         [(ngModel)]="printer.printCapacity" ngModel #printCapacity="ngModel" required>
 
                         </div>
@@ -157,7 +157,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 
