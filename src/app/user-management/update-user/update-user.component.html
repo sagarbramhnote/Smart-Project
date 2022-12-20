@@ -166,26 +166,47 @@
                     </div>
 
                     
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="d-block">Status</label>
-                          <div class="input-group">
-                            <div class="custom-control custom-radio d-inline-block float-left">
-                              <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="user.active">
-                              <label class="custom-control-label" for="active">Active</label>
-                            </div>
-                            <div class="custom-control custom-radio d-inline-block float-left ml-1">
-                              <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="user.active">
-                              <label class="custom-control-label" for="inactive">In Active</label>
-                            </div>
-                          </div>
+                    <!-- <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <label>Status</label><br> <label class="radio-inline mr-1">
+                          <input type="radio" name="isActive" [(ngModel)]="user.active" value=true
+                            ng-checked="!user.active"> Active
+                        </label> <label class="radio-inline"> <input type="radio" name="isActive"
+                            [(ngModel)]="user.active" value=false> Inactive
+                        </label>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div> -->
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="d-block">Status</label>
+                      <div class="input-group">
+                        <div class="custom-control custom-radio d-inline-block float-left">
+                          <input type="radio" checked id="active" name="active" class="custom-control-input"
+                            [value]=true [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="active">Active</label>
+                        </div>
+                        <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                          <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                            [value]=false [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="inactive">In Active</label>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div> 
+
                 </div>
-               </div>
+
+
+
                 <div class="form-actions center">
                   <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
                       <i class="ft-x"></i> Cancel
@@ -205,4 +226,3 @@
     </div>
   </div>
 </section>
-

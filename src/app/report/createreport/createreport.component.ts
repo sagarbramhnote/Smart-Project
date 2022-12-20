@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
-import { UserAccount } from 'app/model/user';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
+import { UserAccount } from 'app/model/user';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-
+import { isBuffer } from 'util';
 
 @Component({
   selector: 'app-createreport',
@@ -14,25 +14,34 @@ import { environment } from 'environments/environment';
   styleUrls: ['./createreport.component.scss'],
   providers: [NGXToastrService]
 })
-
 export class CreatereportComponent implements OnInit {
 
   store = new StoreInfoRequest();
-  storeNameDy:string;
-  dataResponce:any[];
-  dataStoreResponce:any[];
-  empId:number;
+
+  ishideToDate: boolean
+  ishideFromDate: boolean
+  ishideUserName: boolean
+  ishideUserType: boolean
+  ishideStoreLocation: boolean
+  ishideStoreName: boolean
+  isStandBankRadio: boolean;
+  typeOfStandBank: string;
+
+  radioButtonType: string="Bills";
+
+  storeNameDy: string;
+  dataResponce: any[];
+  dataStoreResponce: Array<StoreInfoRequest> = [];
+  empId: string;
   stores: StoreInfoRequest[];
-  employee = new UserAccount();
-  role = new Role();
-  roles: Role[];
+  roles: Array<Role> = [];
   employees: UserAccount[];
   selectedStore = new StoreInfoRequest();
-  selectedUser:UserAccount;
-  startDate:string;
-  endDate:string;
-  toDay:boolean;
-  toDayValue:number
+  selectedUser: UserAccount;
+  userInfo:UserAccount[];
+  user :string;
+  startDate: string;
+  endDate: string;
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -40,11 +49,80 @@ export class CreatereportComponent implements OnInit {
     private changeDetectorRefs: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.getAlluserList();
     this.getAllStoresList();
     this.getAllRolesList();
-    
+    this.changeDivSection("Bills");
+    this.isStandBankRadio = true;
+    this.user=localStorage.getItem('user');
   }
- 
+  getAlluserList(){
+    this.service.users().subscribe(data=>{
+      this.userInfo=data;
+      console.log(data);
+    })
+  }
+  changeDivSection(type: string) {
+    if (type == "Bills") {
+      this.ishideToDate = false;
+      this.ishideFromDate = false;
+      this.ishideUserName = false;
+      this.ishideUserType = false;
+      this.ishideStoreLocation = false;
+      this.ishideStoreName = false;
+      this.isStandBankRadio = true;
+
+      this.radioButtonType = type;
+      // this.service.getInsertBillsReport("12").subscribe(data=>{
+
+
+      // })
+
+    }
+    else if (type == "EOD") {
+      this.ishideStoreLocation = false;
+      this.ishideStoreName = false;
+      this.ishideToDate = true;
+      this.ishideFromDate = true;
+      this.ishideUserName = true;
+      this.ishideUserType = true;
+      this.isStandBankRadio = true;
+
+
+      this.radioButtonType = type;
+    }
+    else if (type == "StandBank") {
+      this.ishideStoreLocation = false;
+      this.ishideStoreName = false;
+      this.ishideToDate = false;
+      this.ishideFromDate = false;
+      this.ishideUserName = true;
+      this.ishideUserType = true;
+      this.isStandBankRadio = false;
+
+      // this.service.getStandBankReport("XYZ",this.startDate,this.endDate,'MAINSAFE').subscribe(data=>{
+
+
+      // })
+      this.radioButtonType = type;
+    }
+    else if (type == "ChangeRequest") {
+      this.ishideStoreLocation = false;
+      this.ishideStoreName = false;
+      this.ishideToDate = false;
+      this.ishideFromDate = false;
+      this.ishideUserName = true;
+      this.ishideUserType = true;
+      this.isStandBankRadio = true;
+
+      this.radioButtonType = type;
+
+    }
+    else {
+      this.typeOfStandBank = type;
+    }
+  }
+
   getStoreList() {
     return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
 
@@ -54,22 +132,22 @@ export class CreatereportComponent implements OnInit {
     return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
   }
   findUserByRole(role: string) {
-    console.log(this.role)
-    
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + this.role.name);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + role);
   }
   getAllRolesList() {
     return this.getRoleList().
       subscribe((data) => {
         console.log(data);
+        // let rolesData=new Role();
         // for (let index = 0; index < data.length; index++) {
         //   if(data[index].name=="EMPLOYEE" || data[index].name=="MANAGER"){
-        //     this.roles.push('{name:data[index].name,value:data[index].id}')
+
+        //     this.roles.push(reles)
         //   }
 
         // }
         // this.roles=data;
-        this.roles = data;
+
         this.changeDetectorRefs.markForCheck();
       });
   }
@@ -87,7 +165,7 @@ export class CreatereportComponent implements OnInit {
   }
 
   onStoreSelected(storeName: string) {
-    this.storeNameDy=storeName;
+    this.storeNameDy = storeName;
     this.getStoresByStoreName(storeName).
       subscribe((data) => {
         this.selectedStore = data;
@@ -96,8 +174,6 @@ export class CreatereportComponent implements OnInit {
   }
 
   onRoleChange(role: any) {
-    //alert(role);
-
     return this.findUserByRole(role).
       subscribe((data) => {
         console.log(data);
@@ -105,77 +181,198 @@ export class CreatereportComponent implements OnInit {
         this.changeDetectorRefs.markForCheck();
       });
   }
-  
-  onSelectUserId(userId:number){
-    this.empId=userId;
+
+  onSelectUserId(userId: number) {
+    this.empId = userId.toString();
   }
-  startDateC(startDate){
-    this.startDate=startDate.target.value;
+  startDateC(startDate) {
+    this.startDate = startDate.target.value;
   }
-  endDateC(endDate){
-    this.endDate=endDate.target.value;
+  endDateC(endDate) {
+    this.endDate = endDate.target.value;
   }
- 
-  generatReport(){
-    let request={
-      'startDate':this.startDate,
-      'endDate':this.endDate
-    };
-    
-    console.log("into the excel report")
-  this.service.gotoEmployeeReportToExcel(this.empId+"/"+request.startDate+"/"+request.endDate).subscribe(x =>{
-    console.log(x)
-    console.log('coming here')
-    
-     const blob = new Blob([x], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml'});
+  generateclass() {
+
+    switch (this.radioButtonType) {
+      case "Bills": {
+        let request = {
+          'startDate': this.startDate,
+          'endDate': this.endDate,
+          'startTime':"20:00:00",
+          'endTime':"20:00:00"
+        };
+        this.service.gotoEmployeeReport(this.empId + "", request).subscribe(data => {
+          //data.name=this.selectedUser.username;
+          data.reportName = "Manager Report";
+          this.dataResponce = data.data[0].data;
+
+          let storeResponse = new StoreInfoRequest();
+          storeResponse.corpStoreNo = data.storeInfoResponse.corpStoreNo;
+          storeResponse.storeName = data.storeInfoResponse.storeName;
+          storeResponse.serialNumber = data.storeInfoResponse.serialNumber;
+          this.dataStoreResponce.push(storeResponse); //({values:data.storeInfoResponse})
+          console.log(this.dataStoreResponce);
+          //this.ipcService.send('message',data);
+
+          //Excel start here..
+
+          console.log(data)
+          console.log('coming here')
+
+          const blob = new Blob([data], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml' });
+
+
+
+          const edata = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = edata;
+          link.download = 'EmployeeBillEntryReport.xlsx';
+
+
+          link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+          setTimeout(function () {
+            window.URL.revokeObjectURL(edata);
+            link.remove();
+          }, 100);
+
+          //end here
+        });
+        break;
+      }
+      case "EOD": {
+        let sId=0;
+        let userId=0;
+        this.stores.forEach((x) => {
+            if (x.storeName == this.storeNameDy) {
+              sId = (x.id);
+            }
+          });
+        this.userInfo.forEach((x)=>{
+          if(x.id==1){
+            userId=x.id;
+          }
+        })
+        this.service.gotoEODReportToExcel("7").subscribe(data => {
+
+          //Excel start here..
+          
+
+          console.log(data)
+          console.log('coming here')
+
+          const blob = new Blob([data], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml' });
+
+
+
+          const edata = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = edata;
+          link.download = 'EndOfTheReport.xlsx';
+
+
+          link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+          setTimeout(function () {
+            window.URL.revokeObjectURL(edata);
+            link.remove();
+          }, 100);
+
+          //end here
+
+
+        })
         
+        break;
+      }
+      case "StandBank": {
+        this.service.getStandBankReport(this.storeNameDy+"/"+this.typeOfStandBank+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
 
-    
-     const data = window.URL.createObjectURL(blob);
-     const link = document.createElement('a');
-     link.href = data;
-     link.download =  'EmployeeBillEntryReport.xlsx'; 
-   
+          //Excel start here..
 
-    link.dispatchEvent(new MouseEvent ('click', {bubbles: true, cancelable: true, view: window}));
-     setTimeout (function() {
-      window.URL.revokeObjectURL(data);
-       link. remove();
-     }, 100);
+          console.log(data)
+          console.log('coming here')
+
+          const blob = new Blob([data], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml' });
+
+
+
+          const edata = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = edata;
+          link.download = 'StandbankReport.xlsx';
+
+
+          link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+          setTimeout(function () {
+            window.URL.revokeObjectURL(edata);
+            link.remove();
+          }, 100);
+
+          //end here
+
+        })
+        break;
+      }
+      case "ChangeRequest": {
+        this.service.getChangerequestExcelReport(this.storeNameDy+"/"+this.typeOfStandBank+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
+
+          //Excel start here..
+
+          console.log(data)
+          console.log('coming here')
+
+          const blob = new Blob([data], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml' });
+
+
+
+          const edata = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = edata;
+          link.download = 'ChangeRequestReport.xlsx';
+
+
+          link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+          setTimeout(function () {
+            window.URL.revokeObjectURL(edata);
+            link.remove();
+          }, 100);
+
+          //end here
+
+        })
+        break;
+      }
     }
-   )
-
-     
-   
 
   }
-  
 
-  generateclass(){
-    let request={
-      'startDate':this.startDate,
-      'endDate':this.endDate
+  generatReport() {
+    let request = {
+      'startDate': this.startDate,
+      'endDate': this.endDate
     };
 
-    this.service.gotoEmployeeReport(this.empId+"",request).subscribe(data=>{
-      //data.name=this.selectedUser.username;
-      data.reportName="Manager Report";
-      console.log(data)
-      console.log(data.data.name)
-     
-      // this.dataResponce=data.data[0].data;
-      this.dataResponce=data.data[1].data;
-      
-      
+    console.log("into the excel report")
+    this.service.gotoEmployeeReportToExcel(this.empId + "/" + request.startDate + "/" + request.endDate).subscribe(x => {
+      console.log(x)
+      console.log('coming here')
 
-      this.dataStoreResponce= data.storeInfoResponse;//({values:data.storeInfoResponse})
-      console.log(this.dataStoreResponce);
-      //this.ipcService.send('message',data);
-    });
-    
-    
+      const blob = new Blob([x], { type: 'application/application/vnd.openxalformats-officedocument.spreadsheetml' });
+
+
+
+      const data = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = data;
+      link.download = 'EmployeeBillEntryReport.xlsx';
+
+
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+      setTimeout(function () {
+        window.URL.revokeObjectURL(data);
+        link.remove();
+      }, 100);
+    }
+    )
+
   }
-}
-function saveAs(file: File) {
-  throw new Error('Function not implemented.');
 }

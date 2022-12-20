@@ -109,8 +109,6 @@
 
                       </div>
 
-              
-
 
                     </div>
                     <div class="col-2 col-md-2 col-lg-2">
@@ -153,13 +151,13 @@
                 </div> -->
                 <div class="row" [hidden]="isStandBankRadio">
                   <div class="form-check col-4 col-md-2 col-lg-4">
-                    <input class="form-check-input"  type="radio" name="flexRadioDefault" id="flexRadioDefault5">
+                    <input class="form-check-input"  type="radio" name="flexRadioDefault1" id="flexRadioDefault5" (click)="changeDivSection('MAINSAFE')">
                     <label class="form-check-label" for="flexRadioDefault5">
                       Main Safe
                     </label>
                   </div>
                   <div class="form-check col-4 col-md-2 col-lg-4">
-                    <input class="form-check-input"  type="radio" name="flexRadioDefault" id="flexRadioDefault6">
+                    <input class="form-check-input"  type="radio" name="flexRadioDefault1" id="flexRadioDefault6" (click)="changeDivSection('SHIFTMANAGER')">
                     <label class="form-check-label" for="flexRadioDefault6">
                       Shift Manager Safe
                     </label>
@@ -169,35 +167,18 @@
                   <div class="form-actions center">
 
                     <button type="button" class="btn btn-raised btn-primary mr-1"
-                      (click)="generateclass()" [disabled]="!addClassForm.valid">
+                      (click)="generateclass()">
                       <i class="fa fa-check-square-o"></i> Generate Report
                     </button>
-
-                    <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToBillReport"
+                    <!-- <button type="button" class="btn btn-raised btn-primary mr-1"
                     (click)="generatReport()" [disabled]="!addClassForm.valid">
                     <i class="fa fa-check-square-o"></i> Export to Excel
-                  </button>
-                  
-                  <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToEODReport"
-                  (click)="generatEODReport()" [disabled]="!addClassForm.valid">
-                  <i class="fa fa-check-square-o"></i> Export to Excel
-                </button>
-
-                <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToStandReport"
-                (click)="generatStandReport()" [disabled]="!addClassForm.valid">
-                <i class="fa fa-check-square-o"></i> Export to Excel
-              </button>
-
-              <button type="button" class="btn btn-raised btn-primary mr-1" [hidden]="ishideToChangeReport"
-              (click)="generatChangeReport()" [disabled]="!addClassForm.valid">
-              <i class="fa fa-check-square-o"></i> Export to Excel
-            </button>
-                
+                  </button> -->
                     <button type="button" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
                   </div>
-                  <div>
+                  <!-- <div>
                     <div>
                       <tr *ngFor="let storeData of dataStoreResponce">
                         <th class="row">Store Name:<span>{{storeData.storeName}}</span></th>
@@ -221,7 +202,7 @@
                         
                       </tbody>
                     </table>
-                  </div>
+                  </div> -->
                 </form>
 
               </div>
