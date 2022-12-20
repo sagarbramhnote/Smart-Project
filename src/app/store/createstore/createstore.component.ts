@@ -1,12 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import Swal from 'sweetalert2';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-createstore',
   templateUrl: './createstore.component.html',
@@ -14,6 +14,8 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class CreatestoreComponent implements OnInit {
+
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -51,6 +53,7 @@ export class CreatestoreComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllStoresList();
+        this.addClassForm.reset();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

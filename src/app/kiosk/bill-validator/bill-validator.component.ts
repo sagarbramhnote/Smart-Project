@@ -1,11 +1,12 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,ViewChild } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { BillValidatorInfoRequest } from 'app/model/billValidatorInfoRequest';
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-bill-validator',
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class BillValidatorComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -50,6 +52,7 @@ export class BillValidatorComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllBillValidatorList();
+        this.addClassForm.reset();
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

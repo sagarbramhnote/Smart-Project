@@ -1,11 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef,ViewChild } from '@angular/core';
 import { UserAccount } from 'app/model/user';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-add-user-management',
   templateUrl: './add-user-management.component.html',
@@ -14,7 +14,7 @@ import { Role } from 'app/model/role';
 })
 export class AddUserManagementComponent implements OnInit {
   show: boolean;
-
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -59,6 +59,8 @@ export class AddUserManagementComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllUsersList();
+        this.addClassForm.reset();
+        this.router.navigate(["/user-management"]);
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

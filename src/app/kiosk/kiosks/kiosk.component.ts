@@ -1,11 +1,11 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import Swal from 'sweetalert2';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-kiosk',
   templateUrl: './kiosk.component.html',
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class KioskComponent implements OnInit {
 
-
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -52,6 +52,7 @@ AddKiosk() {
       //event.confirm.resolve(event.newData);
       this.service.addSuccess();
       this.getAllKioskList();
+      this.addClassForm.reset();
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
