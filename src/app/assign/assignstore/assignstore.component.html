@@ -107,7 +107,7 @@
                         </fieldset>
                       </div>
                     </div> -->
-<!-- 
+ 
                       <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
@@ -117,10 +117,10 @@
                               {{lock.digitalLockName}} </option>   
                           </select>                 
                         </fieldset>
-                    </div>  -->
+                    </div> 
                      
                    
-                     <div class="col-md-6" >
+                     <!-- <div class="col-md-6" >
                       <fieldset class="form-group">
                           <label for="digitalLockName"> <span
                                   *ngIf="lock.digitalLockName == undefined || lock.digitalLockName =='' "
@@ -139,7 +139,7 @@
                           </ng-select>
 
                       </fieldset>
-                  </div>  
+                  </div>   -->
 
               
 
@@ -155,7 +155,7 @@
                       (click)="assignStore(store.id, kiosk.id, billValidator.id, printer.id, lock.id)" [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Assign Store
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
                   </div>

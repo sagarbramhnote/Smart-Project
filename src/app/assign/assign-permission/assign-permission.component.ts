@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { NGXToastrService } from 'app/service/toastr.service';
@@ -12,6 +13,7 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class AssignPermissionComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -67,6 +69,7 @@ SelectedFeatureNames: string[];
         //event.confirm.resolve(event.newData);
         this.service.addAssignSuccess();
         this.getAllRolesList();
+        
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BillValidatorInfoRequest } from 'app/model/billValidatorInfoRequest';
 import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
@@ -17,6 +18,7 @@ import { environment } from 'environments/environment';
 
 })
 export class AssignstoreComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   store = new StoreInfoRequest();
   stores: StoreInfoRequest[];
@@ -130,7 +132,9 @@ export class AssignstoreComponent implements OnInit {
           console.log(data);
           this.service.addAssignSuccess();
           this.router.navigateByUrl("assign/assignstore");
+          this.addClassForm.reset();
         });
+        
     }
   
     ngOnInit() {
