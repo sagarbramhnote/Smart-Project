@@ -11,7 +11,7 @@ const routes: Routes = [
     data: {
       title: 'Store Management'
     },
-    canActivate:[AuthGuard],
+   // canActivate:[AuthGuard],
     
   },
 

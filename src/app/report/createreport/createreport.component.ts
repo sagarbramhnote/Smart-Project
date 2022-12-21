@@ -201,17 +201,20 @@ export class CreatereportComponent implements OnInit {
           'startTime':"20:00:00",
           'endTime':"20:00:00"
         };
-        this.service.gotoEmployeeReport(this.empId + "", request).subscribe(data => {
-          //data.name=this.selectedUser.username;
-          data.reportName = "Manager Report";
-          this.dataResponce = data.data[0].data;
 
-          let storeResponse = new StoreInfoRequest();
-          storeResponse.corpStoreNo = data.storeInfoResponse.corpStoreNo;
-          storeResponse.storeName = data.storeInfoResponse.storeName;
-          storeResponse.serialNumber = data.storeInfoResponse.serialNumber;
-          this.dataStoreResponce.push(storeResponse); //({values:data.storeInfoResponse})
-          console.log(this.dataStoreResponce);
+        this.service.gotoEmployeeReportToExcel(this.empId+"/"+request.startDate+"/"+request.endDate).subscribe(data =>{
+
+    //    this.service.gotoEmployeeReport(this.empId + "", request).subscribe(data => {
+          //data.name=this.selectedUser.username;
+          // data.reportName = "Manager Report";
+          // this.dataResponce = data.data[0].data;
+
+          // let storeResponse = new StoreInfoRequest();
+          // storeResponse.corpStoreNo = data.storeInfoResponse.corpStoreNo;
+          // storeResponse.storeName = data.storeInfoResponse.storeName;
+          // storeResponse.serialNumber = data.storeInfoResponse.serialNumber;
+          // this.dataStoreResponce.push(storeResponse); //({values:data.storeInfoResponse})
+          // console.log(this.dataStoreResponce);
           //this.ipcService.send('message',data);
 
           //Excel start here..

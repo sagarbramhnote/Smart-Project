@@ -36,9 +36,5 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     
   }
 
-  logout(){
-    localStorage.removeItem('user');
-    return true;
-  }
   
 }

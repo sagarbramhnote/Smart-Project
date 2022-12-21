@@ -68,8 +68,7 @@ export class LoginPageComponent {
         if (res) {
           localStorage.setItem('user', JSON.stringify(user));
 
-     
-     
+
          this.router.navigate(['/dashboard']);
           this.service.loginSuccess();
           this.spinner.hide();

@@ -22,6 +22,11 @@ export class StoreInfoRequest {
 	  startTime: string;
 
 	  endTime: string;
+
+	  role:string;
+
+	  users:string;
+
 	  userIds:number;
 
 

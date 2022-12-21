@@ -93,9 +93,11 @@ export class NGXToastrService {
     messageClass() {
         this.toastr.info('Have fun storming the castle!', 'Miracle Max Says', { messageClass: 'text-uppercase' });
     }
-    gotoEmployeeReport(userId:string,data:any){
-        return this.httpClient.post<any>(EndPoints.PRINT_EMPLOYEE_REPORT("132"),data);
-      }
+
+
+    // gotoEmployeeReport(userId:string,data:any){
+    //     return this.httpClient.post<any>(EndPoints.PRINT_EMPLOYEE_REPORT("132"),data);
+    //   }
     gotoEmployeeReportToExcel(path:string) :Observable<Blob>{
         console.log('printing this')
         return this.httpClient.get(EndPoints.DOWNLOAD_EMPLOYEE_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
@@ -108,18 +110,19 @@ export class NGXToastrService {
 
       //new
   
-    getInsertBillsReport(transactionNumber:string){
-        return this.httpClient.get<object>(EndPoints.GETINSERTBILLSREPORT(transactionNumber));
-    }
-    getEODReport(storeName:string,toDay:boolean){
-        return this.httpClient.get<any>(EndPoints.GETEODREPORT(storeName,toDay));
-    }
+    // getInsertBillsReport(transactionNumber:string){
+    //     return this.httpClient.get<object>(EndPoints.GETINSERTBILLSREPORT(transactionNumber));
+    // }
+    // getEODReport(storeName:string,toDay:boolean){
+    //     return this.httpClient.get<any>(EndPoints.GETEODREPORT(storeName,toDay));
+    // }
     getStandBankReport(path:string) :Observable<Blob>{
         return this.httpClient.get(EndPoints.GETSTANDBANKREPORT(path),{responseType: 'blob'});
     }
     getChangerequestExcelReport(path:string) :Observable<Blob>{
         return this.httpClient.get(EndPoints.GETCHANGEREQUESTREPORT(path),{responseType: 'blob'});
     }
+    
     users(){
         return this.httpClient.get<Array<UserAccount>>(EndPoints.LIST_USERS());
     }
