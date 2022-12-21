@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
@@ -15,6 +16,8 @@ import { environment } from 'environments/environment';
 
 })
 export class AssignUserToStoreComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
 
   store = new StoreInfoRequest();
   stores: StoreInfoRequest[];
@@ -82,7 +85,9 @@ export class AssignUserToStoreComponent implements OnInit {
 
     assignStoretouser(storeId: number, userId: number) {
       return this.http.post(environment.smartSafeAPIUrl + '/storeinfo/assign/store/' + storeId + "/user/" + userId , {});
+      this.addClassForm.reset();
     }
+    
     assignStore(storeId: number, userId: number) {
       return this.assignStoretouser(storeId, userId).
   
@@ -90,6 +95,7 @@ export class AssignUserToStoreComponent implements OnInit {
           console.log(data);
           this.service.addAssignSuccess();
           this.router.navigateByUrl("assign/assign-user-to-store");
+          this.addClassForm.reset();
         });
     }
 
