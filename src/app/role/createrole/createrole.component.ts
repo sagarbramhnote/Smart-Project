@@ -63,6 +63,7 @@ export class CreateroleComponent implements OnInit {
         console.log(res);
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
+        this.getAllRolesList();
         this.addClassForm.reset();
 
       },
