@@ -46,6 +46,8 @@ export class CreatereportComponent implements OnInit {
   startDate: string;
   endDate: string;
 
+  day:boolean;
+
   constructor(private http: HttpClient,
     private router: Router,
     private service: NGXToastrService,
@@ -261,6 +263,9 @@ export class CreatereportComponent implements OnInit {
         break;
       }
       case "EOD": {
+
+        let day=true;
+        
         let sId=0;
         let userId=0;
         this.stores.forEach((x) => {
@@ -273,7 +278,7 @@ export class CreatereportComponent implements OnInit {
             userId=x.id;
           }
         })
-        this.service.gotoEODReportToExcel("7").subscribe(data => {
+        this.service.gotoEODReportToExcel(this.storeNameDy+"/"+day).subscribe(data => {
 
           //Excel start here..
           

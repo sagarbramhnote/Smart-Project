@@ -102,7 +102,7 @@
                         <fieldset class="form-group">
                           <label for="storeSelect">User Name </label>
                           <select required [(ngModel)]="employee" id="employee" name="employee"
-                           (change)="onStoreuser(employee.id)" class="form-control border-primary">
+                           (change)="onSelectUserId(employee.id)" class="form-control border-primary">
                             <option>Select User Name</option>
                             <option [ngValue]="employee" *ngFor="let employee of employees">
                               {{employee.username}} </option>

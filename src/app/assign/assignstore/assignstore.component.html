@@ -116,7 +116,7 @@
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
                            <select class="form-control border-primary" [(ngModel)]="lock"  required id="lock"
-                            (change)='getlockSelected(lock.digitalLockName)' name="lock">
+                            (change)='getLockSelected(lock.digitalLockName)' name="lock">
                             <option>Select lock Name</option>
                             <option [ngValue]="lock" *ngFor="let lock of locks">
                               {{lock.digitalLockName}} </option>   

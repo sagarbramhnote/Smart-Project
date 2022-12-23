@@ -9,9 +9,9 @@ export class EndPoints {
         // return this.BASE_URL+"/reports/employeeReport/"+userId;
         return this.BASE_URL+"/reports/employeeReportExport/"+userId;
     }
-    static DOWNLOAD_EOD_REPORT_TO_EXCEL(userId:string):string{
+    static DOWNLOAD_EOD_REPORT_TO_EXCEL(path:string):string{
         // return this.BASE_URL+"/reports/employeeReport/"+userId;
-        return this.BASE_URL+"/reports/endofdayReport/"+userId;
+        return this.BASE_URL+"/reports/EODReportExport/"+path;
     }
 
    
