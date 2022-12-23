@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
@@ -14,6 +15,9 @@ import { environment } from 'environments/environment';
   providers: [NGXToastrService]
 })
 export class CreatereportComponent implements OnInit {
+
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
 
   store = new StoreInfoRequest();
 
@@ -180,7 +184,7 @@ export class CreatereportComponent implements OnInit {
 
 //new changes
   getStoresByStoreId(id: number) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/bystore' + id);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigneduser' + id);
   }
 
   getAllStoresListById(id:number) {
@@ -258,6 +262,9 @@ export class CreatereportComponent implements OnInit {
             link.remove();
           }, 100);
 
+          this.service.generateSuccess();
+          this.addClassForm.reset();
+
           //end here
         });
         break;
@@ -265,7 +272,7 @@ export class CreatereportComponent implements OnInit {
       case "EOD": {
 
         let day=true;
-        
+
         let sId=0;
         let userId=0;
         this.stores.forEach((x) => {
@@ -302,6 +309,12 @@ export class CreatereportComponent implements OnInit {
             link.remove();
           }, 100);
 
+          this.service.generateSuccess();
+          this.addClassForm.reset();
+
+
+
+
           //end here
 
 
@@ -333,6 +346,9 @@ export class CreatereportComponent implements OnInit {
             link.remove();
           }, 100);
 
+          this.service.generateSuccess();
+          this.addClassForm.reset();
+
           //end here
 
         })
@@ -361,6 +377,9 @@ export class CreatereportComponent implements OnInit {
             window.URL.revokeObjectURL(edata);
             link.remove();
           }, 100);
+
+          this.service.generateSuccess();
+          this.addClassForm.reset();
 
           //end here
 

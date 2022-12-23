@@ -47,6 +47,10 @@ export class NGXToastrService {
     typeError() {
         this.toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
     }
+    generateSuccess() {
+        this.toastr.success('Sucessfully generated!');
+    }
+
     showMessage(message){
         this.toastr.error(message);
     
