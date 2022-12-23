@@ -31,6 +31,7 @@
                           <fieldset class="form-group">
                             <label for="roleSelect">Role Type</label>
                             <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
+                              <option>Select Role Name</option>
                               <option [ngValue]="role" *ngFor="let role of roles">
                                 {{role.name}} </option>
                             </select>

@@ -21,7 +21,7 @@
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
-                <form class="form" #addClassForm="ngForm" novalidate>
+         <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
                     <div class="row">
                       <div class="form-check col-4 col-md-2 col-lg-4">
@@ -61,7 +61,8 @@
                           <fieldset class="form-group">
                             <label for="storeSelect">Store Name</label>
                             <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                              (change)='onStoreSelected(store.storeName)' name="store">
+                            (change)='onStoreSelected(store.storeName)' name="store">
+                              <option>select storeName</option>
                               <option [ngValue]="store" *ngFor="let store of stores">
                                 {{store.storeName}} </option>
                             </select>
@@ -89,6 +90,7 @@
                             <label for="roleSelect">User Type</label>
                             <select class="form-control border-primary" [(ngModel)]="role"
                             (change)="onRoleChange($any($event.target).value)" required id="role" name="role">
+                              <option>Select RoleName</option>
                               <option value="EMPLOYEE">Employee</option>
                               <option value="MANAGER">Manager</option>
                               <option value="SHIFTMANAGER">Shift Manager</option>
@@ -174,7 +176,7 @@
                     (click)="generatReport()" [disabled]="!addClassForm.valid">
                     <i class="fa fa-check-square-o"></i> Export to Excel
                   </button> -->
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
                   </div>
