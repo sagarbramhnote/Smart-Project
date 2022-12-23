@@ -34,6 +34,8 @@ export class CreatereportComponent implements OnInit {
   dataStoreResponce: Array<StoreInfoRequest> = [];
   empId: string;
   stores: StoreInfoRequest[];
+  stores1: StoreInfoRequest[];
+
   roles: Array<Role> = [];
   employees: UserAccount[];
   selectedStore = new StoreInfoRequest();
@@ -174,18 +176,20 @@ export class CreatereportComponent implements OnInit {
       })
   }
 
-  getStoresByuser(id: number) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigneduser' + id);
+//new changes
+  getStoresByStoreId(id: number) {
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/bystore' + id);
   }
 
-  onStoreuser(id: number) {
-    this.storeid = id;
-    this.getStoresByuser(id).
+  getAllStoresListById(id:number) {
+    return this.getStoresByStoreId(id).
       subscribe((data) => {
-        this.selectedUser1 = data;
-
-      })
-  }
+        console.log(data);
+        this.employees = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  } 
+  
 
   onRoleChange(role: any) {
     return this.findUserByRole(role).

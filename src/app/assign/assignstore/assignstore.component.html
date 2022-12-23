@@ -7,7 +7,7 @@
           <div class="row text-left">
             <div class="col-md-8">
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/Assign Store</span>
 
@@ -32,6 +32,7 @@
                             <label for="storeSelect">Store Name</label>
                             <select class="form-control border-primary" [(ngModel)]="store" required id="store"
                               (change)='onStoreSelected(store.storeName)' name="store">
+                              <option>Select Store Name</option>
                               <option [ngValue]="store" *ngFor="let store of stores">
                                 {{store.storeName}} </option>
                             </select>
@@ -61,6 +62,7 @@
                           <label for="kioskSelect">Kiosk Name</label>
                           <select class="form-control border-primary" [(ngModel)]="kiosk" required id="kiosk"
                             (change)='getKioskSelected(kiosk.kioskName)' name="kiosk">
+                            <option>Select kioskName</option>
                             <option [ngValue]="kiosk" *ngFor="let kiosk of kiosks">
                               {{kiosk.kioskName}} </option>
                           </select>
@@ -74,6 +76,7 @@
                           <label for="billSelect">Bill Acceptor Name</label>
                           <select class="form-control border-primary" [(ngModel)]="billValidator" required id="billValidator"
                             (change)='getBillValidatorSelected(billValidator.billAcceptorName)' name="billValidator">
+                            <option>Select billAcceptorName</option>
                             <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
                               {{billValidator.billAcceptorName}} </option>
                           </select>
@@ -90,6 +93,7 @@
                           <label for="printerSelect">Printer Name</label>
                           <select class="form-control border-primary" [(ngModel)]="printer" required id="printer"
                             (change)='getPrinterSelected(printer.printerName)' name="printer">
+                            <option>Select Printer Name</option>
                             <option [ngValue]="printer" *ngFor="let printer of printers">
                               {{printer.printerName}} </option>
                           </select>
@@ -113,6 +117,7 @@
                           <label for="lockSelect">Digital Lock</label>
                            <select class="form-control border-primary" [(ngModel)]="lock"  required id="lock"
                             (change)='getlockSelected(lock.digitalLockName)' name="lock">
+                            <option>Select lock Name</option>
                             <option [ngValue]="lock" *ngFor="let lock of locks">
                               {{lock.digitalLockName}} </option>   
                           </select>                 
