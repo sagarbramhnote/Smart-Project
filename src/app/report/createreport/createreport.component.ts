@@ -6,7 +6,6 @@ import { StoreInfoRequest } from 'app/model/storeInfoRequest';
 import { UserAccount } from 'app/model/user';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
-import { isBuffer } from 'util';
 
 @Component({
   selector: 'app-createreport',
@@ -29,6 +28,7 @@ export class CreatereportComponent implements OnInit {
 
   radioButtonType: string="Bills";
 
+  storeid:number;
   storeNameDy: string;
   dataResponce: any[];
   dataStoreResponce: Array<StoreInfoRequest> = [];
@@ -38,6 +38,7 @@ export class CreatereportComponent implements OnInit {
   employees: UserAccount[];
   selectedStore = new StoreInfoRequest();
   selectedUser: UserAccount;
+  selectedUser1: UserAccount[];
   userInfo:UserAccount[];
   user :string;
   startDate: string;
@@ -169,6 +170,19 @@ export class CreatereportComponent implements OnInit {
     this.getStoresByStoreName(storeName).
       subscribe((data) => {
         this.selectedStore = data;
+
+      })
+  }
+
+  getStoresByuser(id: number) {
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigneduser' + id);
+  }
+
+  onStoreuser(id: number) {
+    this.storeid = id;
+    this.getStoresByuser(id).
+      subscribe((data) => {
+        this.selectedUser1 = data;
 
       })
   }

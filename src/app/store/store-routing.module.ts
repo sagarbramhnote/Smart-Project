@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from 'app/shared/auth/auth-guard.service';
+import { RouterModule, Routes } from '@angular/router';
 import { CreatestoreComponent } from './createstore/createstore.component';
 import { UpdatestoreComponent } from './updatestore/updatestore.component';
 

@@ -21,6 +21,7 @@
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
+               
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
                     <div class="row">
@@ -61,7 +62,7 @@
                           <fieldset class="form-group">
                             <label for="storeSelect">Store Name</label>
                             <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                              (change)='onStoreSelected(store.storeName)' name="store">
+                              (change)='onStoreuser(id)' name="store">
                               <option [ngValue]="store" *ngFor="let store of stores">
                                 {{store.storeName}} </option>
                             </select>
@@ -100,7 +101,7 @@
                         <fieldset class="form-group">
                           <label for="storeSelect">User Name </label>
                           <select required [(ngModel)]="employee" id="employee" name="employee"
-                           (change)="onSelectUserId(employee.id)" class="form-control border-primary">
+                           (change)="onStoreuser(employee.id)" class="form-control border-primary">
                             <option>Select User Name</option>
                             <option [ngValue]="employee" *ngFor="let employee of employees">
                               {{employee.username}} </option>

@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LayoutService } from '../services/layout.service';
-import { Subscription } from 'rxjs';
 import { ConfigService } from '../services/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "app-navbar",

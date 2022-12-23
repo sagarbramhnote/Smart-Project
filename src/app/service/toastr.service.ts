@@ -2,8 +2,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndPoints } from '../config/Endpoints';
-import { Observable } from 'rxjs';
 import { UserAccount } from 'app/model/user';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class NGXToastrService {
