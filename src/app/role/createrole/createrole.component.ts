@@ -74,7 +74,8 @@ export class CreateroleComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeWarning();
+        //this.service.typeWarning();
+        this.service.typeCustommessage(err.error.message);
       });
     console.log(JSON.stringify(this.role));
     this.getAllRolesList();
