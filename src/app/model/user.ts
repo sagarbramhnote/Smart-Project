@@ -22,6 +22,6 @@ export class UserAccount{
 
 	passLength:string;
 	
-	storeInfo:number;
+	storeInfo:string;
     
 }

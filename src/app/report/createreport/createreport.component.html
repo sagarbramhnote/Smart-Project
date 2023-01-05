@@ -61,7 +61,7 @@
                           <fieldset class="form-group">
                             <label for="storeSelect">Store Name</label>
                             <select class="form-control border-primary" [(ngModel)]="store" required id="store"
-                            (change)='onStoreSelected(store.storeName)' name="store">
+                            (change)='onstoreChange(store.storeName)' name="store">
                               <option>select storeName</option>
                               <option [ngValue]="store" *ngFor="let store of stores">
                                 {{store.storeName}} </option>
@@ -76,7 +76,7 @@
                           </label>
 
                           <input type="text" id="address" class="form-control border-primary" name="address"
-                            [(ngModel)]="selectedStore.address" disabled>
+                            [(ngModel)]="store.address" disabled>
 
                         </div>
                       </div>
@@ -88,12 +88,11 @@
                         <div class="form-group">
                           <fieldset class="form-group">
                             <label for="roleSelect">User Type</label>
-                            <select class="form-control border-primary" [(ngModel)]="role"
-                            (change)="onRoleChange($any($event.target).value)" required id="role" name="role">
-                              <option>Select RoleName</option>
-                              <option value="EMPLOYEE">Employee</option>
-                              <option value="MANAGER">Manager</option>
-                              <option value="SHIFTMANAGER">Shift Manager</option>
+                            <select required [(ngModel)]="employee" id="employee" name="employee"
+                            (change)="onSelectUserId(employee.id)" class="form-control border-primary" disabled>
+                             <option>Select User Type</option>
+                             <option [ngValue]="employee" *ngFor="let employee of employees2">
+                               {{employee.role}} </option>
                             </select>
                           </fieldset>
                         </div>
@@ -104,7 +103,7 @@
                           <select required [(ngModel)]="employee" id="employee" name="employee"
                            (change)="onSelectUserId(employee.id)" class="form-control border-primary">
                             <option>Select User Name</option>
-                            <option [ngValue]="employee" *ngFor="let employee of employees">
+                            <option [ngValue]="employee" *ngFor="let employee of employees2">
                               {{employee.username}} </option>
                           </select>
                         </fieldset>

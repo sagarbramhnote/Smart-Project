@@ -42,6 +42,8 @@ export class CreatereportComponent implements OnInit {
 
   roles: Array<Role> = [];
   employees: UserAccount[];
+  employees1: UserAccount[];
+  employees2: UserAccount[];
   selectedStore = new StoreInfoRequest();
   selectedUser: UserAccount;
   selectedUser1: UserAccount[];
@@ -122,7 +124,7 @@ export class CreatereportComponent implements OnInit {
       this.ishideFromDate = false;
       this.ishideUserName = true;
       this.ishideUserType = true;
-      this.isStandBankRadio = true;
+      this.isStandBankRadio = false;
 
       this.radioButtonType = type;
 
@@ -191,7 +193,7 @@ export class CreatereportComponent implements OnInit {
     return this.getStoresByStoreId(id).
       subscribe((data) => {
         console.log(data);
-        this.employees = data;
+        this.employees1 = data;
         this.changeDetectorRefs.markForCheck();
       });
   } 
@@ -205,6 +207,21 @@ export class CreatereportComponent implements OnInit {
         this.changeDetectorRefs.markForCheck();
       });
   }
+
+  findUserByStore(storeName: string) {
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/store/" + storeName);
+  }
+
+  onstoreChange(storeName: string) {
+    this.storeNameDy = storeName;
+    return this.findUserByStore(storeName).
+      subscribe((data) => {
+        console.log(data);
+        this.employees2 = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+  
 
   onSelectUserId(userId: number) {
     this.empId = userId.toString();
