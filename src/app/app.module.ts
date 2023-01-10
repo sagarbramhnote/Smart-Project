@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+ import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -18,6 +18,7 @@ import { DragulaService } from "ng2-dragula";
 import { AuthService } from "./shared/auth/auth.service";
 import { AuthGuard } from "./shared/auth/auth-guard.service";
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { NGXToastrService } from "./service/toastr.service";
 
 
 
@@ -60,6 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
     AuthService,
     AuthGuard,
     DragulaService,
+    NGXToastrService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
