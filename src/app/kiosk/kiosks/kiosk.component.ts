@@ -29,6 +29,8 @@ export class KioskComponent implements OnInit {
 
   kiosk = new KioskInfoRequest();
   kiosks : KioskInfoRequest[];
+  ips : KioskInfoRequest[];
+
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -133,8 +135,12 @@ kioskdelete(kiosk: KioskInfoRequest) {
 }
 }
 
+
+
   ngOnInit() {
     this.getAllKioskList();
+    
+
 
   }
 

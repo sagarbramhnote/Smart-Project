@@ -27,7 +27,7 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private http: HttpClient,private service:NGXToastrService) { }
   onSubmitConfirm() {
     
-       this.changePasswordDto.email = localStorage.getItem('email');
+       this.changePasswordDto.email = localStorage.getItem('user');
 
       this.http.post<ChangePasswordDto>(environment.smartSafeAPIUrl + '/changePassword', this.changePasswordDto, this.httpOptions).subscribe(
         res => {

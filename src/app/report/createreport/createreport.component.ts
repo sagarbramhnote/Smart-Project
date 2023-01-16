@@ -135,7 +135,7 @@ export class CreatereportComponent implements OnInit {
   }
 
   getStoreList() {
-    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
+    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigned');
 
   }
   getRoleList() {
