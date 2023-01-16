@@ -84,7 +84,7 @@ ngAfterViewInit(){
     })
     }
     
-	}, 5000);
+	}, 10000);
   }
 
 addData(chart, label, data) { 
