@@ -95,9 +95,9 @@ ngOnInit(){
           responsive: true,
         title: {
           display: true,
-          text: 'Pie Chart'
+          text: 'Bills Inserted Today'
         },legend: {
-                    position: 'top',
+                    position: 'bottom',
                 },animation: {
                     animateScale: true,
                     animateRotate: true
@@ -106,7 +106,7 @@ ngOnInit(){
       data: {
                 datasets: [{
                     data:this.eods.map(row =>row.totalValue),
-                    backgroundColor: ["red","orange","yellow","green","blue"],
+                    backgroundColor: ["red","orange","green","yellow","blue"],
                     label: 'Dataset 1'
                 }],
                 labels: this.eods.map(row =>row.userName)
