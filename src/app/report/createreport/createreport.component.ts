@@ -53,6 +53,7 @@ export class CreatereportComponent implements OnInit {
   endDate: string;
 
   day:boolean;
+  orderStatus:string="Delivered";
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -124,7 +125,7 @@ export class CreatereportComponent implements OnInit {
       this.ishideFromDate = false;
       this.ishideUserName = true;
       this.ishideUserType = true;
-      this.isStandBankRadio = false;
+      this.isStandBankRadio = true;
 
       this.radioButtonType = type;
 
@@ -372,7 +373,8 @@ export class CreatereportComponent implements OnInit {
         break;
       }
       case "ChangeRequest": {
-        this.service.getChangerequestExcelReport(this.storeNameDy+"/"+this.typeOfStandBank+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
+       
+        this.service.getChangerequestExcelReport(this.storeNameDy+"/"+this.orderStatus+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
 
           //Excel start here..
 

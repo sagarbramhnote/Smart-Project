@@ -58,7 +58,7 @@ export class LoginPageComponent {
     user.password = this.password;
     user.username = this.username;
 
-    user.feature = "Admin";
+    user.feature = "Product Manager";
   //  localStorage.setItem("email",email);
     //this.getIP();
     this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/userInfo/login', user, this.httpOptions).subscribe(
