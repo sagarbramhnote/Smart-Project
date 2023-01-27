@@ -57,9 +57,8 @@ export class LoginPageComponent {
     var user = new UserAccount();
     user.password = this.password;
     user.username = this.username;
-
     user.feature = "Admin";
-  //  localStorage.setItem("email",email);
+    //localStorage.setItem("email",email);
     //this.getIP();
     this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/userInfo/login', user, this.httpOptions).subscribe(
       res => {
