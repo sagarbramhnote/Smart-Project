@@ -58,7 +58,7 @@ export class LoginPageComponent {
     user.password = this.password;
     user.username = this.username;
 
-    user.feature = "Product Manager";
+    user.feature = "Admin";
   //  localStorage.setItem("email",email);
     //this.getIP();
     this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/userInfo/login', user, this.httpOptions).subscribe(
@@ -67,7 +67,10 @@ export class LoginPageComponent {
         //event.confirm.resolve(event.newData);
         if (res) {
           localStorage.setItem('user', JSON.stringify(user));
-
+          localStorage.setItem('userId', res.id+"");
+          localStorage.setItem('userName', res.username+"");
+          localStorage.setItem('Role', res.role);
+          console.dir(res);
 
          this.router.navigate(['/dashboard']);
           this.service.loginSuccess();
