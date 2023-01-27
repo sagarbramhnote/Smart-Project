@@ -1,6 +1,8 @@
 export class EndPoints {
 
     public static readonly BASE_URL: string = "http://localhost:9002";
+    //public static readonly BASE_URL: string ='http://smartersafeiicorpjavaspringbootmicro-env.eba-hx3uz3y2.us-east-1.elasticbeanstalk.com'
+    
     // static PRINT_EMPLOYEE_REPORT(userId:string):string{
     //     // return this.BASE_URL+"/reports/employeeReport/"+userId;
     //     return this.BASE_URL+"/reports/employeeReport/"+userId;
