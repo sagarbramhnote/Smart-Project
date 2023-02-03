@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
    }
  
    getAssignedStoreList() {
-    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigned');
+    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assignedStores');
   }
   getAllAssignedStoresList() {
     return this.getAssignedStoreList().

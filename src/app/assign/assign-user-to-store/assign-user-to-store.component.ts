@@ -35,7 +35,7 @@ export class AssignUserToStoreComponent implements OnInit {
     private changeDetectorRefs: ChangeDetectorRef) { }
 
     getUnAssignedStoreList() {
-      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/unassigned');
+      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assignedStoresunassignusers');
     }
     getAllUnassignedStoresList() {
       return this.getUnAssignedStoreList().
