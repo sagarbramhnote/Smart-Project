@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LayoutService } from '../services/layout.service';
 import { ConfigService } from '../services/config.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-navbar",
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public config: any = {};
 
-  constructor(public translate: TranslateService, private layoutService: LayoutService, private configService:ConfigService) {
+  constructor(public translate: TranslateService, private layoutService: LayoutService, private configService:ConfigService,private router: Router) {
     
   }
 
@@ -34,6 +35,11 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     
+  }
+
+  logout(){
+    this.router.navigate(["/pages/login"]);
+
   }
 
   

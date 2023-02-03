@@ -171,12 +171,12 @@
                           <div class="input-group">
                             <div class="custom-control custom-radio d-inline-block float-left">
                               <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="storeInfoRequest.configured">
+                                [value]=true [(ngModel)]="storeInfoRequest.status">
                               <label class="custom-control-label" for="active">Active</label>
                             </div>
                             <div class="custom-control custom-radio d-inline-block float-left ml-1">
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="storeInfoRequest.configured">
+                                [value]=false [(ngModel)]="storeInfoRequest.status">
                               <label class="custom-control-label" for="inactive">In Active</label>
                             </div>
                           </div>
@@ -263,8 +263,8 @@
                         <td>{{storeInfoRequest.endTime}}</td>
                         <td>
                           <button type="button" class="btn btn-raised" disabled style="cursor:default"
-                          [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
-                          {{ storeInfoRequest.configured ? 'Active' : 'Inactive' }}
+                          [ngClass]="{' btn-primary' : storeInfoRequest.status,'btn-warning' :!storeInfoRequest.status }">
+                          {{ storeInfoRequest.status ? 'Active' : 'Inactive' }}
 
                         </button>
                       </td>

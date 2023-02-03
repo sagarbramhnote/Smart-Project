@@ -19,6 +19,9 @@ export class StoreInfoRequest {
 
 	  configured:boolean;
 
+	  status:boolean;
+
+
 	  startTime: string;
 
 	  endTime: string;

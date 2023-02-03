@@ -83,7 +83,7 @@ export class CreatestoreComponent implements OnInit {
 storedelete(storeInfoRequest: StoreInfoRequest) {
   console.log('coming into delete')
 
-    if(storeInfoRequest.configured){
+    if(storeInfoRequest.status){
       console.log('coming inside active true')
       Swal.fire({
         title: 'You cannot delete a active store ',
@@ -94,7 +94,7 @@ storedelete(storeInfoRequest: StoreInfoRequest) {
        
       })
     }
-    if(!(storeInfoRequest.configured)){
+    if(!(storeInfoRequest.status)){
 
   Swal.fire({
     title: 'Are you sure?',
