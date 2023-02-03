@@ -240,12 +240,12 @@
                       <tr>
                         <th>S.no</th>
                         <th>Corp StoreNo</th>
-                        <th>Serial Number</th>
                         <th>Store Name</th>
                         <th>Store Location</th>
                         <th>Start Time</th>
                         <th>End Time</th>
                         <th>Status</th>
+                        <th>Configured</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -256,7 +256,6 @@
                         <!-- <td>{{i+1+(page-1) * pageSize}}</td> -->
                         <td>{{i+1}}</td>
                         <td>{{storeInfoRequest.corpStoreNo}}</td>
-                        <td>{{storeInfoRequest.serialNumber}}</td>
                         <td>{{storeInfoRequest.storeName}}</td>
                         <td>{{storeInfoRequest.address}}</td>
                         <td>{{storeInfoRequest.startTime}}</td>
@@ -268,6 +267,14 @@
 
                         </button>
                       </td>
+
+                      <td>
+                        <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                        [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
+                        {{ storeInfoRequest.configured ? 'Yes' : 'No' }}
+
+                      </button>
+                    </td>
                         
                         <td>
                           <a class="success p-0" data-original-title="" title="" (click)="editstoreInfoRequest(storeInfoRequest)"
