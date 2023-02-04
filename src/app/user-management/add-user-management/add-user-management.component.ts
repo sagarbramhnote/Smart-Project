@@ -53,8 +53,9 @@ export class AddUserManagementComponent implements OnInit {
   }
   onSaveConfirm() {
     console.log("this method is add usermethod component");
-    this.user.role = this.role.name;
-    console.log(this.user.passLength)
+   //this.user.role = this.role.name;
+   console.log(this.user.role);
+    console.log(this.user.passLength);
 
 
    

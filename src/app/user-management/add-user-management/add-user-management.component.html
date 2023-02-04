@@ -105,9 +105,11 @@
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="roleSelect">Select Role</label>
-                          <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
-                            <option [ngValue]="role" *ngFor="let role of roles">
-                              {{role.name}} </option>
+                          <select class="form-control border-primary" [(ngModel)]="user.role" required id="role" name="role">
+                            <option value="owner">Owner</option>
+                            <option value="MANAGER">MANAGER</option>
+                            <option value="store admin">Store Admin</option>
+                            <option value="Product Manager">Product Manager</option>
                           </select>
                         </fieldset>
                       </div>
