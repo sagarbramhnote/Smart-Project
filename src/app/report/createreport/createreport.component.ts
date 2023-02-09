@@ -143,8 +143,8 @@ export class CreatereportComponent implements OnInit {
 
     return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
   }
-  findUserByRole(role: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/role/" + role);
+  findUserByRole(storeName:string,role: string) {
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/store/" +storeName+"/"+role);
   }
   getAllRolesList() {
     return this.getRoleList().
@@ -201,7 +201,9 @@ export class CreatereportComponent implements OnInit {
   
 
   onRoleChange(role: any) {
-    return this.findUserByRole(role).
+    var storeName=localStorage.getItem("storename for report");
+    console.log(localStorage.getItem("storename for report"));
+    return this.findUserByRole(storeName,role).
       subscribe((data) => {
         console.log(data);
         this.employees = data;
@@ -210,7 +212,7 @@ export class CreatereportComponent implements OnInit {
   }
 
   findUserByStore(storeName: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/store/" + storeName);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/" + storeName);
   }
 
   onstoreChange(storeName: string) {
@@ -219,6 +221,8 @@ export class CreatereportComponent implements OnInit {
       subscribe((data) => {
         console.log(data);
         this.employees2 = data;
+        console.log("storename",storeName);
+        localStorage.setItem("storename for report",storeName);
         this.changeDetectorRefs.markForCheck();
       });
   }

@@ -88,11 +88,11 @@
                         <div class="form-group">
                           <fieldset class="form-group">
                             <label for="roleSelect">User Type</label>
-                            <select required [(ngModel)]="employee" id="employee" name="employee"
-                            (change)="onSelectUserId(employee.id)" class="form-control border-primary" disabled>
-                             <option>Select User Type</option>
-                             <option [ngValue]="employee" *ngFor="let employee of employees2">
-                               {{employee.role}} </option>
+                            <select class="form-control border-primary" [(ngModel)]="role"
+                            (change)="onRoleChange($any($event.target).value)" required id="role" name="role">
+                              <option value="EMPLOYEE">Employee</option>
+                              <option value="MANAGER">Manager</option>
+                              <option value="SHIFTMANAGER">Shift Manager</option>
                             </select>
                           </fieldset>
                         </div>
@@ -103,7 +103,7 @@
                           <select required [(ngModel)]="employee" id="employee" name="employee"
                            (change)="onSelectUserId(employee.id)" class="form-control border-primary">
                             <option>Select User Name</option>
-                            <option [ngValue]="employee" *ngFor="let employee of employees2">
+                            <option [ngValue]="employee" *ngFor="let employee of employees">
                               {{employee.username}} </option>
                           </select>
                         </fieldset>
