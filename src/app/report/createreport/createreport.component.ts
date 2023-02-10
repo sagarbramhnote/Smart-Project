@@ -38,12 +38,9 @@ export class CreatereportComponent implements OnInit {
   dataStoreResponce: Array<StoreInfoRequest> = [];
   empId: string;
   stores: StoreInfoRequest[];
-  stores1: StoreInfoRequest[];
 
   roles: Array<Role> = [];
   employees: UserAccount[];
-  employees1: UserAccount[];
-  employees2: UserAccount[];
   selectedStore = new StoreInfoRequest();
   selectedUser: UserAccount;
   selectedUser1: UserAccount[];
@@ -63,7 +60,6 @@ export class CreatereportComponent implements OnInit {
   ngOnInit() {
     this.getAlluserList();
     this.getAllStoresList();
-    this.getAllRolesList();
     this.changeDivSection("Bills");
     this.isStandBankRadio = true;
     this.user=localStorage.getItem('user');
@@ -137,32 +133,8 @@ export class CreatereportComponent implements OnInit {
 
   getStoreList() {
     return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assignedStores');
-
   }
-  getRoleList() {
 
-    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
-  }
-  findUserByRole(storeName:string,role: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/store/" +storeName+"/"+role);
-  }
-  getAllRolesList() {
-    return this.getRoleList().
-      subscribe((data) => {
-        console.log(data);
-        // let rolesData=new Role();
-        // for (let index = 0; index < data.length; index++) {
-        //   if(data[index].name=="EMPLOYEE" || data[index].name=="MANAGER"){
-
-        //     this.roles.push(reles)
-        //   }
-
-        // }
-        // this.roles=data;
-
-        this.changeDetectorRefs.markForCheck();
-      });
-  }
   getAllStoresList() {
     return this.getStoreList().
       subscribe((data) => {
@@ -176,29 +148,20 @@ export class CreatereportComponent implements OnInit {
     return this.http.get<StoreInfoRequest>(environment.smartSafeAPIUrl + '/storeinfo/' + storeName);
   }
 
-  onStoreSelected(storeName: string) {
+  onstoreChange(storeName: string) {
     this.storeNameDy = storeName;
     this.getStoresByStoreName(storeName).
-      subscribe((data) => {
-        this.selectedStore = data;
-
+    subscribe((data) => {
+      this.selectedStore = data;
+        console.log("storename",storeName);
+        localStorage.setItem("storename for report",storeName);
+        this.changeDetectorRefs.markForCheck();
       })
   }
 
-//new changes
-  getStoresByStoreId(id: number) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/storeinfo/all/assigneduser' + id);
+  findUserByRole(storeName:string,role: string) {
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/store/" +storeName+"/"+role);
   }
-
-  getAllStoresListById(id:number) {
-    return this.getStoresByStoreId(id).
-      subscribe((data) => {
-        console.log(data);
-        this.employees1 = data;
-        this.changeDetectorRefs.markForCheck();
-      });
-  } 
-  
 
   onRoleChange(role: any) {
     var storeName=localStorage.getItem("storename for report");
@@ -210,27 +173,12 @@ export class CreatereportComponent implements OnInit {
         this.changeDetectorRefs.markForCheck();
       });
   }
-
-  findUserByStore(storeName: string) {
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + "/userInfo/" + storeName);
-  }
-
-  onstoreChange(storeName: string) {
-    this.storeNameDy = storeName;
-    return this.findUserByStore(storeName).
-      subscribe((data) => {
-        console.log(data);
-        this.employees2 = data;
-        console.log("storename",storeName);
-        localStorage.setItem("storename for report",storeName);
-        this.changeDetectorRefs.markForCheck();
-      });
-  }
   
 
   onSelectUserId(userId: number) {
     this.empId = userId.toString();
   }
+  
   startDateC(startDate) {
     this.startDate = startDate.target.value;
   }
