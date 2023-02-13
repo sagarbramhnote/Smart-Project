@@ -50,7 +50,7 @@ export class CreatereportComponent implements OnInit {
   endDate: string;
 
   day:boolean;
-  orderStatus:string="Delivered";
+  safeType:string="MAINSAFE";
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -326,7 +326,7 @@ export class CreatereportComponent implements OnInit {
       }
       case "ChangeRequest": {
        
-        this.service.getChangerequestExcelReport(this.storeNameDy+"/"+this.orderStatus+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
+        this.service.getChangerequestExcelReport(this.storeNameDy+"/"+this.safeType+"/"+this.startDate+"/"+this.endDate).subscribe(data => {
 
           //Excel start here..
 
