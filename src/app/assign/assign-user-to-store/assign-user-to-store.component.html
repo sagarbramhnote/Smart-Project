@@ -58,10 +58,11 @@
                           <fieldset class="form-group">
                             <label for="roleSelect">Role Type</label>
                             <select class="form-control border-primary" [(ngModel)]="role"
-                              (change)='onRoleSelected(role.name)' required id="role" name="role">
-                              <option>Select Role Name</option>
-                              <option [ngValue]="role" *ngFor="let role of roles">
-                                {{role.name}} </option>
+                              (change)='onRoleSelected($any($event.target).value)' required id="role" name="role">
+                              <option value="OWNER">Owner</option>
+                              <option value="STORE_ADMIN">Store Admin</option>
+                              <option value="SUPER_ADMIN">Super Admin</option>
+                              <option value="DIRECTOR_OF_OPERATION">Director Of Operation</option>
                             </select>
                           </fieldset>
                         </div>
