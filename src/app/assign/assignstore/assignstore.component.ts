@@ -24,6 +24,9 @@ export class AssignstoreComponent implements OnInit {
   stores: StoreInfoRequest[];
   selectedStore = new StoreInfoRequest();
 
+  assignstore = new StoreInfoRequest();
+  assignstores: StoreInfoRequest[];
+
   kiosk = new KioskInfoRequest();
   kiosks : KioskInfoRequest[];
 
