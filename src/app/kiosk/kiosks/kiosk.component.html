@@ -9,18 +9,18 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard"><span
+              <!-- <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
 
                 <span style="font-size: 15px">/Add Kiosk</span>
 
-              </p>
+              </p> -->
             </div>
 
           </div>
         </div>
       </div>
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-header">
 
 
@@ -214,7 +214,7 @@
                         </fieldset>
 
                       </div>-->
-                  
+<!--                   
                   </div> 
              
                   <div class="form-actions center">
@@ -233,7 +233,7 @@
            </div>
          </div>
        </div>
-     </div>
+     </div> -->
    </div>
  </div>
 </section>
@@ -264,9 +264,11 @@
                   <table class="table table-responsive-md text-center">
                     <thead>
                       <tr>
-                        <th>S.no</th>
+                        <!-- <th>S.no</th> -->
                         <th>Kiosk Id</th>
                         <th>Kiosk Name</th>
+                        <th>Brand Name</th>
+                        <th>Model Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -275,9 +277,12 @@
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
                     <tbody *ngFor="let kiosk of kiosks ;index as i">
                       <tr>
-                        <td>{{i+1}}</td>
+                        <!-- <td>{{i+1}}</td> -->
                         <td>{{kiosk.kioskId}}</td>
                         <td>{{kiosk.kioskName}}</td>
+                        <td>{{kiosk.brandName}}</td>
+                        <td>{{kiosk.modelName}}</td>
+
                         <td>
                           <button type="button" class="btn btn-raised" disabled style="cursor:default"
                             [ngClass]="{' btn-primary' : kiosk.active,'btn-warning' :!kiosk.active }">
