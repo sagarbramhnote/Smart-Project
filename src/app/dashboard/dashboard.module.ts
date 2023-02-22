@@ -5,9 +5,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { ViewStatusComponent } from './view-status/view-status.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MychartComponent } from './mychart/mychart.component';
+import { ChartsReportsComponent } from './charts-reports/charts-reports.component';
+import { PieChartsComponent } from './pie-charts/pie-charts.component';
+
 
 @NgModule({
-  declarations: [DashboardComponent, ViewStatusComponent],
+  declarations: [DashboardComponent, ViewStatusComponent, MychartComponent, ChartsReportsComponent, PieChartsComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

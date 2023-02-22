@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PComponent } from './p.component';
+import { AssignUserToStoreComponent } from './assign-user-to-store.component';
 
-describe('PComponent', () => {
-  let component: PComponent;
-  let fixture: ComponentFixture<PComponent>;
+describe('AssignUserToStoreComponent', () => {
+  let component: AssignUserToStoreComponent;
+  let fixture: ComponentFixture<AssignUserToStoreComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PComponent ]
+      declarations: [ AssignUserToStoreComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PComponent);
+    fixture = TestBed.createComponent(AssignUserToStoreComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

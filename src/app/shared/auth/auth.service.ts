@@ -23,7 +23,7 @@ export class AuthService {
     return this.token;
   }
 
-  isAuthenticated() {
+  isAutheticated() {
     // here you can check if user is authenticated or not through his token 
     return true;
   }

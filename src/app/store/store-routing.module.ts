@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AssignstoreComponent } from './assignstore/assignstore.component';
+import { RouterModule, Routes } from '@angular/router';
 import { CreatestoreComponent } from './createstore/createstore.component';
 import { UpdatestoreComponent } from './updatestore/updatestore.component';
 
@@ -11,16 +10,10 @@ const routes: Routes = [
     data: {
       title: 'Store Management'
     },
+   // canActivate:[AuthGuard],
     
   },
-  {
-    path: 'assignstore',
-     component: AssignstoreComponent,
-    data: {
-      title: 'Assign Store'
-    },
-    
-  },
+
 
   {
     path: 'updatestore',

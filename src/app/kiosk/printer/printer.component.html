@@ -9,7 +9,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
 
                 <span style="font-size: 15px">/Add Printer</span>
@@ -39,7 +39,7 @@
                         <span class=" text-muted danger" *ngIf="!printerNo.valid && (printerNo.dirty || printerNo.touched)">
                           is required!
                         </span>
-                        <input type="text" id="printerNo" class="form-control border-primary" name="printerNo"
+                        <input type="number" id="printerNo" class="form-control border-primary" name="printerNo"
                           [(ngModel)]="printer.printerNo" ngModel #printerNo="ngModel" required>
                        
                         </div>
@@ -112,7 +112,7 @@
                         *ngIf="!printCapacity.valid && (printCapacity.dirty || printCapacity.touched)">
                         is required!
                       </span>
-                      <input type="text" id="printCapacity" class="form-control border-primary" name="printCapacity"
+                      <input type="number" id="printCapacity" class="form-control border-primary" name="printCapacity"
                         [(ngModel)]="printer.printCapacity" ngModel #printCapacity="ngModel" required>
 
                         </div>
@@ -137,6 +137,7 @@
                           </div>
                         </div>
                       </div>
+                    </div> 
                   <!--    <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="storeSelect">Select Store Id</label>
@@ -149,7 +150,7 @@
 
                       </div>-->
                   
-                  </div> 
+                  
              
                   <div class="form-actions center">
 
@@ -157,7 +158,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 

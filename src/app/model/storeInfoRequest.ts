@@ -1,3 +1,5 @@
+import { LongDateFormatKey } from "moment";
+
 export class StoreInfoRequest {
 	  id:number;
 
@@ -17,7 +19,19 @@ export class StoreInfoRequest {
 
 	  configured:boolean;
 
+	  status:boolean;
+
+
 	  startTime: string;
 
 	  endTime: string;
+
+	  role:string;
+
+	  users:string;
+
+	  userIds:number;
+
+
+
 }

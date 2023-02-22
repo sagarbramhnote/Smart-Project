@@ -31,11 +31,12 @@ export class MyProfileComponent implements OnInit {
                    
     //this.user=JSON.parse(localStorage.getItem('user'));  
     var email =localStorage.getItem('email');
+    console.log(email);
       this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userByEmail?email="+email, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
-this.user=res;
+          this.user=res;
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {

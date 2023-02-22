@@ -8,7 +8,6 @@ import { LoginPageComponent } from "./login/login-page.component";
 import { MaintenancePageComponent } from "./maintenance/maintenance-page.component";
 import { RegisterPageComponent } from "./register/register-page.component";
 import { OtpComponent } from '../otp/otp.component';
-import { PComponent } from './p/p.component';
 
 
 const routes: Routes = [
@@ -68,13 +67,6 @@ const routes: Routes = [
         }
       } ,
       
-      {
-        path: 'pp',
-        component: PComponent,
-        data: {
-          title: 'otp'
-        }
-      } ,
       
     ]
   }

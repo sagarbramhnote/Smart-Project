@@ -1,14 +1,20 @@
-
 import { ToastrService } from 'ngx-toastr';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EndPoints } from '../config/Endpoints';
+import { UserAccount } from 'app/model/user';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class NGXToastrService {
-    constructor(public toastr: ToastrService) { }
+    constructor(public toastr: ToastrService,private httpClient: HttpClient) { }
 
     // Success Type
     addSuccess() {
         this.toastr.success('Sucessfully added!');
+    }
+    addAssignSuccess() {
+        this.toastr.success('Sucessfully Assign!');
     }
     updateSuccess() {
         this.toastr.success('Sucessfully updated!');
@@ -41,6 +47,10 @@ export class NGXToastrService {
     typeError() {
         this.toastr.error('I do not think that word means what you think it means.', 'Inconceivable!');
     }
+    generateSuccess() {
+        this.toastr.success('Sucessfully generated!');
+    }
+
     showMessage(message){
         this.toastr.error(message);
     
@@ -88,4 +98,36 @@ export class NGXToastrService {
         this.toastr.info('Have fun storming the castle!', 'Miracle Max Says', { messageClass: 'text-uppercase' });
     }
 
+
+    // gotoEmployeeReport(userId:string,data:any){
+    //     return this.httpClient.post<any>(EndPoints.PRINT_EMPLOYEE_REPORT("132"),data);
+    //   }
+    gotoEmployeeReportToExcel(path:string) :Observable<Blob>{
+        console.log('printing this')
+        return this.httpClient.get(EndPoints.DOWNLOAD_EMPLOYEE_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
+      }
+      gotoEODReportToExcel(path:string) :Observable<Blob>{
+        console.log('printing this')
+        return this.httpClient.get(EndPoints.DOWNLOAD_EOD_REPORT_TO_EXCEL(path),{ responseType: 'blob'});
+      }
+
+
+      //new
+  
+    // getInsertBillsReport(transactionNumber:string){
+    //     return this.httpClient.get<object>(EndPoints.GETINSERTBILLSREPORT(transactionNumber));
+    // }
+    // getEODReport(storeName:string,toDay:boolean){
+    //     return this.httpClient.get<any>(EndPoints.GETEODREPORT(storeName,toDay));
+    // }
+    getStandBankReport(path:string) :Observable<Blob>{
+        return this.httpClient.get(EndPoints.GETSTANDBANKREPORT(path),{responseType: 'blob'});
+    }
+    getChangerequestExcelReport(path:string) :Observable<Blob>{
+        return this.httpClient.get(EndPoints.GETCHANGEREQUESTREPORT(path),{responseType: 'blob'});
+    }
+    
+    users(){
+        return this.httpClient.get<Array<UserAccount>>(EndPoints.LIST_USERS());
+    }
 }

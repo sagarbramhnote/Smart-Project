@@ -7,7 +7,11 @@ export class Role{
 
 	description:string;
 
+	webModule:string[];
+
 	features:string[];
+	
+	active:boolean;
 
 
 }

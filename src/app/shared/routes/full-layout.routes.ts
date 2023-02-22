@@ -8,11 +8,18 @@ export const Full_ROUTES: Routes = [
     loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   
- 
+  {
+    path: 'report',
+    loadChildren: () => import('../../report/report.module').then(m => m.ReportModule)
+  },
  
   {
     path: 'settings',
     loadChildren: () => import('../../settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: 'report',
+    loadChildren: () => import('../../report/report.module').then(m => m.ReportModule)
   },
   
   
@@ -34,6 +41,11 @@ export const Full_ROUTES: Routes = [
   {
     path: 'kiosk',
     loadChildren: () => import('../../kiosk/kiosk.module').then(m => m.KioskModule)
+  },
+
+  {
+    path: 'assign',
+    loadChildren: () => import('../../assign/assign.module').then(m => m.AssignModule)
   },
   
   

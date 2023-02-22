@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Role } from 'app/model/role';
 import { StoreInfoRequest } from 'app/model/storeInfoRequest';
@@ -14,6 +15,8 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class CreatestoreComponent implements OnInit {
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -51,6 +54,8 @@ export class CreatestoreComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllStoresList();
+        this.addClassForm.reset();
+        
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -58,7 +63,7 @@ export class CreatestoreComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeWarning();
+        this.service.typeCustommessage(err.error.message);
       });
     console.log(JSON.stringify(this.storeInfoRequest));
     this.getAllStoresList();
@@ -78,7 +83,7 @@ export class CreatestoreComponent implements OnInit {
 storedelete(storeInfoRequest: StoreInfoRequest) {
   console.log('coming into delete')
 
-    if(storeInfoRequest.configured){
+    if(storeInfoRequest.status){
       console.log('coming inside active true')
       Swal.fire({
         title: 'You cannot delete a active store ',
@@ -89,7 +94,7 @@ storedelete(storeInfoRequest: StoreInfoRequest) {
        
       })
     }
-    if(!(storeInfoRequest.configured)){
+    if(!(storeInfoRequest.status)){
 
   Swal.fire({
     title: 'Are you sure?',

@@ -8,7 +8,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/Update Kiosk</span>
 
@@ -36,7 +36,7 @@
                         <span class=" text-muted danger" *ngIf="!kioskId.valid && (kioskId.dirty || kioskId.touched)">
                           is required!
                         </span>
-                        <input type="text" id="kioskId" class="form-control border-primary" name="kioskId"
+                        <input type="number" id="kioskId" class="form-control border-primary" name="kioskId"
                           [(ngModel)]="kiosk.kioskId" ngModel #kioskId="ngModel" required>
                        
                         </div>
@@ -51,7 +51,7 @@
                           is required!
                         </span>
                         <input type="text" id="kioskName" class="form-control border-primary" name="kioskName"
-                          [(ngModel)]="kiosk.kioskName" ngModel #kioskName="ngModel" required readonly>
+                          [(ngModel)]="kiosk.kioskName" ngModel #kioskName="ngModel" required>
                         </div>
                       </div>
                     </div>
@@ -120,15 +120,15 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="memory"><span *ngIf="kiosk.memory == undefined || kiosk.memory =='' "
-                            style="color: red">*</span>Memory
+                          <label for="ramMemory"><span *ngIf="kiosk.ramMemory == undefined || kiosk.ramMemory =='' "
+                            style="color: red">*</span>Ram Memory
                         </label>
                         <span class=" text-muted danger"
-                          *ngIf="!memory.valid && (memory.dirty || memory.touched)">
+                          *ngIf="!ramMemory.valid && (ramMemory.dirty || ramMemory.touched)">
                           is required!
                         </span>
-                        <input type="text" id="memory" class="form-control border-primary" name="memory"
-                          [(ngModel)]="kiosk.memory" ngModel #memory="ngModel" required>
+                        <input type="text" id="ramMemory" class="form-control border-primary" name="ramMemory"
+                          [(ngModel)]="kiosk.ramMemory" ngModel #ramMemory="ngModel" required>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -150,6 +150,40 @@
 
 
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="ipAddress"><span *ngIf="kiosk.ipAddress == undefined || kiosk.ipAddress =='' "
+                            style="color: red">*</span>Ip Address
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!ipAddress.valid && (ipAddress.dirty || ipAddress.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="ipAddress" class="form-control border-primary" name="ipAddress"
+                          [(ngModel)]="kiosk.ipAddress" ngModel #ipAddress="ngModel" required>
+
+                        </div>
+                      </div>
+
+                  
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="macAddress"><span *ngIf="kiosk.macAddress == undefined || kiosk.macAddress =='' "
+                            style="color: red">*</span>Mac Address
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!macAddress.valid && (macAddress.dirty || macAddress.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="macAddress" class="form-control border-primary" name="macAddress"
+                          [(ngModel)]="kiosk.macAddress" ngModel #macAddress="ngModel" required>
+                        </div>
+                      </div>
+                      </div>
+
+
+                      <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="d-block">Status</label>

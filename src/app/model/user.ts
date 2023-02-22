@@ -21,5 +21,7 @@ export class UserAccount{
 	feature:string;
 
 	passLength:string;
+	
+	storeInfo:string;
     
 }

@@ -2,12 +2,15 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Router } from '@angular/router';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { environment } from 'environments/environment';
 import { LocksInfoRequest } from 'app/model/locksInfoRequest';
+import { StoreInfoRequest } from 'app/model/storeInfoRequest';
+
 
 import Swal from 'sweetalert2';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-locks',
@@ -16,6 +19,23 @@ import Swal from 'sweetalert2';
   providers: [NGXToastrService]
 })
 export class LocksComponent implements OnInit {
+
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
+
+  storeInfoRequest = new StoreInfoRequest();
+  storeInfoRequests: StoreInfoRequest[];
+  getStoreList() {
+    return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all');
+  }
+  getAllStoresList() {
+    return this.getStoreList().
+      subscribe((data) => {
+        console.log(data);
+        this.storeInfoRequests = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -59,6 +79,8 @@ export class LocksComponent implements OnInit {
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
         this.getAllLocksList();
+        this.addClassForm.reset();
+
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
@@ -66,7 +88,8 @@ export class LocksComponent implements OnInit {
         } else {
           console.log("Server-side error occured.");
         }
-        this.service.typeWarning();
+        //this.service.typeWarning();
+        this.service.typeCustommessage(err.error.message);
       });
     console.log(JSON.stringify(this.lock));
     this.getAllLocksList();
@@ -117,6 +140,7 @@ locksdelete(lock: LocksInfoRequest) {
           //event.confirm.resolve(event.newData);
           this.service.typeDelete();
           this.getAllLocksList();
+
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
@@ -138,6 +162,8 @@ locksdelete(lock: LocksInfoRequest) {
 
   ngOnInit() {
     this.getAllLocksList();
+    this.getAllStoresList();
+    console.log(this.getAllStoresList())
 
   }
 

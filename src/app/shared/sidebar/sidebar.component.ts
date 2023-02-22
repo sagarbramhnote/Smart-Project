@@ -27,6 +27,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   public config: any = {};
   layoutSub: Subscription;
 
+  role:string;
+
 
   constructor(
     private elementRef: ElementRef,
@@ -77,7 +79,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.config = this.configService.templateConf;
     this.menuItems = ROUTES;
 
-
+    this.role=localStorage.getItem('Role');
+    console.dir(this.role);
 
     if (this.config.layout.sidebar.backgroundColor === 'white') {
       this.logoUrl = 'assets/img/Logo_Hoi.png';

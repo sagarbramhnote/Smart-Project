@@ -14,9 +14,13 @@ export class KioskInfoRequest {
     
     hdd:string;
 
-    memory:string;
+    ramMemory:string;
 
     screenSize:string;
+
+    ipAddress:string;
+
+    macAddress:string;
 
     active:boolean;
 

@@ -9,7 +9,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
 
                 <span style="font-size: 15px">/Add Bill Validator</span>
@@ -39,7 +39,7 @@
                         <span class=" text-muted danger" *ngIf="!billAcceptorNo.valid && (billAcceptorNo.dirty || billAcceptorNo.touched)">
                           is required!
                         </span>
-                        <input type="text" id="billAcceptorNo" class="form-control border-primary" name="billAcceptorNo"
+                        <input type="number" id="billAcceptorNo" class="form-control border-primary" name="billAcceptorNo"
                           [(ngModel)]="billValidator.billAcceptorNo" ngModel #billAcceptorNo="ngModel" required>
                        
                         </div>
@@ -156,7 +156,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 

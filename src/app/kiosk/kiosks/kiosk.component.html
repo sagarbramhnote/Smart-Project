@@ -9,25 +9,25 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <!-- <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
 
                 <span style="font-size: 15px">/Add Kiosk</span>
 
-              </p>
+              </p> -->
             </div>
 
           </div>
         </div>
       </div>
-      <div class="card">
+      <!-- <div class="card">
         <div class="card-header">
 
 
 
           <div class="card-body">
             <div class="form-group">
-              <div class="col-md-12">
+              <div class="col-md-12">            
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
                     <div class="row">
@@ -39,7 +39,7 @@
                         <span class=" text-muted danger" *ngIf="!kioskId.valid && (kioskId.dirty || kioskId.touched)">
                           is required!
                         </span>
-                        <input type="text" id="kioskId" class="form-control border-primary" name="kioskId"
+                        <input type="number" id="kioskId" class="form-control border-primary" name="kioskId"
                           [(ngModel)]="kiosk.kioskId" ngModel #kioskId="ngModel" required>
                        
                         </div>
@@ -123,15 +123,15 @@
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="memory"><span *ngIf="kiosk.memory == undefined || kiosk.memory =='' "
-                            style="color: red">*</span>Memory
+                          <label for="ramMemory"><span *ngIf="kiosk.ramMemory == undefined || kiosk.ramMemory =='' "
+                            style="color: red">*</span>Ram Memory
                         </label>
                         <span class=" text-muted danger"
-                          *ngIf="!memory.valid && (memory.dirty || memory.touched)">
+                          *ngIf="!ramMemory.valid && (ramMemory.dirty || ramMemory.touched)">
                           is required!
                         </span>
-                        <input type="text" id="memory" class="form-control border-primary" name="memory"
-                          [(ngModel)]="kiosk.memory" ngModel #memory="ngModel" required>
+                        <input type="text" id="ramMemory" class="form-control border-primary" name="ramMemory"
+                          [(ngModel)]="kiosk.ramMemory" ngModel #ramMemory="ngModel" required>
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -143,7 +143,7 @@
                           *ngIf="!screenSize.valid && (screenSize.dirty || screenSize.touched)">
                           is required!
                         </span>
-                        <input type="text" id="screenSize" class="form-control border-primary" name="screenSize"
+                        <input type="number" id="screenSize" class="form-control border-primary" name="screenSize"
                           [(ngModel)]="kiosk.screenSize" ngModel #screenSize="ngModel" required>
 
                         </div>
@@ -151,8 +151,40 @@
 
                     </div>
 
-
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="ipAddress"><span *ngIf="kiosk.ipAddress == undefined || kiosk.ipAddress =='' "
+                            style="color: red">*</span>Ip Address
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!ipAddress.valid && (ipAddress.dirty || ipAddress.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="ipAddress" class="form-control border-primary" name="ipAddress"
+                          [(ngModel)]="kiosk.ipAddress" ngModel #ipAddress="ngModel" required>
+
+                        </div>
+                      </div>
+
+                    
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="macAddress"><span *ngIf="kiosk.macAddress == undefined || kiosk.macAddress =='' "
+                            style="color: red">*</span>Mac Address
+                        </label>
+                        <span class=" text-muted danger"
+                          *ngIf="!macAddress.valid && (macAddress.dirty || macAddress.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="macAddress" class="form-control border-primary" name="macAddress"
+                          [(ngModel)]="kiosk.macAddress" ngModel #macAddress="ngModel" required>
+                        </div>
+                      </div>
+                      </div>
+
+                      <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="d-block">Status</label>
@@ -166,6 +198,7 @@
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
                                 [value]=false [(ngModel)]="kiosk.active">
                               <label class="custom-control-label" for="inactive">In Active</label>
+                              
                             </div>
                           </div>
                         </div>
@@ -181,7 +214,7 @@
                         </fieldset>
 
                       </div>-->
-                  
+<!--                   
                   </div> 
              
                   <div class="form-actions center">
@@ -190,7 +223,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 
@@ -200,7 +233,7 @@
            </div>
          </div>
        </div>
-     </div>
+     </div> -->
    </div>
  </div>
 </section>
@@ -231,9 +264,11 @@
                   <table class="table table-responsive-md text-center">
                     <thead>
                       <tr>
-                        <th>S.no</th>
+                        <!-- <th>S.no</th> -->
                         <th>Kiosk Id</th>
                         <th>Kiosk Name</th>
+                        <th>Brand Name</th>
+                        <th>Model Name</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -242,9 +277,12 @@
                         *ngFor="let role of roles| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
                     <tbody *ngFor="let kiosk of kiosks ;index as i">
                       <tr>
-                        <td>{{i+1}}</td>
+                        <!-- <td>{{i+1}}</td> -->
                         <td>{{kiosk.kioskId}}</td>
                         <td>{{kiosk.kioskName}}</td>
+                        <td>{{kiosk.brandName}}</td>
+                        <td>{{kiosk.modelName}}</td>
+
                         <td>
                           <button type="button" class="btn btn-raised" disabled style="cursor:default"
                             [ngClass]="{' btn-primary' : kiosk.active,'btn-warning' :!kiosk.active }">

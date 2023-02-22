@@ -8,7 +8,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Store Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/Add Store</span>
 
@@ -29,9 +29,6 @@
               
                 <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
-                      Assign Store
-                     </button>
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -54,7 +51,7 @@
                           <span class=" text-muted danger" *ngIf="!corpStoreNo.valid && (corpStoreNo.dirty || corpStoreNo.touched)">
                             is required!
                           </span>
-                          <input type="text" id="corpStoreNo" class="form-control border-primary" name="corpStoreNo"
+                          <input type="number" id="corpStoreNo" class="form-control border-primary" name="corpStoreNo"
                             [(ngModel)]="storeInfoRequest.corpStoreNo" ngModel #corpStoreNo="ngModel" required>
 
                         </div>
@@ -68,7 +65,7 @@
                             *ngIf="!serialNumber.valid && (serialNumber.dirty || serialNumber.touched)">
                             is required!
                           </span>
-                          <input type="text" id="serialNumber" class="form-control border-primary" name="serialNumber"
+                          <input type="number" id="serialNumber" class="form-control border-primary" name="serialNumber"
                             [(ngModel)]="storeInfoRequest.serialNumber" ngModel #serialNumber="ngModel" required>
 
                         </div>
@@ -111,10 +108,11 @@
                           </label>
                           <span class=" text-muted danger"
                             *ngIf="!accountNumber.valid && (accountNumber.dirty || accountNumber.touched)">
-                            is required!
-                          </span>
-                          <input type="text" id="accountNumber" class="form-control border-primary" name="accountNumber"
-                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required>
+                            <span *ngIf="accountNumber.errors.required"> is required!</span>
+                            <span *ngIf="accountNumber.errors.maxlength"> plz enter valid Account number!</span>
+                             </span>
+                          <input type="number" id="accountNumber" class="form-control border-primary" name="accountNumber"
+                            [(ngModel)]="storeInfoRequest.accountNumber" ngModel #accountNumber="ngModel" required   maxlength="15">
 
                         </div>
                       </div>
@@ -129,7 +127,7 @@
                               *ngIf="!minimumBalance.valid && (minimumBalance.dirty || minimumBalance.touched)">
                               is required!
                             </span>
-                            <input type="text" id="minimumBalance" class="form-control border-primary" name="minimumBalance"
+                            <input type="number" id="minimumBalance" class="form-control border-primary" name="minimumBalance"
                               [(ngModel)]="storeInfoRequest.minimumBalance" ngModel #minimumBalance="ngModel" required>
   
                           </div>
@@ -173,12 +171,12 @@
                           <div class="input-group">
                             <div class="custom-control custom-radio d-inline-block float-left">
                               <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                [value]=true [(ngModel)]="storeInfoRequest.configured">
+                                [value]=true [(ngModel)]="storeInfoRequest.status">
                               <label class="custom-control-label" for="active">Active</label>
                             </div>
                             <div class="custom-control custom-radio d-inline-block float-left ml-1">
                               <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                [value]=false [(ngModel)]="storeInfoRequest.configured">
+                                [value]=false [(ngModel)]="storeInfoRequest.status">
                               <label class="custom-control-label" for="inactive">In Active</label>
                             </div>
                           </div>
@@ -186,6 +184,9 @@
                       </div> 
 
                     </div>
+
+               
+
 
 
 
@@ -196,7 +197,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
                   </div>
@@ -239,12 +240,12 @@
                       <tr>
                         <th>S.no</th>
                         <th>Corp StoreNo</th>
-                        <th>Serial Number</th>
                         <th>Store Name</th>
                         <th>Store Location</th>
                         <th>Start Time</th>
                         <th>End Time</th>
                         <th>Status</th>
+                        <th>Configured</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -255,18 +256,25 @@
                         <!-- <td>{{i+1+(page-1) * pageSize}}</td> -->
                         <td>{{i+1}}</td>
                         <td>{{storeInfoRequest.corpStoreNo}}</td>
-                        <td>{{storeInfoRequest.serialNumber}}</td>
                         <td>{{storeInfoRequest.storeName}}</td>
                         <td>{{storeInfoRequest.address}}</td>
                         <td>{{storeInfoRequest.startTime}}</td>
                         <td>{{storeInfoRequest.endTime}}</td>
                         <td>
                           <button type="button" class="btn btn-raised" disabled style="cursor:default"
-                          [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
-                          {{ storeInfoRequest.configured ? 'Active' : 'Inactive' }}
+                          [ngClass]="{' btn-primary' : storeInfoRequest.status,'btn-warning' :!storeInfoRequest.status }">
+                          {{ storeInfoRequest.status ? 'Active' : 'Inactive' }}
 
                         </button>
                       </td>
+
+                      <td>
+                        <button type="button" class="btn btn-raised" disabled style="cursor:default"
+                        [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
+                        {{ storeInfoRequest.configured ? 'Yes' : 'No' }}
+
+                      </button>
+                    </td>
                         
                         <td>
                           <a class="success p-0" data-original-title="" title="" (click)="editstoreInfoRequest(storeInfoRequest)"

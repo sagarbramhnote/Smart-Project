@@ -8,7 +8,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Store Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/update Store</span>
 
@@ -40,8 +40,8 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="corpStoreNo">Enter Corp StoreNo</label>
-                                      <input type="text" id="corpStoreNo" class="form-control border-primary"
-                                          name="corpStoreNo" [(ngModel)]="storeInfoRequest.corpStoreNo">
+                                      <input type="number" id="corpStoreNo" class="form-control border-primary"
+                                          name="corpStoreNo" [(ngModel)]="storeInfoRequest.corpStoreNo" readonly>
                                   </div>
                               </div>
                           </div>
@@ -51,8 +51,8 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="serialNumber">Store Serial Number</label>
-                                      <input class="form-control border-primary" type="text" id="serialNumber"
-                                          [(ngModel)]="storeInfoRequest.serialNumber" name="serialNumber">
+                                      <input class="form-control border-primary" type="number" id="serialNumber"
+                                          [(ngModel)]="storeInfoRequest.serialNumber" name="serialNumber" readonly>
                                   </div>
                               </div>
 
@@ -77,8 +77,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Account Number</label>
-                                    <input matInput class="form-control border-primary" id="accountNumber" type="text"
-                                        name="accountNumber" [(ngModel)]="storeInfoRequest.accountNumber" numberOnly>
+                                    <input matInput class="form-control border-primary" id="accountNumber" type="number"
+                                        name="accountNumber" [(ngModel)]="storeInfoRequest.accountNumber" readonly>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                           <div class="col-md-6">
                               <div class="form-group">
                                   <label for="minimumBalance">Minimum Balance</label>
-                                  <input class="form-control border-primary" type="text" id="minimumBalance"
+                                  <input class="form-control border-primary" type="number" id="minimumBalance"
                                       [(ngModel)]="storeInfoRequest.minimumBalance" name="minimumBalance">
                               </div>
                           </div>
@@ -99,12 +99,12 @@
                               <div class="input-group">
                                 <div class="custom-control custom-radio d-inline-block float-left">
                                   <input type="radio" checked id="active" name="active" class="custom-control-input"
-                                    [value]=true [(ngModel)]="storeInfoRequest.configured">
+                                    [value]=true [(ngModel)]="storeInfoRequest.status">
                                   <label class="custom-control-label" for="active">Active</label>
                                 </div>
                                 <div class="custom-control custom-radio d-inline-block float-left ml-1">
                                   <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                                    [value]=false [(ngModel)]="storeInfoRequest.configured">
+                                    [value]=false [(ngModel)]="storeInfoRequest.status">
                                   <label class="custom-control-label" for="inactive">In Active</label>
                                 </div>
                               </div>

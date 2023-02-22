@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { KioskInfoRequest } from 'app/model/kioskInfoRequest';
 import { NGXToastrService } from 'app/service/toastr.service';
@@ -14,6 +15,8 @@ import Swal from 'sweetalert2';
 })
 export class KioskComponent implements OnInit {
 
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
+
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +29,8 @@ export class KioskComponent implements OnInit {
 
   kiosk = new KioskInfoRequest();
   kiosks : KioskInfoRequest[];
+  ips : KioskInfoRequest[];
+
 
   constructor(private http: HttpClient,
     private router: Router,
@@ -52,6 +57,8 @@ AddKiosk() {
       //event.confirm.resolve(event.newData);
       this.service.addSuccess();
       this.getAllKioskList();
+      this.addClassForm.reset();
+
     },
     (err: HttpErrorResponse) => {
       if (err.error instanceof Error) {
@@ -59,7 +66,8 @@ AddKiosk() {
       } else {
         console.log("Server-side error occured.");
       }
-      this.service.typeWarning();
+      //this.service.typeWarning();
+      this.service.typeCustommessage(err.error.message);
     });
   console.log(JSON.stringify(this.kiosk));
   this.getAllKioskList();
@@ -127,8 +135,12 @@ kioskdelete(kiosk: KioskInfoRequest) {
 }
 }
 
+
+
   ngOnInit() {
     this.getAllKioskList();
+    
+
 
   }
 

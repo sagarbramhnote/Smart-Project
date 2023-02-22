@@ -9,7 +9,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">Kiosk Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
 
                 <span style="font-size: 15px">/Add Digital Locks</span>
@@ -39,7 +39,7 @@
                         <span class=" text-muted danger" *ngIf="!digitalLockNo.valid && (digitalLockNo.dirty || digitalLockNo.touched)">
                           is required!
                         </span>
-                        <input type="text" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
+                        <input type="number" id="digitalLockNo" class="form-control border-primary" name="digitalLockNo"
                           [(ngModel)]="lock.digitalLockNo" ngModel #digitalLockNo="ngModel" required>
                        
                         </div>
@@ -137,17 +137,18 @@
                           </div>
                         </div>
                       </div>
-                  <!--    <div class="col-md-6">
-                        <fieldset class="form-group">
-                          <label for="storeSelect">Select Store Id</label>
-                          <select required [(ngModel)]="role" id="role" name="role" class="form-control border-primary">
-                            <option>Select Store Id</option>
-                            <option [ngValue]="role" *ngFor="let role of roles">
-                              {{role.name}} </option>
-                          </select>
-                        </fieldset>
-
-                      </div>-->
+                    <!--  Showing all stores available in adding a new lock by Rama-->
+                      <!-- <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="form-group">
+                            <label for="roleSelect">Select Store</label>
+                            <select class="form-control border-primary" [(ngModel)]="StoreInfoRequest" required id="storeName" name="storeName">
+                              <option [ngValue]="" *ngFor="let storeInfoRequest of storeInfoRequests">
+                                {{storeInfoRequest.storeName}} </option>
+                            </select>
+                          </fieldset>
+                        </div>
+                      </div> -->
                   
                   </div> 
              
@@ -157,7 +158,7 @@
                       [disabled]="!addClassForm.valid">
                       <i class="fa fa-check-square-o"></i> Create
                     </button>
-                    <button type="button" class="btn btn-raised btn-warning">
+                    <button type="reset" class="btn btn-raised btn-warning">
                       <i class="ft-x"></i> Cancel
                     </button>
 
