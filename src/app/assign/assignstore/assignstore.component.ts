@@ -46,7 +46,7 @@ export class AssignstoreComponent implements OnInit {
     private changeDetectorRefs: ChangeDetectorRef) { }
 
     getUnAssignedStoreList() {
-      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/unassigned');
+      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/unassignedKBPL');
     }
     getAllUnassignedStoresList() {
       return this.getUnAssignedStoreList().
