@@ -44,6 +44,13 @@ export class AssignstoreComponent implements OnInit {
     private router: Router,
     private service: NGXToastrService,
     private changeDetectorRefs: ChangeDetectorRef) { }
+    
+    getAllAssignedStoresList(){
+      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/kiosknames').subscribe((data) => {
+         console.log("alll assigned stores list"+data);
+         this.assignstores=data;
+      });
+    }
 
     getUnAssignedStoreList() {
       return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/all/unassignedKBPL');
@@ -147,6 +154,7 @@ export class AssignstoreComponent implements OnInit {
       this.getbillValidatorSelected();
       this.getprinterSelected();
      this.getlockSelected();
+     this.getAllAssignedStoresList();
        
     }
 
