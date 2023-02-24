@@ -29,6 +29,9 @@ export class AssignUserToStoreComponent implements OnInit {
   employee = new UserAccount();
   employees: UserAccount[];
 
+  assignstore = new StoreInfoRequest();
+  assignstores: StoreInfoRequest[];
+
   constructor(private http: HttpClient,
     private router: Router,
     private service: NGXToastrService,
@@ -99,9 +102,17 @@ export class AssignUserToStoreComponent implements OnInit {
         });
     }
 
+    getAllAssignedStoresList(){
+      return this.http.get<StoreInfoRequest[]>(environment.smartSafeAPIUrl + '/storeinfo/usernames').subscribe((data) => {
+         console.log("alll assigned stores list"+data);
+         this.assignstores=data;
+      });
+    }
+
   ngOnInit() {
     this.getAllUnassignedStoresList();
     this.getAllRolesList();
+    this.getAllAssignedStoresList();
   }
 
 }

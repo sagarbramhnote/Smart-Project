@@ -32,3 +32,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Where the files related to the product of Autism for India has been deployed.
 >>>>>>> 73d7ea80ae02c3db8e2e62d71b9654517a1c93c9
+
+# Feb V2.0
+Added Assign Store List
+Added Assign User to store List
+Modified Kiosk Componant
+added New User Type
+Modified the report part
+ 
