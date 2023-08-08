@@ -69,7 +69,7 @@
                       </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="billSelect">Bill Acceptor Name</label>
@@ -79,6 +79,17 @@
                             <option [ngValue]="billValidator" *ngFor="let billValidator of billValidators">
                               {{billValidator.billAcceptorName}} </option>
                           </select>
+                        </fieldset>
+                      </div>
+                    </div> -->
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="billSelect">Bill Acceptor Name</label>
+                          <ng-select [multiple]="true" [(ngModel)]="billValidator.id" (change)="getBillValidatorSelected(billValidator.id)" id="billValidator" name="billValidator">
+                            <ng-option *ngFor="let billValidator of billValidators" [value]="billValidator.id">{{billValidator.billAcceptorName}}</ng-option>
+                          </ng-select>
                         </fieldset>
                       </div>
                     </div>
@@ -100,18 +111,19 @@
                       </div>
                     </div>
 
-                    <!-- <div class="col-md-6">
+
+                    <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
-                          <ng-select [multiple]="true" [(ngModel)]="lock" (change)='getlockSelected(lock.digitalLockName)' id="lock" name="lock">
-                            <ng-option *ngFor="let lock of locks" [value]="lock.digitalLockName">{{lock.digitalLockName}}</ng-option>
-                        </ng-select>
+                          <ng-select [multiple]="true" [(ngModel)]="lock.id" (change)="getlockSelected(lock.id)" id="lock" name="lock">
+                            <ng-option *ngFor="let lock of locks" [value]="lock.id">{{lock.digitalLockName}}</ng-option>
+                          </ng-select>
                         </fieldset>
                       </div>
-                    </div> -->
+                    </div>
  
-                      <div class="col-md-6">
+                      <!-- <div class="col-md-6">
                         <fieldset class="form-group">
                           <label for="lockSelect">Digital Lock</label>
                            <select class="form-control border-primary" [(ngModel)]="lock"  required id="lock"
@@ -121,7 +133,7 @@
                               {{lock.digitalLockName}} </option>   
                           </select>                 
                         </fieldset>
-                    </div> 
+                    </div>  -->
                      
                    
                      <!-- <div class="col-md-6" >
